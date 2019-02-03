@@ -38,11 +38,12 @@ To start using the project, you need to download the latest release from the [pr
 You can customize the application by modifying the source code. The project doesn't have a separate documentation.
 
 ### Pre-requisite
-Visual Studio Community Edition
-SQL Server Express
-AWS account
+- [Visual Studio Community Edition (2015+)](https://visualstudio.microsoft.com/downloads/)
+- [SQL Server Express (2016+)](https://www.microsoft.com/en-us/sql-server/sql-server-editions-express)
+- [AWS account](https://aws.amazon.com/) Needed for file uploads or deployments only
+- Knowledge of C#, AngularJs, SQL Server
 
 ## License
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
-I know you get used to see generous MIT license, but I put this project under Public Domain.
+This source code is released under Public Domain.
