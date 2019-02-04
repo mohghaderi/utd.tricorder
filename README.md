@@ -15,7 +15,7 @@
 
 ### Notes
 
-This project started in 2013 and the development stopped in 2014.
+This project started in 2013 and the development stopped in 2015.
 It was intended to be used as a single research application, and 
 the main goal was to research new software architectures and innovate software engineering techniques.
 Therefore, you may find many technologies are not used the way is used in other projects, 
@@ -31,6 +31,7 @@ I am willing to help you with your research project in my free time.
 ### New version
 The upgraded version of this project is fully redesigned according to the best practices and is under development in a private Git repository.
 I am planning to open-source that one, too. However, if you're interested to have access to that source earlier, please feel free to email me.
+With that being said, this alpha release will be the last release of this series.
 
 ### How to use
 
@@ -47,3 +48,5 @@ You can customize the application by modifying the source code. The project does
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 This source code is released under Public Domain.
+The code for the libraries and the scripts inside of the release is NOT under public domain, but they should all be under MIT or Apache 2.0 license and allow commercial usage.
+I am NOT reponsible for any licensing infrigments, and the responsibilities of using this code anywhere goes back to the person who uses it.
