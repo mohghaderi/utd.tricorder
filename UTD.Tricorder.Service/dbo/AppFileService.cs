@@ -309,10 +309,6 @@ namespace UTD.Tricorder.Service
             //sb.Append("    {\"redirect\": \"").Append(FWUtils.ConfigUtils.GetAppSettings().Project.WebsiteUrl).Append("Scripts/jquery-fileupload/cors/result.html?a=1").Append("\"},");
             if (serversideEncryption != "None") // having None as a value will cause an exception in Amazon Post
                 sb.Append("    {\"x-amz-server-side-encryption\": \"").Append(s3Settings.DefaultServerSideEncryption).Append("\"},");
-            //sb.Append("    [\"starts-with\", \"$x-amz-meta-tag\", \"\"],");
-            //sb.Append("    {\"x-amz-credential\": \"AKIAIOSFODNN7EXAMPLE/20130806/us-east-1/s3/aws4_request\"},");
-            //sb.Append("    {\"x-amz-algorithm\": \"AWS4-HMAC-SHA256\"}");
-            //sb.Append("    {\"x-amz-date\": \"20130806T000000Z\" }");
             sb.Append("  ]");
             sb.Append("}");
 
@@ -543,92 +539,6 @@ namespace UTD.Tricorder.Service
             }
 
         }
-
-
-        //private string GetS3FileUrlAccessSign(AppFile file, long expireEpochTime)
-        //{
-
-        //    //var accessPolicy =
-        //    //new
-        //    //{
-        //    //    // one hour policy
-        //    //    Statement = new object[] {
-        //    //        new {Resource = "http://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes"},
-        //    //        new {Condition = new {
-        //    //            DateLessThan = new { EpochTime = expireEpochTime}
-        //    //        }
-        //    //    }
-
-        //    //};
-
-        //    // {"Statement":[
-        //    //    {"Resource":"http://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes"
-        //    //    ,"Condition":
-        //    //                {"DateLessThan": 
-        //    //                    {"AWS:EpochTime":1357034400}
-        //    //                }
-        //    //    }
-        //    //]}
-
-        //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-
-        //    sb.Append("{\"Statement\":[");
-        //    sb.Append("	{\"Resource\":\"http://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes\"");
-        //    sb.Append("	,\"Condition\":");
-        //    sb.Append("				{\"DateLessThan\": ");
-        //    sb.Append("					{\"AWS:EpochTime\":1357034400}");
-        //    sb.Append("				}");
-        //    sb.Append("	}");
-        //    sb.Append("]}");
-
-
-        //    return sb.ToString();
-
-        //    //{"Statement":[{"Resource":"http://d111111abcdef8.cloudfront.net/horizon.jpg?size=large&license=yes","Condition":{"DateLessThan":{"AWS:EpochTime":1357034400}}}]}
-        //}
-
-        //private string GetAmazonPolicy(AppFile p, AppFileType type)
-        //{
-        //    var s3Settings = FWUtils.ConfigUtils.GetAppSettings().AmazonCloud.S3;
-        //    string expirationDate = DateTime.UtcNow.AddMinutes(10).ToString("o");
-        //    string fileKey = "user/user1/\"";
-        //    string successRedirectUrl = FWUtils.ConfigUtils.GetAppSettings().Project.WebsiteUrl + s3Settings.SuccessRedirectUrl;
-
-        //    System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        //    sb.Append("{ \"expiration\": \"").Append(expirationDate).Append("\",");
-        //    sb.Append("  \"conditions\": [");
-        //    sb.Append("    {\"bucket\": \"").Append(s3Settings.BucketName).Append("\"},");
-        //    sb.Append("    [\"starts-with\", \"$key\", \"").Append(fileKey).Append("\"],");
-        //    sb.Append("    {\"acl\": \"public-read\"},");
-        //    sb.Append("    {\"success_action_redirect\": \"").Append(successRedirectUrl).Append("\"},");
-        //    //sb.Append("    [\"starts-with\", \"$Content-Type\", \"image/\"],");
-        //    sb.Append("    {\"x-amz-meta-uuid\": \"14365123651274\"},");
-        //    //sb.Append("    [\"starts-with\", \"$x-amz-meta-tag\", \"\"],");
-        //    //sb.Append("    {\"x-amz-credential\": \"AKIAIOSFODNN7EXAMPLE/20130806/us-east-1/s3/aws4_request\"},");
-        //    sb.Append("    {\"x-amz-algorithm\": \"AWS4-HMAC-SHA256\"},");
-        //    //sb.Append("    {\"x-amz-date\": \"20130806T000000Z\" }");
-        //    sb.Append("  ]");
-        //    sb.Append("}");
-
-        //    var bytes = System.Text.Encoding.UTF8.GetBytes(sb.ToString());
-        //    var base64 = Convert.ToBase64String(bytes);
-
-        //    return base64;
-
-        //}
-
-
-        //public string GetAmazonUrl()
-        //{ 
-        //    var request = 
-        //        new Amazon.S3.Model.GetPreSignedUrlRequest();
-
-        //    request.BucketName = s3Settings.BucketName;
-        //    request.Key = s3Settings.AccessKeyID;
-        //    request.Expires = DateTime.UtcNow.Add(new TimeSpan(7, 0, 0, 0));
-        //    string url = s3Client.GetPreSignedURL(request);
-        //    return url;
-        //}
 
 
         #endregion
