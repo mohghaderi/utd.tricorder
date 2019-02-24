@@ -1,0 +1,21 @@
+﻿@{
+    //DEVELOPER NOTE: Don't change file name unless you change the code for replacement inside main button click
+    ViewBag.Title = UIText.Error.ServerError500.PageTitle;
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_PublicWebLayout.cshtml");
+}
+
+@{ ViewBag.ViewTitle = UIText.Error.ServerError500.PanelTitle; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+
+<p>@UIText.Error.ServerError500.ErrorText</p>
+<br />
+
+<a class="btn btn-lg btn-success" href="javascript:history.back()">
+    @UIText.Error.Buttons.BackButtonTitle
+</a>
+<a class="btn btn-lg btn-info" href="javascript:window.gotoMainPage()">
+    @UIText.Error.Buttons.MainPageButtonTitle
+</a>
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")

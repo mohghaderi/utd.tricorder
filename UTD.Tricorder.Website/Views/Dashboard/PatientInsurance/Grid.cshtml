@@ -1,0 +1,76 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+
+@{
+    string entityName = vPatientInsurance.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    
+}
+
+@{ ViewBag.ViewTitle = "Insurances"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<div id="PatientInsuranceGridControllerDiv"
+     ng-controller="PatientInsuranceGridController">
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div>
+        <button ng-hide="CurrentUserID != PatientUserID"
+                class="btn btn-info"
+                ng-click="ShowNewForm()">
+            Add New
+        </button>
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="200">Subscriber Name</th>
+                    <th>Insurance Plan</th>
+                    <th width="100">Co-Pay</th>
+                    <th width="200"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        {{item.@(vPatientInsurance.ColumnNames.SubscriberName)}}
+                    </td>
+                    <td>
+                        {{item.@(vPatientInsurance.ColumnNames.InsuranceName)}} {{item.@(vPatientInsurance.ColumnNames.InsurancePlanTitle)}}
+                    </td>
+                    <td>
+                        ${{item.@(vPatientInsurance.ColumnNames.CoPayAmount)}}
+                    </td>
+                    <td>
+                        <button ng-hide="CurrentUserID != PatientUserID"
+                                type="button"
+                                class="btn btn-info"
+                                ng-click="ShowEditForm(item.@(vPatientInsurance.ColumnNames.PatientInsuranceID))">
+                            Edit
+                        </button>
+                        <button ng-hide="CurrentUserID != PatientUserID"
+                                type="button"
+                                class="btn btn-danger"
+                                ng-click="DeleteItem(item.@(vPatientInsurance.ColumnNames.PatientInsuranceID), $event)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    @Html.Partial("~/Views/Dashboard/PatientInsurance/FormDialog.cshtml")
+
+
+</div><!-- end of Doctor_PatientMyDoctorsController controller -->
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

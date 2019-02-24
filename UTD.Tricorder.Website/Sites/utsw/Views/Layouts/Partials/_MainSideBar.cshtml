@@ -1,0 +1,92 @@
+﻿@functions {
+
+    // Add code here.
+    public MvcHtmlString CurrentUserLink(string path)
+    {
+        return new MvcHtmlString("OpenPath('" + path + "', {MasterID : CurrentUserID})");
+    }
+
+}
+
+@helper MenuItem(string title, string iconClass, string href)
+{
+    <a data-ng-click="OpenPath('@href')" href=""><i class="fa-sidebar @iconClass"></i>  @title</a>
+}
+
+@helper MenuItemNG(string title, string iconClass, string href)
+{
+    <a data-ng-click="@href" href=""><i class="fa-sidebar @iconClass"></i>  @title</a>
+}
+@helper MenuCurrentUser(string title, string iconClass, string path)
+{
+    <a data-ng-click="OpenPath('@path', {MasterID: CurrentUserID})" href=""><i class="fa-sidebar @iconClass"></i>  @title</a>
+}
+
+
+
+
+<!-- Doctor's Side bar -->
+<div ng-hide="CurrentRoleCode != 'Doctor'" class="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li>
+            @MenuItemNG("Dashboard", "fa-dashboard", "GotoMainMenu()")
+        </li>
+        <li>
+            @MenuItem("Professional Info", "fa-user-md", "DoctorInfoMenu")
+            <ul>
+                <li>@MenuItem("Basic Info", "fa-user-md", "Doctor-Form")</li>
+                <li>@MenuItem("Licensed States", "fa-user-md", "Doctor_USState-TwoKey")</li>
+                <li>@MenuItem("Insurance", "fa-user-md", "Doctor_Insurance-TwoKey")</li>
+                <li>@MenuItem("Specialty", "fa-user-md", "Doctor_Specialty-TwoKey")</li>
+                <li>@MenuItem("Languages", "fa-user-md", "User_Language-TwoKey")</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"></a>
+            @MenuItem("My account", "fa-user", "User-ProfileEdit")
+            <ul>
+                <li>@MenuItem("Change Password", "fa-key", "User-ChangePasswordForm")</li>
+                <li><a href="" class="fa-sidebar fa-sign-out" data-ng-click="logOut()">Logout</a></li>
+            </ul>
+        </li>
+        <li>&nbsp;&nbsp;</li>
+    </ul>
+</div>
+<!-- End Doctor's Side bar -->
+
+
+            <!-- Patient Side bar -->
+<div ng-hide="CurrentRoleCode != 'Patient'" class="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li>
+            @MenuItemNG("Dashboard", "fa-dashboard", "GotoMainMenu()")
+        </li>
+        <li>
+            @MenuCurrentUser("Daily Care", "fa-h-square", "VitalValue-PainLevelChart")
+            <ul>
+                <li>@MenuCurrentUser("Pain Level", "fa-info", "VitalValue-PainLevelChart")</li>
+                <li>@MenuCurrentUser("Record Food", "fa-info", "FoodGroup-Form?FoodServingTimeTypeID=1")</li>
+                <li>@MenuCurrentUser("Record Activity", "fa-info", "DailyActivity-FitActivityForm")</li>
+                <li>@MenuCurrentUser("Record Sleep", "fa-info", "DailyActivity-SleepForm")</li>
+                <li>@MenuCurrentUser("Calorie Chart", "fa-info", "DailyActivityChart-CalorieChart")</li>
+            </ul>
+        </li>
+        <li>
+            @MenuItem("My Profile", "fa-male", "Person-ProfileView")
+            <ul>
+                <li>@MenuCurrentUser("Insurance", "fa-info", "PatientInsurance-GridInsideProfileTab")</li>
+                <li>@MenuCurrentUser("Language", "fa-info", "User_Language-TwoKeyInsideProfileTab")</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"></a>
+            @MenuItem("My account", "fa-user", "User-ProfileEdit")
+            <ul>
+                <li>@MenuItem("Change Password", "fa-key", "User-ChangePasswordForm")</li>
+                <li><a href="" class="fa-sidebar fa-sign-out" data-ng-click="logOut()">Logout</a></li>
+            </ul>
+        </li>
+        <li>&nbsp;&nbsp;</li>
+    </ul>
+</div>
+<!-- End Patient Side bar -->

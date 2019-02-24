@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="Resource" table="Resource" schema="mem">
+
+		<id name="ResourceID" column="ResourceID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">mem.Resource</param>
+			</generator>
+		</id>
+		
+		<property column="ParentID" name="ParentID" />
+		<property column="ResourceTitle" name="ResourceTitle" not-null="true" length="100" />
+		<property column="ResourceCode" name="ResourceCode" not-null="true" length="1000" />
+		<property column="InsertUsertID" name="InsertUsertID" not-null="true" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="UpdateUserID" name="UpdateUserID" />
+		<property column="UpdateDate" name="UpdateDate" />
+		<property column="ResourceTypeID" name="ResourceTypeID" not-null="true" />
+		<property column="Url" name="Url" length="2048" />
+		<property column="RankOrder" name="RankOrder" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

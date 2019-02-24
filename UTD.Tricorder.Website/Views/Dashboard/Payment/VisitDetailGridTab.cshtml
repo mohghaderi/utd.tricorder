@@ -1,0 +1,61 @@
+﻿@{ ViewBag.ViewTitle = "Payments"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "Payments";}
+@Html.Partial("~/Views/Dashboard/Visit/_VisitDetailsTabs.cshtml")
+
+<div id="PaymentVisitDetailGridControllerDiv"
+     ng-controller="PaymentVisitDetailGridController">
+
+    <div>
+        <a ng-hide="CurrentRoleCode != 'Doctor'"
+           ng-href="#Payment-InsertForm?MasterID={{MasterID}}"
+           class="btn btn-info">
+            Ask payment
+        </a>
+    </div>
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="200">Sender</th>
+                    <th width="50">Amount</th>
+                    <th width="50">Status</th>
+                    <th width="100">Completed Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        {{item.SenderFirstName}} {{item.SenderLastName}}
+                    </td>
+                    <td>
+                        ${{item.Amount}}
+                    </td>
+                    <td>
+                        <span><i class="{{item.PaymentStatusIcon}}" title="{{item.PaymentStatusName}}"></i>{{item.PaymentStatusName}}</span>
+                    </td>
+                    <td>
+                        {{FormatDateTime(item.CompletedDateTime)}}
+                    </td>
+                    <td>
+                        <button ng-hide="!IsCancelable(item)" type="button" class="btn btn-danger" ng-click="Cancel(item.@(vPayment.ColumnNames.PaymentID), $event)">Cancel</button>
+                        <button ng-hide="!IsRefundable(item)" type="button" class="btn btn-info" ng-click="Refund(item.@(vPayment.ColumnNames.PaymentID), $event)">Refund</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div><!-- end of PaymentsGridController controller -->
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

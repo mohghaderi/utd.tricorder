@@ -1,0 +1,27 @@
+﻿@{
+    string controllerName = @"FeedbackInsertFormDialog";
+}
+<!-- Feedback dialog -->
+
+<div id="@(controllerName)Dlg"
+     class="modal fade bs-copyrange-modal-sm"
+     tabindex="-1" role="dialog"
+     aria-labelledby="@(controllerName)Label"
+     aria-hidden="true"
+     ng-controller="@(controllerName)Controller">
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Feedback</h4>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("~/Views/Dashboard/Feedback/InsertForm.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end Feedback dialog -->

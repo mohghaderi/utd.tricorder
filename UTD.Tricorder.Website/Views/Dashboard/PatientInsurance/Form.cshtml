@@ -1,0 +1,54 @@
+﻿@{
+    string entityName = vPatientInsurance.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+
+@{ ViewBag.ViewTitle = "Patient Insurance"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+<form ng-controller="@(entityName)FormController"
+      role="form"
+      id="@(entityName)FormFrm"
+      onsubmit="return false;">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Insurance</label>
+                <div data-selectize="{}"
+                     ng-model="model.InsuranceID">
+                    <select class="form-control"
+                            name="InsuranceID"
+                            data-bv-notempty="true"
+                            autofocus>
+                        <option value=""></option>
+                        @UTD.Tricorder.Website.Helpers.FWHtml.OptionsListForEntity("Insurance")
+                    </select>
+                </div>
+            </div>
+            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.InsurancePlanID])
+
+            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.SubscriberName])
+            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.GroupNumber])
+        </div>
+
+        <div class="col-md-6">
+            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.InsuranceCoNumber])
+            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.CoPayAmount])
+            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.IsPrimary])
+            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.BenefitIdentifier])
+        </div>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="Save($event)">
+            Save
+        </button>
+    </div>
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vUser_Language" table="vUser_Language">
+
+		<id name="User_LanguageID" column="User_LanguageID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">dbo.User_Language</param>
+			</generator>
+		</id>
+		
+		<property column="LanguageID" name="LanguageID" not-null="true" />
+		<property column="UserID" name="UserID" not-null="true" />
+		<property column="LanguageName" name="LanguageName" insert="false" update="false" not-null="true" length="200" />
+		<property column="LanguageCode" name="LanguageCode" insert="false" update="false" not-null="true" length="50" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,55 @@
+﻿@{ ViewBag.ViewTitle = "Reschedule an appointment"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form id="VisitRescheduleFormFrm"
+      role="form"
+      ng-controller="VisitRescheduleFormController"
+      onsubmit="return false">
+
+    <div>
+        Select a time for re-scheduling
+        @Html.Partial("~/Views/Dashboard/DoctorSchedule/WeekSelect.cshtml")
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Patient</label>
+                <div class="form-control"
+                     ng-bind="model.PatientFullName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Reschedule from</label>
+                <div class="form-control"
+                     ng-bind="FormatDateTimeUnix(model.SlotUnixEpoch)">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Doctor</label>
+                <div class="form-control"
+                     ng-bind="model.DoctorFullName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Reschedule To</label>
+                <input class="form-control"
+                       readonly="readonly"
+                       name="RescheduleToText"
+                       ng-model="RescheduleToText"
+                       data-bv-notempty="true"
+                       data-bv-notempty-message="Please select a new schedule from the above" />
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-success"
+            ng-click="ReSchedule()">
+        Re-Schedule
+    </button>
+
+</form>
+
+@{ ViewBag.ViewTitle = "Reschedule an appointment"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

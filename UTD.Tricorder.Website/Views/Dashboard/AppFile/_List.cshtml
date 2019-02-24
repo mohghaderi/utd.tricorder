@@ -1,0 +1,50 @@
+﻿<div @UI.AngualrCtrlDivAttr("AppFile", "Grid")>
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="200">Title</th>
+                    <th width="50">Size</th>
+                    <th width="50"></th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        {{item.@(vAppFile.ColumnNames.FileTitle)}}
+                        <div ng-hide="item.@(vAppFile.ColumnNames.FileTitle) == ''">
+                            {{item.@(vAppFile.ColumnNames.FileName)}}
+                        </div>
+                    </td>
+                    <td>
+                        <span ng-bind="HumanFileSize(item.@(vAppFile.ColumnNames.FileSize))"></span>
+                    </td>
+                    <td>
+                        <div ng-hide="item.@(vAppFile.ColumnNames.AppFileUploadStatusID) != 1">
+                            <div ng-hide="item.DownloadUrl">
+                                <a ng-click="GetDownloadUrl(item)" class="btn btn-info">Request Download link</a>
+                            </div>
+                            <div ng-hide="!(item.DownloadUrl)">
+                                <a href="" ng-click="Download(item)" class="btn btn-default">Download</a>
+                            </div>
+                        </div>
+                        <div ng-hide="item.@(vAppFile.ColumnNames.AppFileUploadStatusID) != 0">
+                            Pending upload...
+                        </div>   
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" ng-click="DeleteFile(item.@(vAppFile.ColumnNames.AppFileID), $event)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

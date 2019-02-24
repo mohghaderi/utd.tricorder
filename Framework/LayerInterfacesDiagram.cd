@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Framework.Business.BusinessRuleBase&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAQAAEACAFgBEQIAAAACEAAoAAUAAEABAhAAlAAAAAA=</HashCode>
+      <FileName>Business\BusinessRuleBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Framework.Business.IBusinessRuleBase&lt;T&gt;" Collapsed="true">
+    <Position X="3.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Business\IBusinessRuleBaseT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Framework.Business.IBusinessRuleBase" Collapsed="true">
+    <Position X="6.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Business\IBusinessRuleBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Framework.Common.IEntityCRUDFunctions" Collapsed="true">
+    <Position X="4.5" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAIAAAAAAAAAAAEAAAAAAgAAgAAAAAA=</HashCode>
+      <FileName>Common\Entity\IEntityCRUDFunctions.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Framework.Common.IEntityCRUDFunctions&lt;T&gt;" Collapsed="true">
+    <Position X="1.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAEAIAAAAAAAAgAAQAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Common\Entity\IEntityCRUDFunctionsT.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Framework.Common.IInitializeByEntity" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAEAAAQAAAAAAAAAAAAAAAAABAAAABAAAAAA=</HashCode>
+      <FileName>Common\Entity\IInitializeByEntity.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

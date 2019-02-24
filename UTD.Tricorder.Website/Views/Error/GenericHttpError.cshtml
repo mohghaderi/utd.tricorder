@@ -1,0 +1,21 @@
+﻿@{
+    //DEVELOPER NOTE: Don't change file name unless you change the code for replacement inside main button click
+    ViewBag.Title = UIText.Error.GenericHttpError.PageTitle;
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_PublicWebLayout.cshtml");
+}
+
+@{ ViewBag.ViewTitle = UIText.Error.GenericHttpError.PanelTitle; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+
+<p>@UIText.Error.GenericHttpError.ErrorText</p>
+<br />
+
+<a class="btn btn-lg btn-success" href="javascript:history.back()">
+    @UIText.Error.Buttons.BackButtonTitle
+</a>
+<a class="btn btn-lg btn-info" href="javascript:window.gotoMainPage()">
+    @UIText.Error.Buttons.MainPageButtonTitle
+</a>
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")

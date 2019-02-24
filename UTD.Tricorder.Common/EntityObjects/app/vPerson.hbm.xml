@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vPerson" table="vPerson" schema="app">
+
+		<id name="PersonID" column="PersonID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.Person</param>
+			</generator>
+		</id>
+		
+		<property column="Birthday" name="Birthday" />
+		<property column="GenderTypeID" name="GenderTypeID" />
+		<property column="UserName" name="UserName" insert="false" update="false" not-null="true" length="50" />
+		<property column="USStateID" name="USStateID" length="2" />
+		<property column="AddressLine1" name="AddressLine1" length="300" />
+		<property column="AddressLine2" name="AddressLine2" length="300" />
+		<property column="City" name="City" length="100" />
+		<property column="ZipCode" name="ZipCode" length="15" />
+		<property column="CountryID" name="CountryID" length="2" />
+		<property column="StateTitle" name="StateTitle" insert="false" update="false" length="250" />
+		<property column="NonUSStateTitle" name="NonUSStateTitle" length="100" />
+		<property column="StateName" name="StateName" insert="false" update="false" length="250" />
+		<property column="CountryName" name="CountryName" insert="false" update="false" length="200" />
+		<property column="FirstName" name="FirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="LastName" name="LastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="NamePrefix" name="NamePrefix" insert="false" update="false" length="4" />
+		<property column="PhoneNumber" name="PhoneNumber" insert="false" update="false" length="18" />
+		<property column="Email" name="Email" insert="false" update="false" length="100" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

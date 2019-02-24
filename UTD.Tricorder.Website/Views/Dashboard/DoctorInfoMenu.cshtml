@@ -1,0 +1,28 @@
+﻿@{ ViewBag.ViewTitle = "Professional info"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@helper MenuItem(string caption, string link, string thumbFileName)
+{
+    <div class='col-sm-3 col-xs-4 col-md-3 col-lg-2'>
+        <div class="text-center">
+            <a class="" href="@link">
+                <img class="menu-img-responsive" alt="" src="~/Content/Images/Menu/@thumbFileName" />
+                <div class=''>@caption</div>
+            </a>
+        </div>
+    </div> <!-- col-6 / end -->
+}
+
+<div class="row">
+
+    @MenuItem("Basic Info", "#Doctor-Form", "ProfessionalInfo2.jpg")
+    @MenuItem("Licensed States", "#Doctor_USState-TwoKey", "USStates.jpg")
+    @MenuItem("Insurance", "#Doctor_Insurance-TwoKey", "Insurance.jpg")
+    @MenuItem("Specialty", "#Doctor_Specialty-TwoKey", "Specialty.jpg")
+    @MenuItem("Payment Info", "#UserPaymentInfo-Form", "PaymentInfo.jpg")
+    @MenuItem("Languages", "#User_Language-TwoKey", "Languages.jpg")
+
+</div> <!-- row / end -->
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

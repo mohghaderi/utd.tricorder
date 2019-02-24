@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using Framework.Common;
+using Framework.Service;
+using UTD.Tricorder.Common.EntityObjects;
+using UTD.Tricorder.Common.SP;
+
+namespace UTD.Tricorder.Common.ServiceInterfaces
+{
+    public interface IDoctorService : IServiceBaseT<Doctor, vDoctor>
+    {
+		#region Generator-Safe Area
+		//Please write your properties and functions here. This part will not be replaced.
+
+        /// <summary>
+        /// Gets list of doctors by its phone number
+        /// </summary>
+        /// <param name="p">parameters</param>
+        /// <returns></returns>
+        IList<vDoctor> SearchByClinicPhoneNumber(DoctorSearchByClinicPhoneNumberSP p);
+		
+
+		#endregion
+    }
+}
+

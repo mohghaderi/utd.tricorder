@@ -1,0 +1,39 @@
+﻿@{
+    string activeTab = ViewBag.ActiveTab;
+    ViewBag.ActiveTab = "History"; // for patient profile tabs
+}
+
+<!-- Medical History tabs -->
+
+@*@Html.Partial("~/Views/Dashboard/_PatientProfileTabs.cshtml")*@
+
+<div ng-controller="MedicalHistoryTabsController">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="@(FWHtml.GetActiveTabClass("Allergy", activeTab))">
+            <a href="#MedicalHistory-Allergy?MasterID={{MasterID}}" role="tab">Allergy</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Condition", activeTab))">
+            <a href="#MedicalHistory-Condition?MasterID={{MasterID}}" role="tab">Condition</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("CurrentMed", activeTab))">
+            <a href="#MedicalHistory-CurrentMed?MasterID={{MasterID}}" role="tab">Medications</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("FamilyHistory", activeTab))">
+            <a href="#MedicalHistory-FamilyHistory?MasterID={{MasterID}}" role="tab">Family History</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Immunization", activeTab))">
+            <a href="#MedicalHistory-Immunization?MasterID={{MasterID}}" role="tab">Immunization</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("PastMed", activeTab))">
+            <a href="#MedicalHistory-PastMed?MasterID={{MasterID}}" role="tab">Past Medications</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Social", activeTab))">
+            <a href="#MedicalHistory-Social?MasterID={{MasterID}}" role="tab">Social</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Sign", activeTab))">
+            <a href="#MedicalHistory-Sign?MasterID={{MasterID}}" role="tab">Sign</a>
+        </li>
+    </ul>
+</div>
+<div style="margin-top:5px"></div>
+<!-- End Medical History tabs -->

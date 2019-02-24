@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vDoctor_Patient" table="vDoctor_Patient" schema="app">
+
+		<id name="Doctor_PatientID" column="Doctor_PatientID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.Doctor_Patient</param>
+			</generator>
+		</id>
+		
+		<property column="DoctorID" name="DoctorID" not-null="true" />
+		<property column="PatientUserID" name="PatientUserID" not-null="true" />
+		<property column="DoctorFirstName" name="DoctorFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="DoctorLastName" name="DoctorLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="DoctorNamePrefix" name="DoctorNamePrefix" insert="false" update="false" length="4" />
+		<property column="PatientFirstName" name="PatientFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="PatientLastName" name="PatientLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="PatientNamePrefix" name="PatientNamePrefix" insert="false" update="false" length="4" />
+		<property column="PatientPhoneNumber" name="PatientPhoneNumber" insert="false" update="false" length="18" />
+		<property column="ClinicPhoneNumber" name="ClinicPhoneNumber" insert="false" update="false" length="42" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

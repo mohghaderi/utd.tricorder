@@ -1,0 +1,91 @@
+﻿@model UTD.Tricorder.Website.Models.DoctorScheduleTimeTablePanelModel
+
+@{
+    //string[] slots = { "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55" };
+    int[] slots = { 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55 };
+    //string[] slots = { "00", "15", "30", "45" };
+    int slotIndex = 0;
+
+    string panelId = FWHtml.CreateSafeIDForTitle(Model.PanelTitle);
+    string openString = "";
+    if (Model.OpenByDefault)
+    {
+        openString = " in"; 
+    }
+        
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a href="javascript:CollapsePanel('@panelId')">
+                @Model.PanelTitle
+            </a>
+        </h4>
+    </div>
+    <div id="@panelId" class="panel-collapse collapse @openString">
+        <div class="panel-body">
+            <table class="table table-striped table-bordered">
+                @*<thead>
+                    <tr>
+                        <th>Hour</th>
+                        <th>Minute</th>
+                    </tr>
+                </thead>*@
+                <tbody>
+
+                    @{for (int hour = this.Model.StartHourIn24Format; hour < this.Model.EndHourIn24Format + 1; hour++)
+                    {
+                        string hourString = hour.ToString();
+                        string hourAMPM = FWHtml.GetHourAM_PM(hour);
+
+                        <tr>
+                            <td>
+                                @hourAMPM
+                            </td>
+
+                            <td>
+
+                                @{
+
+                        for (int i = 0; i < slots.Length; i++)
+                        {
+                            int minute = Convert.ToInt32(slots[slotIndex]);
+                            int seconds = hour * 3600 + minute * 60; // seconds for unix epoch
+                            string timeString = FWHtml.GetTimeAM_PM(hour, minute);
+                            string id = "btnTime" + seconds.ToString();
+
+                            <button id="@id"
+                                    class="btn btn-default"
+                                    style="font-size: 12px; padding:4px"
+                                    ng-click="ShowSelectedDialog('@seconds')"
+                                    @*data-toggle="modal"
+                                    data-target=".bs-changeinfo-modal-lg"*@
+                                    data-timestring="@timeString">
+                                @timeString
+                            </button>
+
+
+                            slotIndex++;
+                            if (slotIndex == slots.Length)
+                            {
+                                slotIndex = 0;
+                            }
+
+                        }
+
+
+}
+                            </td>
+                        </tr>
+
+                    }
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

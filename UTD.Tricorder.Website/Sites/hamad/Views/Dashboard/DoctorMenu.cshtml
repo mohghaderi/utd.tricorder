@@ -1,0 +1,26 @@
+﻿@{ ViewBag.ViewTitle = "Dashboard"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<div class="row">
+    @*<div class='list-group gallery'>*@
+        <div style="float: left; width: 150px; padding:5px">
+            <a class="" href="#DoctorInfoMenu">
+                <img class="img-responsive" alt="" src="~/Content/Images/Menu/ProfessionalInfo.jpg" />
+                <div>
+                    <span class='item-title'>Professional Info</span>
+                </div> <!-- text-right / end -->
+            </a>
+        </div> <!-- col-6 / end -->
+        <div style="float: left; width: 150px; padding:5px">
+            <a class="" href="#User-ProfileEdit">
+                <img class="img-responsive" alt="" src="~/Content/Images/Menu/MyAccount.jpg" />
+                <div>
+                    <span class='item-title'>My account</span>
+                </div> <!-- text-right / end -->
+            </a>
+        </div> <!-- col-6 / end -->
+
+    @*</div>*@ <!-- list-group / end -->
+</div> <!-- row / end -->
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

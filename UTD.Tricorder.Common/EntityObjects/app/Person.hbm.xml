@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="Person" table="Person" schema="app">
+
+		<id name="PersonID" column="PersonID" type="Int64" unsaved-value="-1">
+			<generator class="assigned">
+				<param name="table_name">app.Person</param>
+			</generator>
+		</id>
+		
+		<property column="Birthday" name="Birthday" />
+		<property column="GenderTypeID" name="GenderTypeID" />
+		<property column="AddressLine1" name="AddressLine1" length="300" />
+		<property column="AddressLine2" name="AddressLine2" length="300" />
+		<property column="USStateID" name="USStateID" length="2" />
+		<property column="NonUSStateTitle" name="NonUSStateTitle" length="100" />
+		<property column="City" name="City" length="100" />
+		<property column="ZipCode" name="ZipCode" length="15" />
+		<property column="CountryID" name="CountryID" length="2" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

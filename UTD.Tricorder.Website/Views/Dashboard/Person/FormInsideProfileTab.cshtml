@@ -1,0 +1,8 @@
+﻿@{ ViewBag.ViewTitle = "My Account";}
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "PersonEdit";}
+@Html.Partial("~/Views/Dashboard/User/_MyAccountTabs.cshtml")
+@Html.Partial("~/Views/Dashboard/Person/Form.cshtml")
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vWebApiToken" table="vWebApiToken">
+
+		<id name="WebApiTokenID" column="WebApiTokenID" type="Guid">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="WebApiClientID" name="WebApiClientID" not-null="true" />
+		<property column="UserID" name="UserID" not-null="true" />
+		<property column="IssuedUtc" name="IssuedUtc" not-null="true" />
+		<property column="ProtectedTicket" name="ProtectedTicket" not-null="true" length="500" />
+		<property column="ExpiresUtc" name="ExpiresUtc" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

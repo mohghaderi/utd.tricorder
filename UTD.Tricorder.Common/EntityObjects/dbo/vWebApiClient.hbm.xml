@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vWebApiClient" table="vWebApiClient">
+
+		<id name="WebApiClientID" column="WebApiClientID" type="Int32" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt32, Framework">
+				<param name="table_name">dbo.WebApiClient</param>
+			</generator>
+		</id>
+		
+		<property column="SecretKey" name="SecretKey" not-null="true" length="100" />
+		<property column="ClientCode" name="ClientCode" not-null="true" length="200" />
+		<property column="IsActive" name="IsActive" not-null="true" />
+		<property column="RefreshLifeTimeMinutes" name="RefreshLifeTimeMinutes" not-null="true" />
+		<property column="AllowedOrigin" name="AllowedOrigin" not-null="true" length="1024" />
+		<property column="CheckSecret" name="CheckSecret" not-null="true" />
+		<property column="OwnerUserID" name="OwnerUserID" not-null="true" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="UserApprovalStatusID" name="UserApprovalStatusID" not-null="true" />
+		<property column="SiteID" name="SiteID" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,55 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vMedicalHistory.EntityName;
+    
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{
+    ViewBag.PanelTitle = "Immunization and preventive services (check all that apply and provide date you last recieved)";
+
+    string sectionName = "Immunization";
+    
+    // TODO: add date column
+}
+
+@{ ViewBag.ViewTitle = "Medical History"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "Immunization";}
+@Html.Partial("~/Views/Dashboard/MedicalHistory/_MedicalHistoryTabs.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            @PatientHistory.ImmunizationCheckBox("MMR", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("Tenanus", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("Pneumonia vaccine", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("Hepatitis B vaccine", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("TB skin test", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("Hearing Test", "Immunization")
+
+        </div>
+
+        <div class="col-md-6">
+            @PatientHistory.ImmunizationCheckBox("Eye exam", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("Sigmoid or colon exam", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("PAP smear", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("Mamogram", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("Bone density test", "Immunization")
+            @PatientHistory.ImmunizationCheckBox("PSA", "Immunization")
+        </div>
+    </div>
+
+
+
+    @UI.StickySavePanel()
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

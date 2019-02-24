@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="AppLog" table="AppLog">
+
+		<id name="AppLogID" column="AppLogID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">dbo.AppLog</param>
+			</generator>
+		</id>
+		
+		<property column="AppLogTypeID" name="AppLogTypeID" not-null="true" />
+		<property column="UserID" name="UserID" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="IPAddress" name="IPAddress" length="50" />
+		<property column="ExtraString1" name="ExtraString1" length="2147483647" />
+		<property column="ExtraString2" name="ExtraString2" length="2147483647" />
+		<property column="ExtraInt" name="ExtraInt" />
+		<property column="ExtraDouble" name="ExtraDouble" />
+		<property column="ExtraBigInt" name="ExtraBigInt" />
+		<property column="ExtraGuid" name="ExtraGuid" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

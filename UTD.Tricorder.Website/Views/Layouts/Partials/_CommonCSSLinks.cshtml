@@ -1,0 +1,19 @@
+﻿@Styles.Render("~/Content/cssbundles/bootstrapcss")
+
+<link href="~/Scripts/bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Scripts/bootstrapvalidator-dist-0.5.0/dist/css/bootstrapValidator.min.css" rel="stylesheet" />
+
+@if (UIText.IsRTL()) // right to left support for bootstrap
+{
+    <link href="~/Scripts/bootstrap-3.2.0-dist/css/bootstrap-rtl.min.css" rel="stylesheet" />
+}
+
+    @*@Styles.Render("~/Content/cssbundles/uicomponentscss")*@
+
+    <link href="~/Scripts/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    @*DEVELOPER NOTE: Dont Change skin unless you change app.js code file as well*@
+    <link href="~/Scripts/iCheck/skins/square/blue.css" rel="stylesheet" />
+
+    <link href="~/Scripts/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
+
+    <link href="~/Scripts/int-tel-input/css/intlTelInput.css" rel="stylesheet" />

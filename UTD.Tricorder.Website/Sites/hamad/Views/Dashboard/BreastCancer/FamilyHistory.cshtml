@@ -1,0 +1,125 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vMedicalHistory.EntityName;
+    
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+
+@{
+    string[] relationshipTitles = { "Self", "Spouse", "Child1", "Child2", "Child3", "Sister1", "Sister2", "Sister3", "Brother1", "Brother2", "Brother3", "Mother", "Father", "Mother's Mother", "Mother's Father", "Father's Mother", "Father's Father", "Mother's Brother1", "Mother's Brother2", "Mother's Sister1", "Mother's Sister2", "Father's Brother1", "Father's Brother2", "Father's Sister1", "Father's Sister2", "Others1", "Others2", "Others3" };
+    string modelPrefix = "model.FamilyHistory.";
+    string sectionName = "FamilyHistory";
+
+    ViewBag.PanelTitle = "Family History";
+}
+
+@{ ViewBag.ViewTitle = "Breast Cancer Questionnaire"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "FamilyHistory";}
+@Html.Partial("~/Views/Dashboard/BreastCancer/_BreastCancerTabs.cshtml")
+
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-md-1 scol">
+            <label>Relationship</label>
+        </div>
+        <div class="col-md-2 scol">
+            <label>Full name</label>
+        </div>
+
+        <div class="col-md-1 scol">
+            <label>Date of birth (or approx. year if unknown)</label>
+        </div>
+
+        <div class="col-md-1 scol">
+            <label>Alive</label>
+        </div>
+
+        <div class="col-md-1 scol">
+            <label>Date of death</label>
+        </div>
+
+        <div class="col-md-1 scol">
+            <label>Type of cancer</label>
+        </div>
+
+        <div class="col-md-1 scol">
+            <label>Age at diagnosis</label>
+        </div>
+
+        <div class="col-md-2 scol">
+            <label>Hospitals where treated</label>
+        </div>
+
+        <div class="col-md-2 scol">
+            <label>Address where treated (town/city of unknown)</label>
+        </div>
+
+
+    </div>
+
+
+
+
+    @for (int i = 0; i < relationshipTitles.Length; i++)
+    {
+        var id = FWHtml.CreateSafeIDForTitle(relationshipTitles[i]);
+
+        @*<div class="form-group">*@
+
+        <div class="row">
+
+            <div class="col-md-1 scol">
+                <label>@relationshipTitles[i]</label>
+            </div>
+            <div class="col-md-2 scol">
+                <input ng-disabled="id === 'Self'" type="text" class="form-control" name="fullname_@id" placeholder="Full name" data-ng-model="@(modelPrefix + id + "_fullname")">
+            </div>
+
+            <div class="col-md-1 scol">
+                <input type="text" class="form-control" name="birth_@id" placeholder="Birth Date" data-ng-model="@(modelPrefix + id + "_birthdate")">
+            </div>
+
+            <div class="col-md-1 scol">
+                <div class="form-group" ng-disabled="'@id' === '_Self'">
+                    @FWHtml.YesNoRadios(modelPrefix, id, false, "Alive", "Dead")
+                </div>
+            </div>
+
+            <div class="col-md-1 scol">
+                <input ng-disabled="'@id' === '_Self'" type="text" class="form-control" name="DeathDate_@id" placeholder="Death Date" data-ng-model="@(modelPrefix + id + "_deathdate")">
+            </div>
+
+            <div class="col-md-1 scol">
+                <input type="text" class="form-control" name="CancerType_@id" placeholder="Cancer type" data-ng-model="@(modelPrefix + id + "_CancerType")">
+            </div>
+
+            <div class="col-md-1 scol">
+                <input type="text" maxlength="2" data-mask="00" class="form-control" name="dage_@id" placeholder="Age" data-ng-model="@(modelPrefix + id + "_DAge")">
+            </div>
+
+            <div class="col-md-2 scol">
+                <input type="text" class="form-control" name="hospitals_@id" placeholder="hospitals where treated" data-ng-model="@(modelPrefix + id + "_hospitals")">
+            </div>
+
+            <div class="col-md-2 scol">
+                <input type="text" class="form-control" name="address_@id" placeholder="addresses where treated" data-ng-model="@(modelPrefix + id + "_address")">
+            </div>
+
+        </div>
+        <hr />
+        @*</div>*@
+    }
+
+
+    @UI.StickySavePanel()
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

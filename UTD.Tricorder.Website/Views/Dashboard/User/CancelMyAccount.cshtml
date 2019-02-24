@@ -1,0 +1,50 @@
+﻿@{
+    string entityName = "User";
+    string controllerTitle = entityName + "CancelMyAccount";
+}
+
+@{ ViewBag.ViewTitle = "Cancel Account"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+<div id="@(controllerTitle)ControllerDiv"
+     ng-controller="@(controllerTitle)Controller">
+
+    <form role="form"
+          id="@(controllerTitle)Frm"
+          onsubmit="return false">
+
+        <h3>
+            Cancel account
+        </h3>
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            In this section, you can cancel your account. If you cancel this account, you can't login to your account anymore.
+            If you are not satisfied from our service, please let us know before cancelling your account. We are willing to resolve any issue and keep our customers happy and satisfied.
+        <p>
+            &nbsp;
+        </p>
+        <p>
+            &nbsp;
+        </p>
+
+        <div>
+            <button class="btn btn-lg btn-danger"
+                    ng-click="CancelAccount()">
+                Send Cancel Request
+            </button>
+            <button class="btn btn-lg btn-info"
+                    ng-click="GoBack()">
+                Back
+            </button>
+            <a class="btn btn-lg btn-info"
+                    href="../TestCase/JsTest">
+                Goto Test Page
+            </a>
+        </div>
+        </p>
+    </form>
+</div>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

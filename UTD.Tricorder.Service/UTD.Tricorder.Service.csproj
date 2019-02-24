@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A4D35FD5-82F3-403A-9518-4D735B4BF531}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UTD.Tricorder.Service</RootNamespace>
+    <AssemblyName>UTD.Tricorder.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AWSSDK.Core">
+      <HintPath>..\Library\AWSSDK.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="AWSSDK.S3">
+      <HintPath>..\Library\AWSSDK.S3.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPalCoreSDK">
+      <HintPath>..\Library\PayPalCoreSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Android">
+      <HintPath>..\Library\PushSharp.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Apple">
+      <HintPath>..\Library\PushSharp.Apple.dll</HintPath>
+    </Reference>
+    <Reference Include="PushSharp.Core">
+      <HintPath>..\Library\PushSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Twilio.Api, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Twilio.3.6.29\lib\3.5\Twilio.Api.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app\CallLogService.cs" />
+    <Compile Include="app\CallStatusService.cs" />
+    <Compile Include="app\DailyActivityChartService.cs" />
+    <Compile Include="app\DailyActivityService.cs" />
+    <Compile Include="app\DailyActivityTypeService.cs" />
+    <Compile Include="app\DoctorScheduleService.cs" />
+    <Compile Include="app\DoctorService.cs" />
+    <Compile Include="app\Doctor_IllnessService.cs" />
+    <Compile Include="app\Doctor_InsuranceService.cs" />
+    <Compile Include="app\Doctor_PatientService.cs" />
+    <Compile Include="app\Doctor_SpecialtyService.cs" />
+    <Compile Include="app\Doctor_USStateService.cs" />
+    <Compile Include="app\FitActivityCategoryService.cs" />
+    <Compile Include="app\FitActivityService.cs" />
+    <Compile Include="app\FoodGroupItemService.cs" />
+    <Compile Include="app\FoodGroupService.cs" />
+    <Compile Include="app\FoodGroupSumService.cs" />
+    <Compile Include="app\FoodService.cs" />
+    <Compile Include="app\FoodServingTimeTypeService.cs" />
+    <Compile Include="app\FoodServingTypeService.cs" />
+    <Compile Include="app\GenderTypeService.cs" />
+    <Compile Include="app\IllnessService.cs" />
+    <Compile Include="app\Illness_SpecialtyService.cs" />
+    <Compile Include="app\InsurancePlanService.cs" />
+    <Compile Include="app\InsuranceService.cs" />
+    <Compile Include="app\MedicalHistoryService.cs" />
+    <Compile Include="app\PatientInsuranceService.cs" />
+    <Compile Include="app\PaymentMethodService.cs" />
+    <Compile Include="app\PaymentService.cs" />
+    <Compile Include="app\PaymentStatusService.cs" />
+    <Compile Include="app\PersonService.cs" />
+    <Compile Include="app\RegionService.cs" />
+    <Compile Include="app\SpecialtyService.cs" />
+    <Compile Include="app\TimeSeriesStripService.cs" />
+    <Compile Include="app\TimeSeriesTypeService.cs" />
+    <Compile Include="app\TimeSeries_SmallInt_SecondsService.cs" />
+    <Compile Include="app\UserPaymentInfoService.cs" />
+    <Compile Include="app\VisitPlaceService.cs" />
+    <Compile Include="app\VisitService.cs" />
+    <Compile Include="app\VisitStatusService.cs" />
+    <Compile Include="app\VitalTypeService.cs" />
+    <Compile Include="app\VitalValueService.cs" />
+    <Compile Include="crm\FeedbackService.cs" />
+    <Compile Include="crm\FeedbackTypeService.cs" />
+    <Compile Include="crm\TicketGroupService.cs" />
+    <Compile Include="crm\TicketPriorityService.cs" />
+    <Compile Include="crm\TicketSourceTypeService.cs" />
+    <Compile Include="crm\TicketStatusService.cs" />
+    <Compile Include="dbo\AppEntityService.cs" />
+    <Compile Include="dbo\AppExceptionLogService.cs" />
+    <Compile Include="dbo\AppFileService.cs" />
+    <Compile Include="dbo\AppFileStorageTypeService.cs" />
+    <Compile Include="dbo\AppFileTypeService.cs" />
+    <Compile Include="dbo\AppFileUploadStatusService.cs" />
+    <Compile Include="dbo\AppLogService.cs" />
+    <Compile Include="dbo\AppLogTypeService.cs" />
+    <Compile Include="dbo\CountryService.cs" />
+    <Compile Include="dbo\LanguageService.cs" />
+    <Compile Include="dbo\MobilePushDeliveryTypeService.cs" />
+    <Compile Include="dbo\MobilePushNotificationService.cs" />
+    <Compile Include="dbo\MobilePushServerService.cs" />
+    <Compile Include="dbo\MobilePushTemplateService.cs" />
+    <Compile Include="dbo\NotificationService.cs" />
+    <Compile Include="dbo\NotificationStatusService.cs" />
+    <Compile Include="dbo\NotificationTemplateService.cs" />
+    <Compile Include="dbo\SiteDomainService.cs" />
+    <Compile Include="dbo\SiteService.cs" />
+    <Compile Include="dbo\UserDeviceClientAppTypeService.cs" />
+    <Compile Include="dbo\UserDeviceSettingService.cs" />
+    <Compile Include="dbo\User_LanguageService.cs" />
+    <Compile Include="dbo\USStateService.cs" />
+    <Compile Include="dbo\WebApiClientService.cs" />
+    <Compile Include="dbo\WebApiTokenService.cs" />
+    <Compile Include="dbo\WorldTimeZoneService.cs" />
+    <Compile Include="fwtest\SiteIdGeneratorTestService.cs" />
+    <Compile Include="fwtest\TestCaseTesterService.cs" />
+    <Compile Include="fwtest\TestMasterTreeService.cs" />
+    <Compile Include="i18n\StringTextService.cs" />
+    <Compile Include="i18n\StringTextTranService.cs" />
+    <Compile Include="mem\MembershipAreaService.cs" />
+    <Compile Include="mem\PermissionService.cs" />
+    <Compile Include="mem\PermissionTypeService.cs" />
+    <Compile Include="mem\ResourceService.cs" />
+    <Compile Include="mem\ResourceTypeService.cs" />
+    <Compile Include="mem\RoleService.cs" />
+    <Compile Include="mem\UserApprovalStatusService.cs" />
+    <Compile Include="mem\UserInRoleService.cs" />
+    <Compile Include="mem\UserService.cs" />
+    <Compile Include="NotificationSystem\EmailNotificationSender.cs" />
+    <Compile Include="NotificationSystem\MobilePushMessageNotificationSender.cs" />
+    <Compile Include="NotificationSystem\NotificationSender.cs" />
+    <Compile Include="NotificationSystem\NotificationSenderAgent.cs" />
+    <Compile Include="NotificationSystem\NotificationSenderBase.cs" />
+    <Compile Include="NotificationSystem\SMSNotificationSender.cs" />
+    <Compile Include="PayPalException.cs" />
+    <Compile Include="PayPalService.cs" />
+    <Compile Include="PreRequisite\DoctorInfoPreRequisite.cs" />
+    <Compile Include="PreRequisite\Doctor_InsurancePreRequisite.cs" />
+    <Compile Include="PreRequisite\Doctor_SpecialtyPreRequisite.cs" />
+    <Compile Include="PreRequisite\Doctor_USStatePreRequisite.cs" />
+    <Compile Include="PreRequisite\PaymentInfoPreRequisite.cs" />
+    <Compile Include="PreRequisite\PersonInfoPreRequisite.cs" />
+    <Compile Include="PreRequisite\PreRequisiteInfoBase.cs" />
+    <Compile Include="PreRequisite\PreRequisiteInfoChecker.cs" />
+    <Compile Include="PreRequisite\UserApprovedPreRequisite.cs" />
+    <Compile Include="PreRequisite\User_LanguagePreRequisite.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RefundParameters.cs" />
+    <Compile Include="ResourceService.cs" />
+    <Compile Include="DLLResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DLLResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\DoctorRoleSecurity.cs" />
+    <Compile Include="Security\OwnerPatientOrADoctorSecurity.cs" />
+    <Compile Include="Security\OwnerPatientOrOwnerDoctorSecurity.cs" />
+    <Compile Include="Security\OwnerDoctorSecurity.cs" />
+    <Compile Include="Security\SameSiteIDSecurity.cs" />
+    <Compile Include="VisitParallelPaymentParameters.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{BCAB24BD-B4E9-40D7-9B77-BA15A3C07C90}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PaypalApi\PaypalApi.csproj">
+      <Project>{371cc6c4-08cf-4fba-a877-1bbc8855f6b7}</Project>
+      <Name>PaypalApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTD.Tricorder.BusinessRule\UTD.Tricorder.BusinessRule.csproj">
+      <Project>{357F0C3B-E8DF-4A0D-A454-EAEB17078CF3}</Project>
+      <Name>UTD.Tricorder.BusinessRule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTD.Tricorder.Common\UTD.Tricorder.Common.csproj">
+      <Project>{DA99F770-52F5-4320-BE54-FBE8B670B888}</Project>
+      <Name>UTD.Tricorder.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTD.Tricorder.DataAccess\UTD.Tricorder.DataAccess.csproj">
+      <Project>{A05ECE98-B2E7-498D-9161-0FE52322F664}</Project>
+      <Name>UTD.Tricorder.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DLLResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DLLResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\FakeCert.p12" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

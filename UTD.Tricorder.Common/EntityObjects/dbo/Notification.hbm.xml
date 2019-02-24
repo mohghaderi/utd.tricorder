@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="Notification" table="Notification">
+
+		<id name="NotificationID" column="NotificationID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">dbo.Notification</param>
+			</generator>
+		</id>
+		
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="EmailSendDate" name="EmailSendDate" />
+		<property column="SMSSendDate" name="SMSSendDate" />
+		<property column="SenderUserID" name="SenderUserID" />
+		<property column="ReceiverUserID" name="ReceiverUserID" not-null="true" />
+		<property column="NotificationTemplateID" name="NotificationTemplateID" not-null="true" />
+		<property column="ParametersValues" name="ParametersValues" length="1073741823" />
+		<property column="SMSNotificationStatusID" name="SMSNotificationStatusID" not-null="true" />
+		<property column="EmailNotificationStatusID" name="EmailNotificationStatusID" not-null="true" />
+		<property column="NotificationErrorMessage" name="NotificationErrorMessage" length="1073741823" />
+		<property column="IsSMS" name="IsSMS" not-null="true" />
+		<property column="IsEmail" name="IsEmail" not-null="true" />
+		<property column="IsWebMessage" name="IsWebMessage" not-null="true" />
+		<property column="IsMobilePushMessage" name="IsMobilePushMessage" not-null="true" />
+		<property column="GotoURL" name="GotoURL" length="2048" />
+		<property column="MobilePushNotificationStatusID" name="MobilePushNotificationStatusID" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

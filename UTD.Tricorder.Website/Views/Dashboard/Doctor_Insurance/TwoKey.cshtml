@@ -1,0 +1,91 @@
+﻿@{
+    string entityName = vDoctor_Insurance.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    
+}
+
+@{ ViewBag.ViewTitle = "Insurance Companies and plans"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<div>
+    <form role="form"
+          ng-controller="@(entityName)TwoKeyController"
+          id="@(entityName)TwoKeyFrm"
+          onsubmit="return false;">
+
+        <h3>Please select insurance plans that you accept from patients</h3>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label>Insurances</label>
+                    <div data-selectize="{}">
+                        <select class="form-control"
+                                name="SelectedInsuranceID"
+                                ng-model="SelectedInsuranceID"
+                                data-bv-notempty="true"
+                                autofocus>
+                            <option value=""></option>
+                            @UTD.Tricorder.Website.Helpers.FWHtml.OptionsListForEntity("Insurance")
+                        </select>
+                    </div>
+                </div>
+
+
+                <div role="alert"
+                     data-ng-hide="insurancePlansList.length > 0"
+                     class="alert alert-warning">
+                    {{msgs.NotSelectedListIsEmpty}}
+                </div>
+
+                <div data-ng-hide="!(insurancePlansList.length > 0)">
+                    <h3>Plans</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="200">Title</th>
+                                <th width="50"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in insurancePlansList" class="animate-repeat">
+                                <td>{{item.@(vInsurancePlan.ColumnNames.InsurancePlanTitle)}}</td>
+                                <td><button type="button" class="btn btn-success" ng-click="AddInsurancePlan(item, $event)">Add to list</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div role="alert"
+                     data-ng-hide="itemsList.length > 0"
+                     class="alert alert-warning">
+                    {{msgs.selectedItemsListIsEmpty}}
+                </div>
+
+                <div data-ng-hide="itemsList.length == 0">
+                    <h3>Acceptable Plans</h3>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th width="200">Title</th>
+                                <th width="50"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in itemsList" class="animate-repeat">
+                                <td>{{item.@(vDoctor_Insurance.ColumnNames.InsuranceFullName)}}</td>
+                                <td><button type="button" class="btn btn-danger" ng-click="DeleteItem(item.@(vDoctor_Insurance.ColumnNames.Doctor_InsuranceID), $event)">Delete</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

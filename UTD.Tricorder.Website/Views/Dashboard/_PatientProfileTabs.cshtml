@@ -1,0 +1,25 @@
+﻿<!-- Patient Profile tabs -->
+<div ng-controller="UserPatientProfileTabsController">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="@(FWHtml.GetActiveTabClass("ProfileView", ViewBag.ActiveTab))">
+            <a href="#Person-ProfileView?MasterID={{MasterID}}" role="tab">Personal Info</a>
+        </li>
+        @*<li class="@(FWHtml.GetActiveTabClass("PersonEdit", ViewBag.ActiveTab))">
+            <a href="#Person-FormInsideProfileTab?MasterID={{MasterID}}" role="tab">Personal Info Edit</a>
+        </li>*@
+        <li class="@(FWHtml.GetActiveTabClass("PatientInsuranceGrid", ViewBag.ActiveTab))">
+            <a href="#PatientInsurance-GridInsideProfileTab?MasterID={{MasterID}}" role="tab">Insurance</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("User_Language", ViewBag.ActiveTab))">
+            <a href="#User_Language-TwoKeyInsideProfileTab?MasterID={{MasterID}}" role="tab">Language</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("History", ViewBag.ActiveTab))">
+            <a href="#MedicalHistory-Allergy?MasterID={{MasterID}}" role="tab">Medical History</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Attachments", ViewBag.ActiveTab))">
+            <a href="#User-Attachments?MasterID={{MasterID}}" role="tab">Documents</a>
+        </li>
+    </ul>
+</div>
+
+<!-- End Patient Profile tabs -->

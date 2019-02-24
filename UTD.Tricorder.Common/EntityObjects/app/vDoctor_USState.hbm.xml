@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vDoctor_USState" table="vDoctor_USState" schema="app">
+
+		<id name="Doctor_USStateID" column="Doctor_USStateID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.Doctor_USState</param>
+			</generator>
+		</id>
+		
+		<property column="DoctorID" name="DoctorID" not-null="true" />
+		<property column="USStateID" name="USStateID" not-null="true" length="2" />
+		<property column="StateName" name="StateName" insert="false" update="false" not-null="true" length="250" />
+		<property column="DoctorFirstName" name="DoctorFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="DoctorLastName" name="DoctorLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="DoctorNamePrefix" name="DoctorNamePrefix" insert="false" update="false" length="4" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

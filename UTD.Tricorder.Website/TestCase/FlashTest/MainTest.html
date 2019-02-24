@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+    <!-- 
+    Smart developers always View Source. 
+    
+    This application was built using Adobe Flex, an open source framework
+    for building rich Internet applications that get delivered via the
+    Flash Player or to desktops via Adobe AIR. 
+    
+    Learn more about Flex at http://flex.org 
+    // -->
+    <head>
+        <title>main</title>
+        <meta name="google" value="notranslate" />         
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- Include CSS to eliminate any default margins/padding and set the height of the html element and 
+             the body element to 100%, because Firefox, or any Gecko based browser, interprets percentage as 
+             the percentage of the height of its parent container, which has to be set explicitly.  Fix for
+             Firefox 3.6 focus border issues.  Initially, don't display flashContent div so it won't show 
+             if JavaScript disabled.
+        -->
+        <style type="text/css" media="screen"> 
+            html, body  { height:100%; }
+            body { margin:0; padding:0; overflow:auto; text-align:center; 
+                   background-color: #ffffff; }   
+            object:focus { outline:none; }
+            #flashContent { display:none; }
+        </style>
+        
+        <!-- Enable Browser History by replacing useBrowserHistory tokens with two hyphens -->
+        <!-- BEGIN Browser History required section -->
+        <link rel="stylesheet" type="text/css" href="history/history.css" />
+        <script type="text/javascript" src="history/history.js"></script>
+        <!-- END Browser History required section -->  
+            
+        <script type="text/javascript" src="swfobject.js"></script>
+        <script src="../../MobileApp/AirSimpleBridge.js"></script>
+        <script type="text/javascript">
+            // Embedding through SWFObject rocks in comparison with Adobe shits:
+            var flashvars = {};
+
+            var params = {};
+            params.menu = "true";
+            //params.salign = "t";
+            //params.scale = "noscale";
+            //params.wmode = "transparent";
+            params.allowScriptAccess = "always";
+
+            var attributes = {};
+            attributes.id = "main";
+
+            swfobject.embedSWF("main.swf", "flashContent", "200", "200", "13.0.0", "", flashvars, params, attributes);
+            // JavaScript enabled so display the flashContent div in case it is not replaced with a swf object.
+            swfobject.createCSS("#flashContent", "display:block;text-align:left;");
+        </script>
+    </head>
+    <body>
+        <!-- SWFObject's dynamic embed method replaces this alternative HTML content with Flash content when enough 
+             JavaScript and Flash plug-in support is available. The div is initially hidden so that it doesn't show
+             when JavaScript is disabled.
+        -->
+        <div id="flashContent">
+            <p>
+                To view this page ensure that Adobe Flash Player version 
+                13.0.0 or greater is installed. 
+            </p>
+            <script type="text/javascript"> 
+                var pageHost = ((document.location.protocol == "https:") ? "https://" : "http://"); 
+                document.write("<a href='http://www.adobe.com/go/getflashplayer'><img src='" 
+                                + pageHost + "www.adobe.com/images/shared/download_buttons/get_flash_player.gif' alt='Get Adobe Flash player' /></a>" ); 
+            </script> 
+        </div>
+        
+        <noscript>
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="100%" height="100%" id="main">
+                <param name="movie" value="main.swf" />
+                <param name="quality" value="high" />
+                <param name="bgcolor" value="#ffffff" />
+                <param name="allowScriptAccess" value="sameDomain" />
+                <param name="allowFullScreen" value="true" />
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash" data="main.swf" width="100%" height="100%">
+                    <param name="quality" value="high" />
+                    <param name="bgcolor" value="#ffffff" />
+                    <param name="allowScriptAccess" value="always" />
+                    <param name="allowFullScreen" value="true" />
+                <!--<![endif]-->
+                <!--[if gte IE 6]>-->
+                    <p> 
+                        Either scripts and active content are not permitted to run or Adobe Flash Player version
+                        13.0.0 or greater is not installed.
+                    </p>
+                <!--<![endif]-->
+                    <a href="http://www.adobe.com/go/getflashplayer">
+                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="Get Adobe Flash Player" />
+                    </a>
+                <!--[if !IE]>-->
+                </object>
+                <!--<![endif]-->
+            </object>
+        </noscript>
+
+        <button onclick="verifyBridgeConnect()">verifyBridgeConnect</button>
+
+        <script>
+            // Functions needed for calling Flex ExternalInterface
+            function getFlash(movieName) {
+                if (navigator.appName.indexOf("Microsoft") != -1) {
+                    return window[movieName];
+                }
+                else {
+                    return document[movieName];
+                }
+            }
+
+
+            var airBridge = {
+                callJavaScript: function (msg) {
+                    try {
+                        console.log("callJavaScript" + msg);
+
+                        var o = JSON.parse(unescape(msg));
+                        var fnName = o.fnName;
+                        var params = o.params;
+
+                        var fn = this._findJsFunction(fnName);
+                        if (fn != null)
+                            fn(params);
+                        else
+                            console.log("callJavaScript " + "function not found");
+                    } catch (e) {
+                        console.log("callJavaScript.error: " + e.message);
+                    }
+                },
+
+                _findJsFunction: function (fnName) {
+                    console.log("finding" + fnName);
+                    if (fnName) {
+                        fnNameArray = fnName.split('.');
+                        var tmpFn = window[fnNameArray[0]];
+                        for (var i = 1; i < fnNameArray.length; i++) {
+                            if (fnNameArray[i])
+                                tmpFn = tmpFn[fnNameArray[i]];
+                            if (tmpFn === undefined)
+                                return null;
+                        }
+                        return tmpFn;
+                    }
+                    return null;
+                }
+            };
+
+            airBridge.callAir = function (fnName, parameters) {
+                var msgJson = JSON.stringify({ fnName: fnName, params: parameters });
+                getFlash("main").callAir(msgJson);
+            }
+
+            //var isPageReady = false;
+            //document.onreadystatechange(function () {
+            //    isPageReady = true;
+            //});
+
+            //function isReady() { return isPageReady;} // make air know the DOM is ready
+
+
+            function verifyBridgeConnect() {
+                airBridge.callAir("verifyBridgeConnect", { p: "mypvalue" });
+            }
+            function bridgeVerified(p) {
+                alert('Bridge verified' + JSON.stringify(p));
+            }
+        </script>
+   </body>
+</html>

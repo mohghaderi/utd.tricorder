@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vMobilePushNotification" table="vMobilePushNotification">
+
+		<id name="MobilePushNotificationID" column="MobilePushNotificationID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">dbo.MobilePushNotification</param>
+			</generator>
+		</id>
+		
+		<property column="MobilePushTemplateID" name="MobilePushTemplateID" not-null="true" />
+		<property column="ParamsJSON" name="ParamsJSON" length="400" />
+		<property column="TemplateParamsJSON" name="TemplateParamsJSON" length="1073741823" />
+		<property column="ReceiverUserID" name="ReceiverUserID" />
+		<property column="MobilePushNotificationStatusID" name="MobilePushNotificationStatusID" not-null="true" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="ReceiverGroupName" name="ReceiverGroupName" length="100" />
+		<property column="SenderUserID" name="SenderUserID" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vTicketGroup" table="vTicketGroup" schema="crm">
+
+		<id name="TicketGroupID" column="TicketGroupID" type="Int32" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt32, Framework">
+				<param name="table_name">crm.TicketGroup</param>
+			</generator>
+		</id>
+		
+		<property column="TicketGroupName" name="TicketGroupName" not-null="true" length="100" />
+		<property column="SiteID" name="SiteID" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

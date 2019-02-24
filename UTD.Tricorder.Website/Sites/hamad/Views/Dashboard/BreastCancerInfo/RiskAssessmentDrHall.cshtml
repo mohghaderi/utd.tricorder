@@ -1,0 +1,13 @@
+﻿@{ ViewBag.ViewTitle = "Dr. Hall's calculator"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item"
+            src="http://halls.md/breast/risk.htm"
+            frameborder="0"
+            allowfullscreen
+            onload="initView();"
+            style="width:98%; height:98%"></iframe>
+</div>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

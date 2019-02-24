@@ -1,0 +1,71 @@
+﻿<!-- copy range dialog -->
+
+<div id="DoctorScheduleCopyRangeDialogDlg"
+     class="modal fade bs-copyrange-modal-sm"
+     tabindex="-1" role="dialog"
+     aria-labelledby="mycopyrangeLabel"
+     aria-hidden="true"
+     ng-controller="DoctorScheduleCopyRangeDialogController">
+
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Copy range</h4>
+            </div>
+            <div class="modal-body">
+                <form id="DoctorScheduleCopyRangeDialogFrm" role="form" onsubmit="return false">
+                    <div class="form-group">
+                        <label>Copy from</label>
+                        <div datetimepicker="{pickTime: false}"
+                             data-ng-model="SelectedDateForCopyString">
+                            <input name="SelectedDateForCopyString"
+                                   placeholder="YYYY/MM/DD"
+                                   class="form-control"
+                                   data-date-format="YYYY/MM/DD"
+                                   data-mask="0000/00/00"
+                                   data-bv-date="true"
+                                   data-bv-date-format="YYYY/MM/DD"
+                                   data-bv-notempty="true" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Range</label>
+                        <div selectize="{}" ng-model="SelectedNumberOfDays">
+                            <select name="SelectedNumberOfDays">
+                                <option value="">Please select</option>
+                                <option value="7">One week</option>
+                                <option value="14">Two weeks</option>
+                                <option value="30">One month</option>
+                                <option value="1">One day</option>
+                                <option value="2">Two days</option>
+                                <option value="3">Three days</option>
+                                <option value="4">Four days</option>
+                                <option value="5">Five days</option>
+                                <option value="6">Six days</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <div>
+                            <span ng-bind-html="TextToHtml(CopyRangeDescription) | unsafe" />
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button class="btn btn-success"
+                        ng-click="CopyRange()">
+                    Copy
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- end copy range dialog -->

@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Continue Registration";
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_PublicWebLayout.cshtml");
+}
+
+@{
+    var entityName = "User";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    string controllerName = entityName + "ContinueQReg";
+}
+
+@{ ViewBag.ViewTitle = "Continue Registration"; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+<p>
+    If you are already registered by another doctor or an administrator, you can easily continue your registration in this page
+</p>
+
+<form role="form"
+      ng-controller="@(controllerName)Controller"
+      id="@(controllerName)Frm"
+      onsubmit="return false">
+
+    <div id="CheckPhoneSection">
+
+        <div class="row">
+            <div class="col-sm-6">
+                @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.PhoneNumber])
+            </div>
+            <div class="col-sm-6">
+                @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.PhoneVerificationCode])
+            </div>
+        </div>
+
+        <div ng-hide="PhoneNumberChecked === true">
+            <div class="form-group">
+                <a class="btn btn-primary"
+                        ng-click="GetDataByPhoneForQReg($event)">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Check Phone Number   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-hide="PhoneNumberChecked !== true">
+        
+        <div class="row">
+            <div class="col-sm-6">
+                @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.FirstName])
+            </div>
+            <div class="col-sm-6">
+                @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.LastName])
+            </div>
+        </div>
+
+        @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.UserName])
+        
+        @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.Email], "data-bv-notempty=\"true\"")
+
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Password</label>
+                    <input type="password"
+                           name="password"
+                           class="form-control"
+                           placeholder="Password"
+                           data-ng-model="model.Password"
+                           data-bv-notempty="true"
+                           data-bv-stringlength="true"
+                           data-bv-stringlength-min="6" />
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label">Confirm Password</label>
+                    <input type="password"
+                           name="confirmPassword"
+                           class="form-control"
+                           placeholder="Confirm Password"
+                           data-ng-model="model.ConfirmPassword"
+                           data-bv-notempty="true" />
+                </div>
+            </div>
+        </div>
+
+        <div><p>Your information is safe with us. We never sell or disclose your personal or contact information.</p></div>
+        <div><p>By clicking Complete Registration, you agree to our <a href="~/Default/Terms" target='_blank'>Terms of Service</a> and <a href="~/Default/PrivacyPolicy" target='_blank'>Privacy Policy</a></p></div>
+
+        <button class="btn btn-lg btn-success"
+                ng-click="ContinueQReg()">
+            Complete Registration
+        </button>
+
+    </div>
+
+</form>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <a class="btn btn-default btn-block"
+           href="Login">
+            Login
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-default btn-block"
+           href="ICantLogin">
+            Can't Login?
+        </a>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")

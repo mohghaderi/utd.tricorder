@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vFeedbackType" table="vFeedbackType" schema="crm">
+
+		<id name="FeedbackTypeID" column="FeedbackTypeID" type="Byte">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="FeedbackTypeName" name="FeedbackTypeName" not-null="true" length="100" />
+		<property column="FeedbackTypeCode" name="FeedbackTypeCode" not-null="true" length="50" />
+		<property column="FeedbackTypeCanBeStarted" name="FeedbackTypeCanBeStarted" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

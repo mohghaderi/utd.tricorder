@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vFoodGroupItem" table="vFoodGroupItem" schema="app">
+
+		<id name="FoodGroupItemID" column="FoodGroupItemID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.FoodGroupItem</param>
+			</generator>
+		</id>
+		
+		<property column="FoodID" name="FoodID" not-null="true" />
+		<property column="FoodGroupID" name="FoodGroupID" not-null="true" />
+		<property column="ServingAmount" name="ServingAmount" not-null="true" />
+		<property column="ServingGrams" name="ServingGrams" not-null="true" />
+		<property column="IsGroupSaved" name="IsGroupSaved" insert="false" update="false" not-null="true" />
+		<property column="FoodGroupTitle" name="FoodGroupTitle" insert="false" update="false" not-null="true" length="150" />
+		<property column="FoodServingTypeID" name="FoodServingTypeID" not-null="true" />
+		<property column="Calorie" name="Calorie" not-null="true" />
+		<property column="Fat" name="Fat" not-null="true" />
+		<property column="Carb" name="Carb" not-null="true" />
+		<property column="Protein" name="Protein" not-null="true" />
+		<property column="FoodTitle" name="FoodTitle" insert="false" update="false" not-null="true" length="1000" />
+		<property column="FoodCaloriePer100g" name="FoodCaloriePer100g" insert="false" update="false" not-null="true" />
+		<property column="FoodCode" name="FoodCode" insert="false" update="false" not-null="true" length="50" />
+		<property column="FoodServingTypeTitle" name="FoodServingTypeTitle" insert="false" update="false" not-null="true" length="100" />
+		<property column="FoodServingTypeCalorieUnit" name="FoodServingTypeCalorieUnit" insert="false" update="false" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

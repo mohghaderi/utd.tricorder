@@ -1,0 +1,42 @@
+﻿<!-- MyPatientsSelect-->
+<div id="Doctor_PatientMyPatientsControllerDiv"
+     ng-controller="Doctor_PatientMyPatientsController">
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <h3>My Patients</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="200">Title</th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        @UI.UserProfileImage("{{item.PatientProfilePicUrl}}")
+                        {{item.PatientFullName}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info" ng-click="$parent.PatientSelected(item.PatientUserID, item.PatientFullName)">Select</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        Not in the list,
+        <a href="#User-SearchFromMyPatients" class="btn btn-info">
+            Find
+        </a>
+    </div>
+
+</div><!-- end of Doctor_Patient controller -->
+<!-- end MyPatientsSelect-->

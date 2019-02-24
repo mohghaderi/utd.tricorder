@@ -1,0 +1,26 @@
+﻿@{
+    var entityName = "VitalValue";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Pain Level Chart"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)PainLevelChartController"
+      id="@(entityName)PainLevelChartFrm"
+      onsubmit="return false;">
+
+    <a href="#VitalValue-PainLevelForm" class="btn btn-default">Record New</a>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="painlevelchart" style="height: 450px; min-width: 400px"></div>
+        </div>
+    </div>
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")
+
+

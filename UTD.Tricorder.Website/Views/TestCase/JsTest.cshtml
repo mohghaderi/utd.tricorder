@@ -1,0 +1,204 @@
+﻿
+@{
+    string includeJsSrc = "";
+    if (string.IsNullOrEmpty(Request.QueryString["TestCase"]) == false)
+    {
+        includeJsSrc = "/TestCase/" + Request.QueryString["TestCase"];
+    }
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <!-- -------- Our Javascript files and utilities ------------- -->
+    <script src="~/TestCase/TestUtils.js"></script>
+    <script src="~/TestCase/TestFilesInfo.js"></script>
+    <!-- -------- End Our Javascript files and utilities---------- -->
+    <!-- ------- Jasmine Test suite required files ----------- -->
+    <link rel="shortcut icon" type="image/png" href="~/TestCase/jasmine-2.0.0/jasmine_favicon.png" />
+    <link rel="stylesheet" type="text/css" href="~/TestCase/jasmine-2.0.0/jasmine.css" />
+    <script type="text/javascript" src="~/TestCase/jasmine-2.0.0/jasmine.js"></script>
+    <script type="text/javascript" src="~/TestCase/jasmine-2.0.0/jasmine-html.js"></script>
+    <script type="text/javascript" src="~/TestCase/jasmine-2.0.0/boot.js"></script>
+    <!-- ------- End Jasmine Test suite required files ---------------- -->
+
+
+    <script type="text/javascript">
+                window.mobileAppCallBack = {};
+
+                var TestPage = null;  // keeps TestPage window. Test cases use this variable to do testing
+                var currentWindowOnload = window.onload; // Keeps window.onLoad function that is currently setted. Jasmine boot file set a function for this event by default.
+                var isWindowLoaded = false; // shows if this window is loaded or not. It is because we would like to use window.onload once in our application
+                var isJasmineExecuted = false; // keeps the execution status of Jasmine. When environment executed, it becomes true. It is because we don't want to execute environment several times :)
+
+                var defaultIframeWidth = 800; // default value for test page iframe width
+                var defaultIframeHeight = 500; // default value for test page iframe height
+
+                /* Loads a page for test *
+                   e.pageUrl: the Url for testing
+                   e.startTestFunction: reference to the startTest function
+                   e.height: height of test page iframe. If not setted, it uses a default value
+                   e.width: width of test page iframe. If not setted, it uses a default value
+                */
+                function LoadTestPage(e) {
+
+                    // In Firefox, iframe can be loaded before the main page
+                    // So, tests could be run before jamine htmlreporter be created
+                    // This causes problems. So, we need to do everything after load
+                    if (isWindowLoaded === false)
+                    {
+                        window.onload = function () {
+                            if (currentWindowOnload) {
+                                currentWindowOnload();
+                            }
+                            __LoadTestPageIframe(e);
+                        }
+                        isWindowLoaded = true;
+                    }
+                    else
+                        __LoadTestPageIframe(e);
+                }
+
+
+                function __LoadTestPageIframe(e)
+                {
+                    var pageUrl = e.pageUrl;
+                    var startTestFunction = e.startTestFunction;
+                    var height = e.height ? e.height : defaultIframeHeight;
+                    var width = e.width ? e.width : defaultIframeWidth;
+
+                    //if (e.useExistingIframe)
+                    //    iframe = __LoadIframeUrl(pageUrl, height, width);
+                    //else
+                        var iframe = __CreateNewIframeUrl(pageUrl, height, width);
+
+                    // once iFrame loaded, we need to load test cases and execute them
+                    iframe.onload = function () {
+                        window.TestPage = iframe.contentWindow;
+                        
+                        // set mobile app settings (When it is opened in Cordova iframe)
+                        if (window.mobileApp) {
+                            window.TestPage.mobileApp = window.mobileApp;
+                            window.TestPage.cordovaAppVersion = window.cordovaAppVersion;
+                            // set callback from the test page
+                            window.mobileAppCallBack = window.TestPage.mobileAppCallBack;
+                        }
+
+                        // We call start test function to load all available test cases in Jasmine
+                        // Test cases won't run before Jasmine execution
+                        startTestFunction();
+
+                        // Executing Jasmine environment
+                        ExecuteJasmine(TestPage);
+                        // end Executing Jasmine environment
+
+                    }
+                }
+
+                function ExecuteJasmine()
+                {
+                    if (isJasmineExecuted === false) {
+                        // if Ext existed in the page, let it be ready, otherwise run current tests
+                        // if you have any other JS framework such as JQuery,
+                        // you need to add it to this part to make sure that
+                        // Jasmine executes after used frameworks are loaded
+                        if (TestPage.Ext) {
+                            TestPage.Ext.onReady(function () {
+                                jasmine.getEnv().execute();
+                            });
+                        }
+                        else {
+                            jasmine.getEnv().execute();
+                        }
+                        isJasmineExecuted = true;
+                    }
+                }
+
+                function TestSimpleJavaScriptFile(filename) {
+                    LoadJavaScriptFile(filename);
+                    window.onload = function () {
+                        if (currentWindowOnload) {
+                            currentWindowOnload();
+                        }
+                        ExecuteJasmine(window);
+                    }
+                }
+
+                function LoadJavaScriptFile(filename) {
+                    var fileref = document.createElement('script');
+                    fileref.setAttribute("type", "text/javascript");
+                    fileref.setAttribute("src", filename);
+                    document.getElementsByTagName("head")[0].appendChild(fileref);
+                }
+
+                /*
+                    A variable to create unique ids for dynamicly created iframes
+                */
+                var iframeNumber = 0;
+
+                /*
+                 * Creates a new dynamic iframe and appends it to the document body
+                   If you are changing this method be sure that it is compatible with JSTestAll file
+                */
+                function __CreateNewIframeUrl(pageUrl, height, width) {
+                    iframe = document.createElement('iframe');
+                    iframe.id = "mainIFrame" + iframeNumber;
+                    iframe.width = width;
+                    iframe.height = height;
+                    iframe.src = pageUrl;
+                    iframeNumber++;
+                    document.body.appendChild(iframe);
+                    return iframe;
+                }
+
+                ////////////////////////////////////////////////////////////
+                // Functions for when no test case provided in QueryString
+                ////////////////////////////////////////////////////////////
+
+                /*
+                 * Creates a link to a test case file
+                */
+                function __CreateTestTitleElement(url, title) {
+                    var div = document.createElement("div");
+                    div.innerHTML = "<p><a href='" + url + "'>" + title + "</a></p>";
+                    document.body.appendChild(div);
+                }
+
+                /*
+                 * Creates a list of test cases using TestFilesInfo file
+                */
+                function CreateTestList() {
+                    var testList = TestFilesInfo.GetTestList();
+                    for (var i = 0; i < testList.length; i++) {
+                        var testUrl = testList[i];
+                        var url = "JSTest?TestCase=" + testUrl;
+                        __CreateTestTitleElement(url, testUrl);
+                    }
+                }
+
+    </script>
+
+
+</head>
+<body>
+
+    <a href="javascript:window.history.back()">Go Back</a>
+
+    <!-- body is empty :) we add everything in our javascript code. -->
+    <form id="form1">
+        <div id="divMain">
+
+        </div>
+    </form>
+
+    <script type="text/javascript" src="@includeJsSrc"></script>
+        @if (string.IsNullOrEmpty(includeJsSrc)) { 
+            <script type="text/javascript">
+                CreateTestList();
+            </script>
+        }
+
+</body>
+</html>

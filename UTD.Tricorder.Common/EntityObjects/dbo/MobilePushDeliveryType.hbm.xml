@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="MobilePushDeliveryType" table="MobilePushDeliveryType">
+
+		<id name="MobilePushDeliveryTypeID" column="MobilePushDeliveryTypeID" type="Byte">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="MobilePushDeliveryTypeName" name="MobilePushDeliveryTypeName" not-null="true" length="50" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

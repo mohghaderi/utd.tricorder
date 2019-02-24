@@ -1,0 +1,75 @@
+﻿@{
+    var entityName = vFoodGroupItem.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "GridDetail");
+}
+
+<div @UI.AngualrCtrlDivAttr(entityName, "GridDetail")>
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div>
+        <button
+                class="btn btn-info"
+                ng-click="ShowNewForm()">
+            Add New
+        </button>
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="100">Food</th>
+                    <th>Amount</th>
+                    <th>Calorie</th>
+                    <th>Fat (g)</th>
+                    <th>Carb (g)</th>
+                    <th>Protein (g)</th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        {{item.@(vFoodGroupItem.ColumnNames.FoodTitle)}}
+                    </td>
+                    <td>
+                        {{item.@(vFoodGroupItem.ColumnNames.ServingAmount)}} {{item.@(vFoodGroupItem.ColumnNames.FoodServingTypeTitle)}}
+                    </td>
+                    <td>
+                        {{item.@(vFoodGroupItem.ColumnNames.Calorie)}}
+                    </td>
+                    <td>
+                        {{item.@(vFoodGroupItem.ColumnNames.Fat)}}
+                    </td>
+                    <td>
+                        {{item.@(vFoodGroupItem.ColumnNames.Carb)}}
+                    </td>
+                    <td>
+                        {{item.@(vFoodGroupItem.ColumnNames.Protein)}}
+                    </td>
+                    <td>
+                        <button
+                                type="button"
+                                class="btn btn-info"
+                                ng-click="ShowEditForm(item.@(vFoodGroupItem.ColumnNames.FoodGroupItemID))">
+                            Edit
+                        </button>
+                        <button
+                                type="button"
+                                class="btn btn-danger"
+                                ng-click="DeleteItem(item.@(vFoodGroupItem.ColumnNames.FoodGroupItemID), $event)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div><!-- end of controller -->

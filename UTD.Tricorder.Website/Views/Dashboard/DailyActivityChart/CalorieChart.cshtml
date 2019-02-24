@@ -1,0 +1,59 @@
+﻿@{
+    var entityName = vDailyActivityChart.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, @UI.GetViewName());
+}
+
+@{ ViewBag.ViewTitle = "Calorie Chart"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)CalorieChartController"
+      id="@(entityName)CalorieChartFrm"
+      onsubmit="return false;">
+
+    <div class="btn-toolbar" role="toolbar" aria-label="...">
+        <div class="btn-group" role="group">
+            <a href="#DailyActivity-FitActivityForm" class="btn btn-default">Add Activity</a>
+        </div>
+
+        <div class="btn-group" role="group">
+            <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Add Food
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#FoodGroup-Form?FoodServingTimeTypeID=1">Breakfast</a></li>
+                    <li><a href="#FoodGroup-Form?FoodServingTimeTypeID=2">Lunch</a></li>
+                    <li><a href="#FoodGroup-Form?FoodServingTimeTypeID=3">Dinner</a></li>
+                    <li><a href="#FoodGroup-Form?FoodServingTimeTypeID=4">Morning Snack</a></li>
+                    <li><a href="#FoodGroup-Form?FoodServingTimeTypeID=5">Afternoon Snack</a></li>
+                    <li><a href="#FoodGroup-Form?FoodServingTimeTypeID=6">Evening Snack</a></li>
+                    <li><a href="#FoodGroup-Form?FoodServingTimeTypeID=0">Other</a></li>
+                </ul>
+            </div>
+        </div> @*End Add food button*@
+        <div class="btn-group" role="group">
+            <a href="#DailyActivity-SleepForm" class="btn btn-default">Add Sleep</a>
+        </div>
+    </div> @*End Toolbar*@
+
+    <div class="row">
+        <div class="col-md-12">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div id="caloriechart" style="height: 450px; min-width: 400px"></div>
+        </div>
+    </div>
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")
+
+
+

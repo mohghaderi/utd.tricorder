@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+
+<html data-ng-app="XecareApp">
+<head>
+    @Html.Partial("~/Views/Layouts/Partials/_CommonHeader.cshtml")
+
+    <title>@ViewBag.Title</title>
+    
+    <link rel="shortcut icon" href="@SiteUI.FileUrl("~/Sites/hamad/Content/Images/favicons/favicon.png")">
+
+    @Html.Partial("~/Views/Layouts/Partials/_CommonCSSLinks.cshtml")
+
+    <link href="~/Content/Styles/app.css" rel="stylesheet"/>
+    <link href="~/Sites/hamad/Content/Styles/hamad.css" rel="stylesheet" />
+    @if (UIText.IsRTL()) // right to left support for bootstrap
+    {
+        <link href="~/Content/Styles/app-rtl.css" rel="stylesheet" />
+    }
+
+    @RenderSection("Head", required: false)
+</head>
+<body>
+
+    @Html.Partial("~/Views/Layouts/Partials/_NoScript.cshtml")
+
+    @Html.Partial("~/Views/Layouts/Partials/_PageMainLoadingMask.cshtml")
+
+    <div id="AngularJSMainController" data-ng-controller="indexController">
+
+        @Html.Partial("~/Views/Layouts/Partials/_TopNavbar.cshtml", new DashboardTopNavBarViewModel() { SiteTitleHtml = new MvcHtmlString("<img src=\"" + SiteUI.FileUrl("~/Sites/hamad/Content/Images/Logo/hamad_logo.jpg") + "\" height='28' width='28' /><b class=\"uppercase hidden-xs\"> Hamad</b>") })
+
+        <div id="wrapper">
+            <!-- Sidebar -->
+            @Html.Partial("~/Views/Layouts/Partials/_MainSideBar.cshtml")
+            <!-- /#sidebar-wrapper -->
+
+
+            <!-- Page Content -->
+            <div id="page-content-wrapper">
+                <div>
+
+                    @RenderBody()
+                    <div data-ng-view="" class="page page-main">
+                    </div>
+
+                    @RenderSection("Scripts", required: false)
+                    @RenderSection("DebugScripts", required: false)
+                </div>
+            </div>
+            <!-- /#page-content-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+
+
+        @* Mobile Application controllers *@
+        <div id="MobileAppCallBackControllerDiv"
+             ng-controller="MobileAppCallBackController">
+        </div>
+        @Html.Partial("~/Views/Dashboard/Feedback/_InsertFormDialog.cshtml")
+    </div>
+
+    @Html.Partial("~/Views/Layouts/Partials/_CommonJSLinks.cshtml", new CommonJSLinksViewModel() { IsDashboard = true, RenderVoiceCommand = true  })
+    @Html.Partial("~/Views/Layouts/Partials/_UnsupportedBrowserDialog.cshtml")
+    @Html.Partial("~/Views/Layouts/Partials/_NoCookies.cshtml")
+
+    @Html.Partial("~/Views/Layouts/Partials/_GoogleAnalytics.cshtml", new GoogleAnlyticsViewModel() { RenderAngularJS = true })
+ 
+
+</body>
+
+</html>

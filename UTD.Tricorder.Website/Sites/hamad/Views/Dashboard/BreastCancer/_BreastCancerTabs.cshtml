@@ -1,0 +1,50 @@
+﻿@{
+    string activeTab = ViewBag.ActiveTab;
+    ViewBag.ActiveTab = "History"; // for patient profile tabs
+}
+
+<!-- Breast Cancer tabs -->
+
+@*@Html.Partial("~/Views/Dashboard/_PatientProfileTabs.cshtml")*@
+
+<div ng-controller="BreastCancerTabsController">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="@(FWHtml.GetActiveTabClass("PatientLabel", activeTab))">
+            <a href="#BreastCancer-PatientLabel?MasterID={{MasterID}}" role="tab">Family History (1)</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("FamilyHistory", activeTab))">
+            <a href="#BreastCancer-FamilyHistory?MasterID={{MasterID}}" role="tab">Family History (2)</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Allergy", activeTab))">
+            <a href="#BreastCancer-Allergy?MasterID={{MasterID}}" role="tab">Allergy</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("CurrentMed", activeTab))">
+            <a href="#BreastCancer-CurrentMed?MasterID={{MasterID}}" role="tab">Medications</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Immunization", activeTab))">
+            <a href="#BreastCancer-Immunization?MasterID={{MasterID}}" role="tab">Immunization</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("PastMed", activeTab))">
+            <a href="#BreastCancer-PastMed?MasterID={{MasterID}}" role="tab">Past medical history</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Social", activeTab))">
+            <a href="#BreastCancer-Social?MasterID={{MasterID}}" role="tab">Social History</a>
+        </li>
+
+        <li class="@(FWHtml.GetActiveTabClass("RiskAssessment", activeTab))">
+            <a href="#BreastCancer-RiskAssessment?MasterID={{MasterID}}" role="tab">Risk Assessment (1)</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("RiskAssessment2", activeTab))">
+            <a href="#BreastCancer-RiskAssessment2?MasterID={{MasterID}}" role="tab">Risk Assessment (2)</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("RiskAssessment3", activeTab))">
+            <a href="#BreastCancer-RiskAssessment3?MasterID={{MasterID}}" role="tab">Risk Assessment (3)</a>
+        </li>
+
+        <li class="@(FWHtml.GetActiveTabClass("Sign", activeTab))">
+            <a href="#BreastCancer-Sign?MasterID={{MasterID}}" role="tab">Sign</a>
+        </li>
+    </ul>
+</div>
+<div style="margin-top:15px"></div>
+<!-- End Breast Cancer tabs -->

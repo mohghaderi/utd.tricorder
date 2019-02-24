@@ -1,0 +1,93 @@
+﻿@* DeveloperNote: Please put this at the end of the file after Bootstrap and Jquery scripts *@
+@* TODO: Make extra dialog for upgrading operating system *@
+<!-- Unsupported browser dialog -->
+
+@helper BrowserInfo(string title, string href, string imgfilename)
+{
+    <div style="text-align: center">
+        <a href="@href"><img src="~/Content/Images/browsers/@imgfilename" alt="@title" />@title</a>
+    </div>
+}
+
+<div class="modal fade" id="UnsupportedBrowserDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Unsupported browser</h4>
+            </div>
+            <div class="modal-body" style="background-color:#f7f7f7">
+                <p>We are sorry, but your browser is old, and our site doesn't support it. Please upgrade your browser before using our website. If you are using a mobile platform, please upgrade your Andriod or iOS version.</p>
+                <div class="row">
+                    <div class="col-md-3">
+                        @BrowserInfo("Google Chrome", "http://www.google.com/chrome/", "browser_chrome.gif")
+                    </div>
+                    <div class="col-md-3">
+                        @BrowserInfo("Mozilla Firefox", "http://www.mozilla.com/firefox/", "browser_firefox.gif")
+                    </div>
+                    <div class="col-md-3">
+                        @BrowserInfo("Safari", "http://www.apple.com/safari/download/", "browser_safari.gif")
+                    </div>
+                    <div class="col-md-3">
+                        @BrowserInfo("Internet Explorer", "http://www.microsoft.com/windows/Internet-explorer/", "browser_msie.gif")
+                    </div>
+                    @*<div class="col-md-3">
+                            @BrowserInfo("Opera", "http://www.opera.com/download/", "browser_opera.gif")
+                        </div>*@
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Scripts section -->
+<script src="~/Scripts/jquery-browser/jquery.browser.min.js"></script>
+<script type="text/javascript">
+            @* see bootstrap and jquery limitations:
+                http://jquery.com/browser-support/
+                http://getbootstrap.com/getting-started/#support
+
+                *@
+
+    $(function () {
+
+        @* https://github.com/gabceb/jquery-browser-plugin documents *@
+        var isShownCookieName = 'unsupporttedBrowserShown';
+        if ($.cookie(isShownCookieName) === "true")
+            return;
+
+        var minBrowsers = [
+            { name: "msie", ver: 10 },
+            { name: "mozilla", ver: 26 },
+            { name: "chrome", ver: 30 },
+            { name: "safari", ver: 5 },
+            { name: "opera", ver:20 }
+        ]
+
+        var isUnsupported = false;
+
+        for (var i = 0; i < minBrowsers.length; i++) {
+            if ($.browser[minBrowsers[i].name] && $.browser.versionNumber < minBrowsers[i].ver)
+                isUnsupported = true;
+        }
+
+        if (isUnsupported) {
+            $('#UnsupportedBrowserDialog').modal({
+                show: true
+            });
+            //$.cookie(isShownCookieName, "true");
+        }
+
+        //if ($.browser.mobile) {
+        // ask to update the operating system
+        //}
+        //else {
+        //}
+
+    });
+
+</script>
+
+<!-- end Unsupported browser dialog -->

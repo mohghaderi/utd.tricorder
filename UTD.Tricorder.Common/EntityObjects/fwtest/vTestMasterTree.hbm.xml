@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vTestMasterTree" table="vTestMasterTree" schema="fwtest">
+
+		<id name="TestMasterTreeID" column="TestMasterTreeID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">fwtest.TestMasterTree</param>
+			</generator>
+		</id>
+		
+		<property column="TestMasterTreeCode" name="TestMasterTreeCode" not-null="true" length="50" />
+		<property column="TestMasterTreeTitle" name="TestMasterTreeTitle" not-null="true" length="50" />
+		<property column="ParentID" name="ParentID" length="10" />
+		<property column="InsertUserID" name="InsertUserID" />
+		<property column="InsertDate" name="InsertDate" />
+		<property column="UpdateUserID" name="UpdateUserID" />
+		<property column="UpdateDate" name="UpdateDate" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

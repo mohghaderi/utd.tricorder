@@ -1,0 +1,47 @@
+﻿@{
+    string controllerName = @"UserVerifyEmail";
+}
+
+@{ ViewBag.ViewTitle = "Verify Email"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+<form id="@(controllerName)Frm"
+      role="form"
+      onsubmit="return false"
+      ng-controller="@(controllerName)Controller">
+
+    <p>If you don't have the verification code, use "Send Verification Code" button and open your email to get it.</p>
+    <button class="btn btn-info"
+            ng-click="SendEmailVerificationLetter()">
+        Send Verification Code
+    </button>
+
+    <div class="form-group">
+        <label>Email</label>
+        <input class="form-control"
+               name="Email"
+               placeholder="Email"
+               data-ng-model="model.Email"
+               readonly="readonly"
+               data-bv-notempty="true" />
+    </div>
+
+
+    <div class="form-group">
+        <label>Verification Code</label>
+        <input class="form-control"
+               name="EmailVerificationCode"
+               placeholder="Verification Code"
+               data-ng-model="model.EmailVerificationCode"
+               data-bv-notempty="true" />
+    </div>
+
+    <button class="btn btn-success"
+            ng-click="VerifyEmail()">
+        Verify Email
+    </button>
+
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

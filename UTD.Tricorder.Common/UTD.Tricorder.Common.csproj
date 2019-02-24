@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DA99F770-52F5-4320-BE54-FBE8B670B888}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UTD.Tricorder.Common</RootNamespace>
+    <AssemblyName>UTD.Tricorder.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdobeAirCapabilities.cs" />
+    <Compile Include="Config\ApplicationSettings.cs" />
+    <Compile Include="CordovaCapabilities.cs" />
+    <Compile Include="EntityInfos\app\CallLogEN.cs" />
+    <Compile Include="EntityInfos\app\CallStatusEN.cs" />
+    <Compile Include="EntityInfos\app\DailyActivityChartEN.cs" />
+    <Compile Include="EntityInfos\app\DailyActivityEN.cs" />
+    <Compile Include="EntityInfos\app\DailyActivityTypeEN.cs" />
+    <Compile Include="EntityInfos\app\DoctorEN.cs" />
+    <Compile Include="EntityInfos\app\DoctorScheduleEN.cs" />
+    <Compile Include="EntityInfos\app\Doctor_IllnessEN.cs" />
+    <Compile Include="EntityInfos\app\Doctor_InsuranceEN.cs" />
+    <Compile Include="EntityInfos\app\Doctor_PatientEN.cs" />
+    <Compile Include="EntityInfos\app\Doctor_SpecialtyEN.cs" />
+    <Compile Include="EntityInfos\app\Doctor_USStateEN.cs" />
+    <Compile Include="EntityInfos\app\FitActivityCategoryEN.cs" />
+    <Compile Include="EntityInfos\app\FitActivityEN.cs" />
+    <Compile Include="EntityInfos\app\FoodEN.cs" />
+    <Compile Include="EntityInfos\app\FoodGroupEN.cs" />
+    <Compile Include="EntityInfos\app\FoodGroupItemEN.cs" />
+    <Compile Include="EntityInfos\app\FoodGroupSumEN.cs" />
+    <Compile Include="EntityInfos\app\FoodServingTimeTypeEN.cs" />
+    <Compile Include="EntityInfos\app\FoodServingTypeEN.cs" />
+    <Compile Include="EntityInfos\app\GenderTypeEN.cs" />
+    <Compile Include="EntityInfos\app\IllnessEN.cs" />
+    <Compile Include="EntityInfos\app\Illness_SpecialtyEN.cs" />
+    <Compile Include="EntityInfos\app\InsuranceEN.cs" />
+    <Compile Include="EntityInfos\app\InsurancePlanEN.cs" />
+    <Compile Include="EntityInfos\app\MedicalHistoryEN.cs" />
+    <Compile Include="EntityInfos\app\PatientInsuranceEN.cs" />
+    <Compile Include="EntityInfos\app\PaymentEN.cs" />
+    <Compile Include="EntityInfos\app\PaymentMethodEN.cs" />
+    <Compile Include="EntityInfos\app\PaymentStatusEN.cs" />
+    <Compile Include="EntityInfos\app\PersonEN.cs" />
+    <Compile Include="EntityInfos\app\RegionEN.cs" />
+    <Compile Include="EntityInfos\app\SpecialtyEN.cs" />
+    <Compile Include="EntityInfos\app\TimeSeriesStripEN.cs" />
+    <Compile Include="EntityInfos\app\TimeSeriesTypeEN.cs" />
+    <Compile Include="EntityInfos\app\TimeSeries_SmallInt_SecondsEN.cs" />
+    <Compile Include="EntityInfos\app\UserPaymentInfoEN.cs" />
+    <Compile Include="EntityInfos\app\VisitEN.cs" />
+    <Compile Include="EntityInfos\app\VisitPlaceEN.cs" />
+    <Compile Include="EntityInfos\app\VisitStatusEN.cs" />
+    <Compile Include="EntityInfos\app\VitalTypeEN.cs" />
+    <Compile Include="EntityInfos\app\VitalValueEN.cs" />
+    <Compile Include="EntityInfos\crm\FeedbackEN.cs" />
+    <Compile Include="EntityInfos\crm\FeedbackTypeEN.cs" />
+    <Compile Include="EntityInfos\crm\TicketGroupEN.cs" />
+    <Compile Include="EntityInfos\crm\TicketPriorityEN.cs" />
+    <Compile Include="EntityInfos\crm\TicketSourceTypeEN.cs" />
+    <Compile Include="EntityInfos\crm\TicketStatusEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppEntityEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppExceptionLogEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppFileEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppFileStorageTypeEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppFileTypeEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppFileUploadStatusEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppLogEN.cs" />
+    <Compile Include="EntityInfos\dbo\AppLogTypeEN.cs" />
+    <Compile Include="EntityInfos\dbo\CountryEN.cs" />
+    <Compile Include="EntityInfos\dbo\LanguageEN.cs" />
+    <Compile Include="EntityInfos\dbo\MobilePushDeliveryTypeEN.cs" />
+    <Compile Include="EntityInfos\dbo\MobilePushNotificationEN.cs" />
+    <Compile Include="EntityInfos\dbo\MobilePushServerEN.cs" />
+    <Compile Include="EntityInfos\dbo\MobilePushTemplateEN.cs" />
+    <Compile Include="EntityInfos\dbo\NotificationEN.cs" />
+    <Compile Include="EntityInfos\dbo\NotificationStatusEN.cs" />
+    <Compile Include="EntityInfos\dbo\NotificationTemplateEN.cs" />
+    <Compile Include="EntityInfos\dbo\SiteDomainEN.cs" />
+    <Compile Include="EntityInfos\dbo\SiteEN.cs" />
+    <Compile Include="EntityInfos\dbo\UserDeviceClientAppTypeEN.cs" />
+    <Compile Include="EntityInfos\dbo\UserDeviceSettingEN.cs" />
+    <Compile Include="EntityInfos\dbo\User_LanguageEN.cs" />
+    <Compile Include="EntityInfos\dbo\USStateEN.cs" />
+    <Compile Include="EntityInfos\dbo\WebApiClientEN.cs" />
+    <Compile Include="EntityInfos\dbo\WebApiTokenEN.cs" />
+    <Compile Include="EntityInfos\dbo\WorldTimeZoneEN.cs" />
+    <Compile Include="EntityInfos\fwtest\SiteIdGeneratorTestEN.cs" />
+    <Compile Include="EntityInfos\fwtest\TestCaseTesterEN.cs" />
+    <Compile Include="EntityInfos\fwtest\TestMasterTreeEN.cs" />
+    <Compile Include="EntityInfos\i18n\StringTextEN.cs" />
+    <Compile Include="EntityInfos\i18n\StringTextTranEN.cs" />
+    <Compile Include="EntityInfos\mem\MembershipAreaEN.cs" />
+    <Compile Include="EntityInfos\mem\PermissionEN.cs" />
+    <Compile Include="EntityInfos\mem\PermissionTypeEN.cs" />
+    <Compile Include="EntityInfos\mem\ResourceEN.cs" />
+    <Compile Include="EntityInfos\mem\ResourceTypeEN.cs" />
+    <Compile Include="EntityInfos\mem\RoleEN.cs" />
+    <Compile Include="EntityInfos\mem\UserApprovalStatusEN.cs" />
+    <Compile Include="EntityInfos\mem\UserEN.cs" />
+    <Compile Include="EntityInfos\mem\UserInRoleEN.cs" />
+    <Compile Include="EntityObjects\app\CallLog.cs" />
+    <Compile Include="EntityObjects\app\CallStatus.cs" />
+    <Compile Include="EntityObjects\app\DailyActivity.cs" />
+    <Compile Include="EntityObjects\app\DailyActivityType.cs" />
+    <Compile Include="EntityObjects\app\Doctor.cs" />
+    <Compile Include="EntityObjects\app\DoctorSchedule.cs" />
+    <Compile Include="EntityObjects\app\Doctor_Illness.cs" />
+    <Compile Include="EntityObjects\app\Doctor_Insurance.cs" />
+    <Compile Include="EntityObjects\app\Doctor_Patient.cs" />
+    <Compile Include="EntityObjects\app\Doctor_Specialty.cs" />
+    <Compile Include="EntityObjects\app\Doctor_USState.cs" />
+    <Compile Include="EntityObjects\app\FitActivity.cs" />
+    <Compile Include="EntityObjects\app\FitActivityCategory.cs" />
+    <Compile Include="EntityObjects\app\Food.cs" />
+    <Compile Include="EntityObjects\app\FoodGroup.cs" />
+    <Compile Include="EntityObjects\app\FoodGroupItem.cs" />
+    <Compile Include="EntityObjects\app\FoodServingTimeType.cs" />
+    <Compile Include="EntityObjects\app\FoodServingType.cs" />
+    <Compile Include="EntityObjects\app\GenderType.cs" />
+    <Compile Include="EntityObjects\app\Illness.cs" />
+    <Compile Include="EntityObjects\app\Illness_Specialty.cs" />
+    <Compile Include="EntityObjects\app\Insurance.cs" />
+    <Compile Include="EntityObjects\app\InsurancePlan.cs" />
+    <Compile Include="EntityObjects\app\MedicalHistory.cs" />
+    <Compile Include="EntityObjects\app\PatientInsurance.cs" />
+    <Compile Include="EntityObjects\app\Payment.cs" />
+    <Compile Include="EntityObjects\app\PaymentMethod.cs" />
+    <Compile Include="EntityObjects\app\PaymentStatus.cs" />
+    <Compile Include="EntityObjects\app\Person.cs" />
+    <Compile Include="EntityObjects\app\Region.cs" />
+    <Compile Include="EntityObjects\app\Specialty.cs" />
+    <Compile Include="EntityObjects\app\TimeSeriesStrip.cs" />
+    <Compile Include="EntityObjects\app\TimeSeriesType.cs" />
+    <Compile Include="EntityObjects\app\TimeSeries_SmallInt_Seconds.cs" />
+    <Compile Include="EntityObjects\app\UserPaymentInfo.cs" />
+    <Compile Include="EntityObjects\app\vCallLog.cs" />
+    <Compile Include="EntityObjects\app\vCallStatus.cs" />
+    <Compile Include="EntityObjects\app\vDailyActivity.cs" />
+    <Compile Include="EntityObjects\app\vDailyActivityChart.cs" />
+    <Compile Include="EntityObjects\app\vDailyActivityType.cs" />
+    <Compile Include="EntityObjects\app\vDoctor.cs" />
+    <Compile Include="EntityObjects\app\vDoctorSchedule.cs" />
+    <Compile Include="EntityObjects\app\vDoctor_Illness.cs" />
+    <Compile Include="EntityObjects\app\vDoctor_Insurance.cs" />
+    <Compile Include="EntityObjects\app\vDoctor_Patient.cs" />
+    <Compile Include="EntityObjects\app\vDoctor_Specialty.cs" />
+    <Compile Include="EntityObjects\app\vDoctor_USState.cs" />
+    <Compile Include="EntityObjects\app\vFitActivity.cs" />
+    <Compile Include="EntityObjects\app\vFitActivityCategory.cs" />
+    <Compile Include="EntityObjects\app\vFood.cs" />
+    <Compile Include="EntityObjects\app\vFoodGroup.cs" />
+    <Compile Include="EntityObjects\app\vFoodGroupItem.cs" />
+    <Compile Include="EntityObjects\app\vFoodGroupSum.cs" />
+    <Compile Include="EntityObjects\app\vFoodServingTimeType.cs" />
+    <Compile Include="EntityObjects\app\vFoodServingType.cs" />
+    <Compile Include="EntityObjects\app\vGenderType.cs" />
+    <Compile Include="EntityObjects\app\vIllness.cs" />
+    <Compile Include="EntityObjects\app\vIllness_Specialty.cs" />
+    <Compile Include="EntityObjects\app\vInsurance.cs" />
+    <Compile Include="EntityObjects\app\vInsurancePlan.cs" />
+    <Compile Include="EntityObjects\app\Visit.cs" />
+    <Compile Include="EntityObjects\app\VisitPlace.cs" />
+    <Compile Include="EntityObjects\app\VisitStatus.cs" />
+    <Compile Include="EntityObjects\app\VitalType.cs" />
+    <Compile Include="EntityObjects\app\VitalValue.cs" />
+    <Compile Include="EntityObjects\app\vMedicalHistory.cs" />
+    <Compile Include="EntityObjects\app\vPatientInsurance.cs" />
+    <Compile Include="EntityObjects\app\vPayment.cs" />
+    <Compile Include="EntityObjects\app\vPaymentMethod.cs" />
+    <Compile Include="EntityObjects\app\vPaymentStatus.cs" />
+    <Compile Include="EntityObjects\app\vPerson.cs" />
+    <Compile Include="EntityObjects\app\vRegion.cs" />
+    <Compile Include="EntityObjects\app\vSpecialty.cs" />
+    <Compile Include="EntityObjects\app\vTimeSeriesStrip.cs" />
+    <Compile Include="EntityObjects\app\vTimeSeriesType.cs" />
+    <Compile Include="EntityObjects\app\vTimeSeries_SmallInt_Seconds.cs" />
+    <Compile Include="EntityObjects\app\vUserPaymentInfo.cs" />
+    <Compile Include="EntityObjects\app\vVisit.cs" />
+    <Compile Include="EntityObjects\app\vVisitPlace.cs" />
+    <Compile Include="EntityObjects\app\vVisitStatus.cs" />
+    <Compile Include="EntityObjects\app\vVitalType.cs" />
+    <Compile Include="EntityObjects\app\vVitalValue.cs" />
+    <Compile Include="EntityObjects\crm\Feedback.cs" />
+    <Compile Include="EntityObjects\crm\FeedbackType.cs" />
+    <Compile Include="EntityObjects\crm\Post.cs" />
+    <Compile Include="EntityObjects\crm\PostType.cs" />
+    <Compile Include="EntityObjects\crm\TicketGroup.cs" />
+    <Compile Include="EntityObjects\crm\TicketPriority.cs" />
+    <Compile Include="EntityObjects\crm\TicketSourceType.cs" />
+    <Compile Include="EntityObjects\crm\TicketStatus.cs" />
+    <Compile Include="EntityObjects\crm\vFeedback.cs" />
+    <Compile Include="EntityObjects\crm\vFeedbackType.cs" />
+    <Compile Include="EntityObjects\crm\vPost.cs" />
+    <Compile Include="EntityObjects\crm\vPostType.cs" />
+    <Compile Include="EntityObjects\crm\vTicketGroup.cs" />
+    <Compile Include="EntityObjects\crm\vTicketPriority.cs" />
+    <Compile Include="EntityObjects\crm\vTicketSourceType.cs" />
+    <Compile Include="EntityObjects\crm\vTicketStatus.cs" />
+    <Compile Include="EntityObjects\dbo\AppEntity.cs" />
+    <Compile Include="EntityObjects\dbo\AppExceptionLog.cs" />
+    <Compile Include="EntityObjects\dbo\AppFile.cs" />
+    <Compile Include="EntityObjects\dbo\AppFileStorageType.cs" />
+    <Compile Include="EntityObjects\dbo\AppFileType.cs" />
+    <Compile Include="EntityObjects\dbo\AppFileUploadStatus.cs" />
+    <Compile Include="EntityObjects\dbo\AppLog.cs" />
+    <Compile Include="EntityObjects\dbo\AppLogType.cs" />
+    <Compile Include="EntityObjects\dbo\Country.cs" />
+    <Compile Include="EntityObjects\dbo\Language.cs" />
+    <Compile Include="EntityObjects\dbo\MobilePushDeliveryType.cs" />
+    <Compile Include="EntityObjects\dbo\MobilePushNotification.cs" />
+    <Compile Include="EntityObjects\dbo\MobilePushServer.cs" />
+    <Compile Include="EntityObjects\dbo\MobilePushTemplate.cs" />
+    <Compile Include="EntityObjects\dbo\Notification.cs" />
+    <Compile Include="EntityObjects\dbo\NotificationStatus.cs" />
+    <Compile Include="EntityObjects\dbo\NotificationTemplate.cs" />
+    <Compile Include="EntityObjects\dbo\Site.cs" />
+    <Compile Include="EntityObjects\dbo\SiteDomain.cs" />
+    <Compile Include="EntityObjects\dbo\UserDeviceClientAppType.cs" />
+    <Compile Include="EntityObjects\dbo\UserDeviceSetting.cs" />
+    <Compile Include="EntityObjects\dbo\User_Language.cs" />
+    <Compile Include="EntityObjects\dbo\USState.cs" />
+    <Compile Include="EntityObjects\dbo\vAppEntity.cs" />
+    <Compile Include="EntityObjects\dbo\vAppExceptionLog.cs" />
+    <Compile Include="EntityObjects\dbo\vAppFile.cs" />
+    <Compile Include="EntityObjects\dbo\vAppFileStorageType.cs" />
+    <Compile Include="EntityObjects\dbo\vAppFileType.cs" />
+    <Compile Include="EntityObjects\dbo\vAppFileUploadStatus.cs" />
+    <Compile Include="EntityObjects\dbo\vAppLog.cs" />
+    <Compile Include="EntityObjects\dbo\vAppLogType.cs" />
+    <Compile Include="EntityEnums.cs" />
+    <Compile Include="EntityObjects\dbo\vCountry.cs" />
+    <Compile Include="EntityObjects\dbo\vLanguage.cs" />
+    <Compile Include="EntityObjects\dbo\vMobilePushDeliveryType.cs" />
+    <Compile Include="EntityObjects\dbo\vMobilePushNotification.cs" />
+    <Compile Include="EntityObjects\dbo\vMobilePushServer.cs" />
+    <Compile Include="EntityObjects\dbo\vMobilePushTemplate.cs" />
+    <Compile Include="EntityObjects\dbo\vNotification.cs" />
+    <Compile Include="EntityObjects\dbo\vNotificationStatus.cs" />
+    <Compile Include="EntityObjects\dbo\vNotificationTemplate.cs" />
+    <Compile Include="EntityObjects\dbo\vSite.cs" />
+    <Compile Include="EntityObjects\dbo\vSiteDomain.cs" />
+    <Compile Include="EntityObjects\dbo\vUserDeviceClientAppType.cs" />
+    <Compile Include="EntityObjects\dbo\vUserDeviceSetting.cs" />
+    <Compile Include="EntityObjects\dbo\vUser_Language.cs" />
+    <Compile Include="EntityObjects\dbo\vUSState.cs" />
+    <Compile Include="EntityObjects\dbo\vWebApiClient.cs" />
+    <Compile Include="EntityObjects\dbo\vWebApiToken.cs" />
+    <Compile Include="EntityObjects\dbo\vWorldTimeZone.cs" />
+    <Compile Include="EntityObjects\dbo\WebApiClient.cs" />
+    <Compile Include="EntityObjects\dbo\WebApiToken.cs" />
+    <Compile Include="EntityObjects\dbo\WorldTimeZone.cs" />
+    <Compile Include="EntityObjects\fwtest\SiteIdGeneratorTest.cs" />
+    <Compile Include="EntityObjects\fwtest\TestCaseTester.cs" />
+    <Compile Include="EntityObjects\fwtest\TestMasterTree.cs" />
+    <Compile Include="EntityObjects\fwtest\vSiteIdGeneratorTest.cs" />
+    <Compile Include="EntityObjects\fwtest\vTestCaseTester.cs" />
+    <Compile Include="EntityObjects\fwtest\vTestMasterTree.cs" />
+    <Compile Include="EntityObjects\i18n\StringText.cs" />
+    <Compile Include="EntityObjects\i18n\StringTextTran.cs" />
+    <Compile Include="EntityObjects\i18n\vStringText.cs" />
+    <Compile Include="EntityObjects\i18n\vStringTextTran.cs" />
+    <Compile Include="EntityObjects\mem\MembershipArea.cs" />
+    <Compile Include="EntityObjects\mem\Permission.cs" />
+    <Compile Include="EntityObjects\mem\PermissionType.cs" />
+    <Compile Include="EntityObjects\mem\Resource.cs" />
+    <Compile Include="EntityObjects\mem\ResourceType.cs" />
+    <Compile Include="EntityObjects\mem\Role.cs" />
+    <Compile Include="EntityObjects\mem\User.cs" />
+    <Compile Include="EntityObjects\mem\UserApprovalStatus.cs" />
+    <Compile Include="EntityObjects\mem\UserInRole.cs" />
+    <Compile Include="EntityObjects\mem\vMembershipArea.cs" />
+    <Compile Include="EntityObjects\mem\vPermission.cs" />
+    <Compile Include="EntityObjects\mem\vPermissionType.cs" />
+    <Compile Include="EntityObjects\mem\vResource.cs" />
+    <Compile Include="EntityObjects\mem\vResourceType.cs" />
+    <Compile Include="EntityObjects\mem\vRole.cs" />
+    <Compile Include="EntityObjects\mem\vUser.cs" />
+    <Compile Include="EntityObjects\mem\vUserApprovalStatus.cs" />
+    <Compile Include="EntityObjects\mem\vUserInRole.cs" />
+    <Compile Include="Factories\ProjectEntityFactory.cs" />
+    <Compile Include="MobileApp\MobileAppSettings.cs" />
+    <Compile Include="NotificationSystem\ISignalRPushSender.cs" />
+    <Compile Include="NotificationSystem\MobileNotificationCollapseKeySEnum.cs" />
+    <Compile Include="NotificationSystem\MobileNotificationMessage.cs" />
+    <Compile Include="NotificationSystem\MobileNotificationTypeSEnum.cs" />
+    <Compile Include="PhoneNumberUtils.cs" />
+    <Compile Include="Config\ProjectConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceInterfaces\app\ICallLogService.cs" />
+    <Compile Include="ServiceInterfaces\app\ICallStatusService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDailyActivityChartService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDailyActivityService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDailyActivityTypeService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDoctorScheduleService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDoctorService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDoctor_IllnessService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDoctor_InsuranceService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDoctor_PatientService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDoctor_SpecialtyService.cs" />
+    <Compile Include="ServiceInterfaces\app\IDoctor_USStateService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFitActivityCategoryService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFitActivityService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFoodGroupItemService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFoodGroupService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFoodGroupSumService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFoodService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFoodServingTimeTypeService.cs" />
+    <Compile Include="ServiceInterfaces\app\IFoodServingTypeService.cs" />
+    <Compile Include="ServiceInterfaces\app\IGenderTypeService.cs" />
+    <Compile Include="ServiceInterfaces\app\IIllnessService.cs" />
+    <Compile Include="ServiceInterfaces\app\IIllness_SpecialtyService.cs" />
+    <Compile Include="ServiceInterfaces\app\IInsurancePlanService.cs" />
+    <Compile Include="ServiceInterfaces\app\IInsuranceService.cs" />
+    <Compile Include="ServiceInterfaces\app\IMedicalHistoryService.cs" />
+    <Compile Include="ServiceInterfaces\app\IPatientInsuranceService.cs" />
+    <Compile Include="ServiceInterfaces\app\IPaymentMethodService.cs" />
+    <Compile Include="ServiceInterfaces\app\IPaymentService.cs" />
+    <Compile Include="ServiceInterfaces\app\IPaymentStatusService.cs" />
+    <Compile Include="ServiceInterfaces\app\IPersonService.cs" />
+    <Compile Include="ServiceInterfaces\app\IRegionService.cs" />
+    <Compile Include="ServiceInterfaces\app\ISpecialtyService.cs" />
+    <Compile Include="ServiceInterfaces\app\ITimeSeriesStripService.cs" />
+    <Compile Include="ServiceInterfaces\app\ITimeSeriesTypeService.cs" />
+    <Compile Include="ServiceInterfaces\app\ITimeSeries_SmallInt_SecondsService.cs" />
+    <Compile Include="ServiceInterfaces\app\IUserPaymentInfoService.cs" />
+    <Compile Include="ServiceInterfaces\app\IVisitPlaceService.cs" />
+    <Compile Include="ServiceInterfaces\app\IVisitService.cs" />
+    <Compile Include="ServiceInterfaces\app\IVisitStatusService.cs" />
+    <Compile Include="ServiceInterfaces\app\IVitalTypeService.cs" />
+    <Compile Include="ServiceInterfaces\app\IVitalValueService.cs" />
+    <Compile Include="ServiceInterfaces\crm\IFeedbackService.cs" />
+    <Compile Include="ServiceInterfaces\crm\IFeedbackTypeService.cs" />
+    <Compile Include="ServiceInterfaces\crm\ITicketGroupService.cs" />
+    <Compile Include="ServiceInterfaces\crm\ITicketPriorityService.cs" />
+    <Compile Include="ServiceInterfaces\crm\ITicketSourceTypeService.cs" />
+    <Compile Include="ServiceInterfaces\crm\ITicketStatusService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppEntityService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppExceptionLogService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppFileService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppFileStorageTypeService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppFileTypeService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppFileUploadStatusService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppLogService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IAppLogTypeService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\ICountryService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\ILanguageService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IMobilePushDeliveryTypeService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IMobilePushNotificationService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IMobilePushServerService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IMobilePushTemplateService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\INotificationService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\INotificationStatusService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\INotificationTemplateService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\ISiteDomainService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\ISiteService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IUserDeviceClientAppTypeService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IUserDeviceSettingService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IUser_LanguageService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IUSStateService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IWebApiClientService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IWebApiTokenService.cs" />
+    <Compile Include="ServiceInterfaces\dbo\IWorldTimeZoneService.cs" />
+    <Compile Include="ServiceInterfaces\fwtest\ISiteIdGeneratorTestService.cs" />
+    <Compile Include="ServiceInterfaces\fwtest\ITestCaseTesterService.cs" />
+    <Compile Include="ServiceInterfaces\fwtest\ITestMasterTreeService.cs" />
+    <Compile Include="ServiceInterfaces\i18n\IStringTextService.cs" />
+    <Compile Include="ServiceInterfaces\i18n\IStringTextTranService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IMembershipAreaService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IPermissionService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IPermissionTypeService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IResourceService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IResourceTypeService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IRoleService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IUserApprovalStatusService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IUserInRoleService.cs" />
+    <Compile Include="ServiceInterfaces\mem\IUserService.cs" />
+    <Compile Include="SP\app\CallLogSP.cs" />
+    <Compile Include="SP\app\DailyActivitySP.cs" />
+    <Compile Include="SP\app\DailyActivityChartSP.cs" />
+    <Compile Include="SP\app\DoctorScheduleSP.cs" />
+    <Compile Include="SP\app\DoctorSP.cs" />
+    <Compile Include="SP\app\Doctor_PatientSP.cs" />
+    <Compile Include="SP\app\FoodGroupSP.cs" />
+    <Compile Include="SP\app\InsurancePlanSP.cs" />
+    <Compile Include="SP\app\MedicalHistorySP.cs" />
+    <Compile Include="SP\app\PaymentSP.cs" />
+    <Compile Include="SP\app\VisitSP.cs" />
+    <Compile Include="SP\app\VitalValueSP.cs" />
+    <Compile Include="SP\crm\Feedback.cs" />
+    <Compile Include="SP\dbo\AppFileSP.cs" />
+    <Compile Include="SP\dbo\UserDeviceSettingRegisterDeviceSP.cs" />
+    <Compile Include="SP\fwtest\TestCaseTesterSP.cs" />
+    <Compile Include="SP\mem\UserSP.cs" />
+    <Compile Include="TimeSeriesNHibernateCompositeKey.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{BCAB24BD-B4E9-40D7-9B77-BA15A3C07C90}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\app\GenderType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Person.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\VitalType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\VitalValue.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\fwtest\TestCaseTester.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\Permission.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\PermissionType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\Resource.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\Role.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\User.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\fwtest\SiteIdGeneratorTest.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\app\Region.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\MembershipArea.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\ResourceType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\UserApprovalStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\UserInRole.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\app\vGenderType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vPerson.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vRegion.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vVitalType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vVitalValue.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\fwtest\vSiteIdGeneratorTest.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\fwtest\vTestCaseTester.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vMembershipArea.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vPermission.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vPermissionType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vResource.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vResourceType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vRole.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vUser.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vUserApprovalStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\mem\vUserInRole.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\dbo\AppExceptionLog.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\AppLog.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppExceptionLog.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppLog.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\AppLogType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppLogType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\TimeSeriesType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\TimeSeries_SmallInt_Seconds.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vTimeSeriesType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\TimeSeriesStrip.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vTimeSeriesStrip.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Payment.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\PaymentMethod.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\PaymentStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\UserPaymentInfo.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Visit.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\VisitStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vPayment.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vPaymentMethod.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vPaymentStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vTimeSeries_SmallInt_Seconds.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vUserPaymentInfo.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vVisit.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vVisitStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Doctor_Insurance.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Doctor_Specialty.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Illness.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Illness_Specialty.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Insurance.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\InsurancePlan.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Specialty.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDoctor_Insurance.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDoctor_Specialty.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vIllness.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vIllness_Specialty.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vInsurance.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vInsurancePlan.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vSpecialty.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\Notification.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\NotificationStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\NotificationTemplate.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vNotification.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vNotificationStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vNotificationTemplate.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\fwtest\TestMasterTree.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\fwtest\vTestMasterTree.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\app\Doctor.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\DoctorSchedule.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDoctor.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDoctorSchedule.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\AppEntity.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\Language.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\User_Language.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\USState.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppEntity.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vLanguage.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vUser_Language.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vUSState.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\app\Doctor_Illness.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDoctor_Illness.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\dbo\Country.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vCountry.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vWorldTimeZone.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\WorldTimeZone.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\dbo\MobilePushServer.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\UserDeviceSetting.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vMobilePushServer.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vUserDeviceSetting.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EntityObjects\dbo\vWebApiClient.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vWebApiToken.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntityObjects\dbo\WebApiClient.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntityObjects\dbo\WebApiToken.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Doctor_USState.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDoctor_USState.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\MedicalHistory.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\PatientInsurance.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\VisitPlace.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vMedicalHistory.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vPatientInsurance.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vVisitPlace.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Doctor_Patient.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDoctor_Patient.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\AppFile.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\AppFileStorageType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\AppFileType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\AppFileUploadStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppFile.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppFileStorageType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppFileType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vAppFileUploadStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\MobilePushNotification.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\MobilePushTemplate.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vMobilePushNotification.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vMobilePushTemplate.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\MobilePushDeliveryType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vMobilePushDeliveryType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\CallLog.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vCallLog.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\CallStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vCallStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\Post.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\PostType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\TicketGroup.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\TicketPriority.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\TicketSourceType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\TicketStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vPost.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vPostType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vTicketGroup.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vTicketPriority.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vTicketSourceType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vTicketStatus.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\Site.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vSite.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\Feedback.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\FeedbackType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vFeedback.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\crm\vFeedbackType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\DailyActivity.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\DailyActivityType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\FitActivity.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\FitActivityCategory.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\Food.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\FoodGroup.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\FoodGroupItem.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\FoodServingType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDailyActivity.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDailyActivityChart.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vDailyActivityType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFitActivity.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFitActivityCategory.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFood.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFoodGroup.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFoodGroupItem.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFoodServingType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\FoodServingTimeType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFoodServingTimeType.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\app\vFoodGroupSum.hbm.xml" />
+    <Content Include="EntityObjects\dbo\SiteDomain.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\dbo\vSiteDomain.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\i18n\StringText.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\i18n\StringTextTran.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\i18n\vStringText.hbm.xml" />
+    <EmbeddedResource Include="EntityObjects\i18n\vStringTextTran.hbm.xml" />
+    <Content Include="EntityObjects\dbo\UserDeviceClientAppType.hbm.xml" />
+    <Content Include="EntityObjects\dbo\vUserDeviceClientAppType.hbm.xml" />
+    <Content Include="SP\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

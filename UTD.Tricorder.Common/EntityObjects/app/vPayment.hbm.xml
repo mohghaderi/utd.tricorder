@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vPayment" table="vPayment" schema="app">
+
+		<id name="PaymentID" column="PaymentID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.Payment</param>
+			</generator>
+		</id>
+		
+		<property column="SenderUserID" name="SenderUserID" not-null="true" />
+		<property column="ReceiverUserID" name="ReceiverUserID" not-null="true" />
+		<property column="AppEntityID" name="AppEntityID" not-null="true" />
+		<property column="AppEntityRecordIDValue" name="AppEntityRecordIDValue" not-null="true" />
+		<property column="PaymentStatusID" name="PaymentStatusID" not-null="true" />
+		<property column="CreatedDateTime" name="CreatedDateTime" not-null="true" />
+		<property column="CompletedDateTime" name="CompletedDateTime" />
+		<property column="Amount" name="Amount" not-null="true" />
+		<property column="Description" name="Description" length="100" />
+		<property column="ServiceChargeAmount" name="ServiceChargeAmount" not-null="true" />
+		<property column="PaymentMethodID" name="PaymentMethodID" not-null="true" />
+		<property column="PayKey" name="PayKey" length="50" />
+		<property column="ReceiverFirstName" name="ReceiverFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="ReceiverLastName" name="ReceiverLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="SenderFirstName" name="SenderFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="SenderLastName" name="SenderLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="AppEntityName" name="AppEntityName" insert="false" update="false" not-null="true" length="300" />
+		<property column="AppEntityADK" name="AppEntityADK" insert="false" update="false" length="100" />
+		<property column="UpdateUserID" name="UpdateUserID" />
+		<property column="UpdateDate" name="UpdateDate" />
+		<property column="PaymentStatusIcon" name="PaymentStatusIcon" insert="false" update="false" length="50" />
+		<property column="PaymentStatusName" name="PaymentStatusName" insert="false" update="false" length="100" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

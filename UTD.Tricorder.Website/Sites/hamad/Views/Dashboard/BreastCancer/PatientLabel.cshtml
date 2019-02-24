@@ -1,0 +1,136 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vMedicalHistory.EntityName;
+
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+
+@{
+    string[] relationshipTitles = { "Father", "Mother", "Sister1", "Sister2", "Sister3", "Brother1", "Brother2", "Brother3", "Spouse", "Child1", "Child2", "Child3" };
+    string modelPrefix = "model.PatientLabel.";
+    string sectionName = "PatientLabel";
+
+    ViewBag.PanelTitle = "Family History (1)";
+}
+
+@{ ViewBag.ViewTitle = "Breast Cancer Questionnaire"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "PatientLabel";}
+@Html.Partial("~/Views/Dashboard/BreastCancer/_BreastCancerTabs.cshtml")
+
+
+@helper NumberAsk(string title, string code, string modelPrefix)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-sm-4">@title</label>
+                <div class=" col-sm-8">
+                    <input type="text" class="form-control" name="@code" placeholder="" data-ng-model="@(modelPrefix + code)" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+
+
+@helper NumberMaleFemale(string question, string code, string modelPrefix, string maleLabel, string femaleLabel)
+{
+
+    <div class="row">
+        <div class="col-md-4">
+            <label class="control-label">@question</label>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label col-sm-3">@maleLabel</label>
+                <div class=" col-sm-9">
+                    <input type="text" maxlength="1" data-mask="0" class="form-control" name="@code + 'M'" placeholder="" data-ng-model="@(modelPrefix + code + 'M')" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label col-sm-3">@femaleLabel</label>
+                <div class=" col-sm-9">
+                    <input type="text" maxlength="1" data-mask="0" class="form-control" name="@code + 'F'" placeholder="" data-ng-model="@(modelPrefix + code + 'F')" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+
+@helper related(string question, string code, string modelPrefix)
+{
+
+<div class="row">
+    <div class="col-md-4">
+        <label class="control-label">@question</label>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            @FWHtml.YesNoRadios(modelPrefix, code, false)
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div ng-hide="!(@(modelPrefix + code) === true)">
+            <div>How?</div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div ng-hide="!(@(modelPrefix + code) === true)">
+            @FWHtml.YesNoRadios(modelPrefix, code + "Parental", false, "Parental", "Maternal")
+        </div>
+    </div>
+</div>
+<hr />
+}
+
+
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-sm-4">Where is your origin?</label>
+                <div class=" col-sm-8">
+                    <input type="text" class="form-control" name="Origin" placeholder="" data-ng-model="@(modelPrefix + "Origin")" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   Are you related to your spouse?   --------------------------  *@
+
+    @related("Are you related to your spouse?", "RMarriage", modelPrefix)
+
+    @NumberMaleFemale("How many kids do you have?", "kidsCount", modelPrefix, "Male:", "Female:")
+
+
+    @* --------------------------   Are you parents relatives?   --------------------------  *@
+
+    @related("Are you parents relatives?", "RParents", modelPrefix)
+
+
+    @NumberMaleFemale("How many siblings do you have?", "siblingsCount", modelPrefix, "Brothers: ", "Sisters: ")
+    @NumberMaleFemale("How many uncles do you have?", "unclesCount", modelPrefix, "Male: ", "Female: ")
+    @NumberMaleFemale("How many aunties do you have?", "auntiesCount", modelPrefix, "Male: ", "Female: ")
+
+
+    <img class="img-responsive" src="~/Sites/hamad/Content/Images/FamilyTree/family_tree.png" />
+
+
+    @UI.StickySavePanel()
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

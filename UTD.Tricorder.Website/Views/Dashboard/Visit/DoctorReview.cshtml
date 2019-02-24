@@ -1,0 +1,310 @@
+﻿@{
+    var entityName = vVisit.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{
+    string modelPrefix = "model.SysReview.";
+    string sectionName = "SysReview";
+}
+
+@{ ViewBag.ViewTitle = "Visit information"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "DoctorReview";}
+@Html.Partial("~/Views/Dashboard/Visit/_VisitDetailsTabs.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    @*<div class="row">
+        <div class="col-md-6">*@
+
+
+            @* ----------------------------------  General  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "General", "General")
+            @FWHtml.CheckBox(modelPrefix, "GeneralHasSignificantWeightLoss", "Significant weight loss")
+            @FWHtml.CheckBox(modelPrefix, "GeneralHasLossOfFeelingOfWellBeing", "Loss of feeling of well-being")
+            @FWHtml.CheckBox(modelPrefix, "GeneralHasFatigueOrLossOfEnergy", "Fatigue or loss of energy")
+            @FWHtml.CheckBox(modelPrefix, "GeneralHasDifficultySleeping", "Difficulty sleeping")
+            @DoctorReview.GetSectionFooter(modelPrefix, "General", "General")
+
+            @* ----------------------------------  Eyes  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Eyes", "Eyes")
+            @FWHtml.CheckBox(modelPrefix, "EyesHasBlurredVision", "Blurred vision")
+            @FWHtml.CheckBox(modelPrefix, "EyesHasDoubleVision", "Double Vision")
+            @FWHtml.CheckBox(modelPrefix, "EyesHasSpots", "Spots in front of your eyes")
+            @FWHtml.CheckBox(modelPrefix, "EyesHasPain", "Eye pain/irritation")
+            @FWHtml.CheckBox(modelPrefix, "EyesHasNeedLens", "Need for corrective lenses")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Eyes", "Eyes")
+
+            @* ----------------------------------  Ear-Nose- Throat  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "EarNose", "Ear-Nose- Throat")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasChronicHeadaches", "Chronic headaches")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasHearingLoss", "Hearing loss")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasRingingInEars", "Ringing in ears")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasDizziness", "Dizziness")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasChronicNasalCongestion", "Chronic nasal congestion")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasNoseBleeds", "Nose bleeds")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasNoseObstruction", "Nose obstruction")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasBleedingGums", "Bleeding gums")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasSoreThroat", "Sore throat")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasToothache", "Toothache")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasBreathOdor", "Breath Odor")
+            @FWHtml.CheckBox(modelPrefix, "EarNoseHasHoarseness", "Hoarseness")
+            @DoctorReview.GetSectionFooter(modelPrefix, "EarNose", "Ear-Nose- Throat")
+
+            @* ----------------------------------  Respiratory  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Respiratory", "Respiratory")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasShortnessOfBreath", "Shortness of breath")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasCough", "Cough")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasChestCongestion", "Chest congestion")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasWheezing", "Wheezing")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasCoughingUpBlood", "Coughing up blood")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasChoking", "Choking")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasNoisyBreathing", "Noisy breathing")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHasHistoryOfPneumonia", "History of pneumonia")
+            @FWHtml.CheckBox(modelPrefix, "RespiratoryHistoryOfTuberculosis", "History of Tuberculosis (T B)")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Respiratory", "Respiratory")
+
+            @* ----------------------------------  Cardiovascular  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Cardiovascular", "Cardiovascular")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasChestPain", "Chest pain")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasHeartFlutteringRacing", "Heart fluttering/racing")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasHeartMurmur", "Heart murmur")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasDecreasedExerciseTolerance", "Decreased exercise tolerance")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasDifficultyBreathingLying", "Difficulty breathing when lying down")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasAwakeningShortnessBreath", "Awakening due to shortness of breath")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasLegSwelling", "Leg Swelling")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasPainButtocksExercise", "Pain in buttocks or legs with exercise")
+            @FWHtml.CheckBox(modelPrefix, "CardioHasSensitivityOfhands_feet", "Sensitivity of hands/feet to temperature changes")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Cardiovascular", "Cardiovascular")
+
+
+            @* ----------------------------------  Breast  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Breast", "Breast")
+            @FWHtml.CheckBox(modelPrefix, "BreastHasBreastLump", "Breast lump")
+            @FWHtml.CheckBox(modelPrefix, "BreastHasBreastPain", "Breast pain")
+            @FWHtml.CheckBox(modelPrefix, "BreastHasNippleDischarge", "Nipple discharge")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Breast", "Breast")
+
+            @* ----------------------------------  Gastrointestinal  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Gastrointestinal", "Gastrointestinal")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasStomachPain", "Stomach pain")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasNausea", "Nausea")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasVomiting", "Vomiting")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasDiarrhea", "Diarrhea")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasConstipation", "Constipation")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasFrequentHeartburn", "Frequent heartburn")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasIndigestion", "Indigestion")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasBelchingSourTaste", "Belching/sour taste")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasDifficultySwallowing", "Difficulty swallowing")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasBloating", "Bloating")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasHistoryOfHepatitis", "History of hepatitis")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasHistoryOfYellowJaundice", "History of yellow jaundice")
+            Rectal:
+            @FWHtml.CheckBox(modelPrefix, "GastroHasRectalBleeding", "Rectal bleeding")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasRectalPain", "Rectal pain or irritation")
+            @FWHtml.CheckBox(modelPrefix, "GastroHasRectalSwellingHemorrhoids", "Swelling or hemorrhoids")
+
+            @DoctorReview.GetSectionFooter(modelPrefix, "Gastrointestinal", "Gastrointestinal")
+
+
+        @*</div>
+        <div class="col-md-6">*@
+
+
+
+            @* ----------------------------------  Genitourinary  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Genitourinary", "Genitourinary")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasFrequentUrination", "Frequent urination")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasFrequentUrgeToPee", "Frequent urge to pee")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasPainOnUrination", "Pain on urination")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasBloodyUrine", "Bloody urine")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasDischargeFromPenis", "Discharge from penis")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasTroubleStartingUrination", "Trouble starting urination")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasInterruptionOfUrine", "Interruption of urine stream")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasLossOfBladderControl", "Loss of bladder control")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasDeclineInSexualDesire", "Decline in sexual desire")
+
+            Men:
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasDribbling", "Dribbling")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasPainOrSwellingOfPenis", "Pain or swelling of penis")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasPainOrSwellingOfScrotalSac", "Pain or swelling of scrotal sac")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasPainOrSwellingInGroin", "Pain or swelling in groin")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasDifficultyErections", "Difficulty having erections or reaching climax")
+
+            Women:
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasFrequentUrinaryInfections", "Frequent urinary infections")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasPressureInVagina", "Pressure in vagina")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasVaginalWallWeakness", "Vaginal wall weakness/protrusion")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasFrequentLossOfUrine", "Frequent loss of urine")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasVaginalDischarge", "Vaginal discharge")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasVaginalIrritation", "Vaginal irritation")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasVaginalDryness", "Vaginal dryness")
+
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasVaginalRedness", "Vaginal redness")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasVaginalPain", "Vaginal pain")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasPainfulIntercourse", "Painful intercourse")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasDifficultyInSexualResponse", "Difficulty in sexual response")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasHotFlashes", "Hot flashes")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasChangeInPeriods", "Change in periods (menstrual flow, frequency)")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasMotherTookDES", "Mother took DES while pregnant with me")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasPainfulPeriods", "Painful periods")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasTroublesomePeriods", "Troublesome symptoms before/during periods")
+            @FWHtml.CheckBox(modelPrefix, "GenitourinaryHasOtherPelvicPain", "Other pelvic pain")
+            <div>
+                Please indicate:
+                Number of pregnancies
+                <input type="text" class="form-control" name="GenitourinaryPregnanciesCount" placeholder="" data-ng-model="@(modelPrefix + "GenitourinaryPregnanciesCount")" />
+                Number of deliveries
+                <input type="text" class="form-control" name="GenitourinaryDeliveries" placeholder="" data-ng-model="@(modelPrefix + "GenitourinaryDeliveries")" />
+                Number of miscarriages/abortions
+                <input type="text" class="form-control" name="GenitourinaryAbortions" placeholder="" data-ng-model="@(modelPrefix + "GenitourinaryAbortions")" />
+                Age at onset Of periods
+                <input type="text" class="form-control" name="GenitourinaryAgeAtOnsetOfPeriods" placeholder="" data-ng-model="@(modelPrefix + "GenitourinaryAgeAtOnsetOfPeriods")" />
+                Periods occur every
+                <input type="text" class="form-control" name="GenitourinaryPeriodsEveryXDays" placeholder="" data-ng-model="@(modelPrefix + "GenitourinaryPeriodsEveryXDays")" />
+                days and last
+                <input type="text" class="form-control" name="GenitourinaryPeriodsLastDays" placeholder="" data-ng-model="@(modelPrefix + "GenitourinaryPeriodsLastDays")" />
+                days
+                Onset of last period
+                <input type="text" class="form-control" name="GenitourinaryOnsetOfLastPeriod" placeholder="" data-ng-model="@(modelPrefix + "OnsetOfLastPeriod")" />
+                @*Comment
+                <input type="text" class="form-control" name="GenitourinaryComment" placeholder="" data-ng-model="@(modelPrefix + "GenitourinaryComment")" />*@
+            </div>
+
+            @DoctorReview.GetSectionFooter(modelPrefix, "Genitourinary", "Genitourinary")
+
+
+            @* ----------------------------------  Lymphatic  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Lymphatic", "Lymphatic/Hematologic")
+            @FWHtml.CheckBox(modelPrefix, "LymphaticHasUnusualLymphNodeSwelling", "Unusual lymph node swelling (in neck, arm pit, or groin)")
+            @FWHtml.CheckBox(modelPrefix, "LymphaticHasPainfulLymphNodes", "Painful lymph nodes")
+            @FWHtml.CheckBox(modelPrefix, "LymphaticHasHistoryOfAnemia", "History Of anemia")
+            @FWHtml.CheckBox(modelPrefix, "LymphaticHasBloodClots", "Blood clots")
+            @FWHtml.CheckBox(modelPrefix, "LymphaticHasBruiseEasily", "Bruise easily")
+            @FWHtml.CheckBox(modelPrefix, "LymphaticHasUnusualBleeding", "Unusual bleeding")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Lymphatic", "Lymphatic/Hematologic")
+
+
+            @* ----------------------------------  Musculoskeletal  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Musc", "Musculoskeletal")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasLimbPain", "Limb or joint pains")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasLimbDeform", "Limb or joint deform")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasLimbSwelling", "Limb or joint swelling/stiffness/redness")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasMuscleWeakness", "Muscle weakness")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasLossOfMuscleBulk", "Loss Of muscle bulk")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasMuscleSpasms", "Muscle spasms or twitching")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasRecurringBackNeckPain", "Recurring back/neck pain")
+            @FWHtml.CheckBox(modelPrefix, "MuscHasBackNeckInjury", "Back/neck injury")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Musc", "Musculoskeletal")
+
+            @* ----------------------------------  Neurologic  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Neurologic", "Neurologic")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasSeizures", "Seizures")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasTremorsShakiness", "Tremors/shakiness")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasUnusualClumsiness", "Unusual clumsiness")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasLimbWeakness", "Limb weakness")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasNumbnessTingling", "Numbness/tingling")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasStroke", "Stroke")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasHistoryOfHeadInjury", "History of significant head injury")
+            @FWHtml.CheckBox(modelPrefix, "NeurologicHasAlteredConsciousness", "Altered consciousness or black-outs")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Neurologic", "Neurologic")
+
+
+            @* ----------------------------------  Psychologic  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Psycho", "Psychologic")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasLapsesInMemory", "Lapses in memory")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasPeriodsOfConfusion", "Periods of confusion/disorientation")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasDifficultyConcentrating", "Difficulty concentrating")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasTroublesomeDepression", "Troublesome depression")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasWorryAboutThings", "Worry about things")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasMoodSwings", "Mood swings")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasHistoryOfMentalIllness", "History of mental illness")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasUnusualStress", "Unusual stress")
+            @FWHtml.CheckBox(modelPrefix, "PsychoHasHistoryOfPhysicalOrMentalAbuse", "History of physical or mental abuse")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Psycho", "Psychologic")
+
+            @* ----------------------------------  Skin  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Skin", "Skin")
+            @FWHtml.CheckBox(modelPrefix, "SkinHasItching", "Itching")
+            @FWHtml.CheckBox(modelPrefix, "SkinHasRash", "Rash")
+            @FWHtml.CheckBox(modelPrefix, "SkinHasUnusualDryness", "Unusual dryness")
+            @FWHtml.CheckBox(modelPrefix, "SkinHasChangesInHair", "Changes in hair")
+            @FWHtml.CheckBox(modelPrefix, "SkinHasChangesInPigmentation", "Changes in pigmentation")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Skin", "Skin")
+
+
+            @* ----------------------------------  Endocrine  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Endo", "Endocrine")
+            Unexpected changes in:
+            @FWHtml.CheckBox(modelPrefix, "EndoHasToleranceToHeat", "Tolerance to heat")
+            @FWHtml.CheckBox(modelPrefix, "EndoHasToleranceToCold", "Tolerance to cold")
+            @FWHtml.CheckBox(modelPrefix, "EndoHasUnusualThirst", "Unusual thirst")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Endo", "Endocrine")
+
+
+            @* ----------------------------------  Allergy  ------------------------------ *@
+
+            @DoctorReview.GetSectionHeader(modelPrefix, "Allergy", "Allergy/lmmunolo")
+            @FWHtml.CheckBox(modelPrefix, "AllergyHasSeasonalAllergies", "Seasonal allergies")
+            @FWHtml.CheckBox(modelPrefix, "AllergyHasSensitivityToItems", "Sensitivity to specific items")
+            <input type="text" class="form-control" name="AllergySensitivityItems" placeholder="Sensitivity items" data-ng-model="@(modelPrefix + "AllergySensitivityItems")" />
+            @FWHtml.CheckBox(modelPrefix, "AllergyHasFrequentInfections", "Frequent or unusual infections")
+            @DoctorReview.GetSectionFooter(modelPrefix, "Allergy", "Allergy/lmmunolo")
+
+
+            @* ---------------------------  Form Template ---------------------------- *@
+
+            @*<div class="row">
+            <div class="col-md-8">
+                <label>General</label>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    @FWHtml.YesNoRadios(modelPrefix, "GeneralReview", false, checkedYesText, checkedNoText)
+                </div>
+            </div>
+        </div>
+        <div>
+            <div ng-hide="(@(modelPrefix + "GeneralReview") === undefined) || @(modelPrefix + "GeneralReview") === false">
+                @FWHtml.CheckBox(modelPrefix, "GeneralHasSignificantWeightLoss", "Significant weight loss")
+                @FWHtml.CheckBox(modelPrefix, "GeneralHasLossOfFeelingOfWellBeing", "Loss of feeling of well-being")
+                @FWHtml.CheckBox(modelPrefix, "GeneralHasFatigueOrLossOfEnergy", "Fatigue Or loss Of energy")
+                @FWHtml.CheckBox(modelPrefix, "GeneralHasDifficultySleeping", "Difficulty sleeping")
+                <input type="text" class="form-control" name="GeneralComment" placeholder="Comment" data-ng-model="@(modelPrefix + "GeneralComment")" />
+            </div>
+        </div>
+        <hr />*@
+
+
+        @*</div>
+
+    </div>*@
+
+
+    <div ng-hide="CurrentRoleCode != 'Doctor'">
+        @UI.StickySavePanel()    
+    </div>
+    
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

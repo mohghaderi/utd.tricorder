@@ -1,0 +1,39 @@
+﻿@using UTD.Tricorder.Common.EntityInfos;
+@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vUserPaymentInfo.EntityName;
+    
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Payment info"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+        <form role="form"
+              ng-controller="@(entityName)FormController"
+              id="@(entityName)FormFrm"
+              onsubmit="return false;">
+
+            <h3>Please enter your email registered with PayPal to send and recieve money from our website</h3>
+            <img src="~/Content/Images/Misc/paypal_curved.png" alt="PayPal logo" />
+
+            <div class="form-group">
+                <label>PayPal Email</label>
+                <input type="email"
+                       name="UserPaymentInfoPayPalEmail"
+                       class="form-control"
+                       placeholder="email"
+                       data-ng-model="model.UserPaymentInfoPayPalEmail"
+                       data-bv-notempty="true">
+            </div>
+
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-success btn-block"
+                        ng-click="Save($event)">
+                    Save
+                </button>
+            </div>
+        </form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

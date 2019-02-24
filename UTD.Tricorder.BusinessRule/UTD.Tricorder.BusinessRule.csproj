@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{357F0C3B-E8DF-4A0D-A454-EAEB17078CF3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UTD.Tricorder.BusinessRule</RootNamespace>
+    <AssemblyName>UTD.Tricorder.BusinessRule</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app\CallLogBR.cs" />
+    <Compile Include="app\CallStatusBR.cs" />
+    <Compile Include="app\DailyActivityBR.cs" />
+    <Compile Include="app\DailyActivityChartBR.cs" />
+    <Compile Include="app\DailyActivityTypeBR.cs" />
+    <Compile Include="app\DoctorBR.cs" />
+    <Compile Include="app\DoctorScheduleBR.cs" />
+    <Compile Include="app\Doctor_IllnessBR.cs" />
+    <Compile Include="app\Doctor_InsuranceBR.cs" />
+    <Compile Include="app\Doctor_PatientBR.cs" />
+    <Compile Include="app\Doctor_SpecialtyBR.cs" />
+    <Compile Include="app\Doctor_USStateBR.cs" />
+    <Compile Include="app\FitActivityBR.cs" />
+    <Compile Include="app\FitActivityCategoryBR.cs" />
+    <Compile Include="app\FoodBR.cs" />
+    <Compile Include="app\FoodGroupBR.cs" />
+    <Compile Include="app\FoodGroupItemBR.cs" />
+    <Compile Include="app\FoodGroupSumBR.cs" />
+    <Compile Include="app\FoodServingTimeTypeBR.cs" />
+    <Compile Include="app\FoodServingTypeBR.cs" />
+    <Compile Include="app\GenderTypeBR.cs" />
+    <Compile Include="app\IllnessBR.cs" />
+    <Compile Include="app\Illness_SpecialtyBR.cs" />
+    <Compile Include="app\InsuranceBR.cs" />
+    <Compile Include="app\InsurancePlanBR.cs" />
+    <Compile Include="app\MedicalHistoryBR.cs" />
+    <Compile Include="app\PatientInsuranceBR.cs" />
+    <Compile Include="app\PaymentBR.cs" />
+    <Compile Include="app\PaymentMethodBR.cs" />
+    <Compile Include="app\PaymentStatusBR.cs" />
+    <Compile Include="app\PersonBR.cs" />
+    <Compile Include="app\RegionBR.cs" />
+    <Compile Include="app\SpecialtyBR.cs" />
+    <Compile Include="app\TimeSeriesStripBR.cs" />
+    <Compile Include="app\TimeSeriesTypeBR.cs" />
+    <Compile Include="app\TimeSeries_SmallInt_SecondsBR.cs" />
+    <Compile Include="app\UserPaymentInfoBR.cs" />
+    <Compile Include="app\VisitBR.cs" />
+    <Compile Include="app\VisitPlaceBR.cs" />
+    <Compile Include="app\VisitStatusBR.cs" />
+    <Compile Include="app\VitalTypeBR.cs" />
+    <Compile Include="app\VitalValueBR.cs" />
+    <Compile Include="BusinessErrorStrings.cs" />
+    <Compile Include="crm\FeedbackBR.cs" />
+    <Compile Include="crm\FeedbackTypeBR.cs" />
+    <Compile Include="crm\TicketGroupBR.cs" />
+    <Compile Include="crm\TicketPriorityBR.cs" />
+    <Compile Include="crm\TicketSourceTypeBR.cs" />
+    <Compile Include="crm\TicketStatusBR.cs" />
+    <Compile Include="dbo\AppEntityBR.cs" />
+    <Compile Include="dbo\AppExceptionLogBR.cs" />
+    <Compile Include="dbo\AppFileBR.cs" />
+    <Compile Include="dbo\AppFileStorageTypeBR.cs" />
+    <Compile Include="dbo\AppFileTypeBR.cs" />
+    <Compile Include="dbo\AppFileUploadStatusBR.cs" />
+    <Compile Include="dbo\AppLogBR.cs" />
+    <Compile Include="dbo\AppLogTypeBR.cs" />
+    <Compile Include="dbo\CountryBR.cs" />
+    <Compile Include="dbo\LanguageBR.cs" />
+    <Compile Include="dbo\MobilePushDeliveryTypeBR.cs" />
+    <Compile Include="dbo\MobilePushNotificationBR.cs" />
+    <Compile Include="dbo\MobilePushServerBR.cs" />
+    <Compile Include="dbo\MobilePushTemplateBR.cs" />
+    <Compile Include="dbo\NotificationBR.cs" />
+    <Compile Include="dbo\NotificationStatusBR.cs" />
+    <Compile Include="dbo\NotificationTemplateBR.cs" />
+    <Compile Include="dbo\SiteBR.cs" />
+    <Compile Include="dbo\SiteDomainBR.cs" />
+    <Compile Include="dbo\UserDeviceClientAppTypeBR.cs" />
+    <Compile Include="dbo\UserDeviceSettingBR.cs" />
+    <Compile Include="dbo\User_LanguageBR.cs" />
+    <Compile Include="dbo\USStateBR.cs" />
+    <Compile Include="dbo\WebApiClientBR.cs" />
+    <Compile Include="dbo\WebApiTokenBR.cs" />
+    <Compile Include="dbo\WorldTimeZoneBR.cs" />
+    <Compile Include="fwtest\SiteIdGeneratorTestBR.cs" />
+    <Compile Include="fwtest\TestCaseTesterBR.cs" />
+    <Compile Include="fwtest\TestMasterTreeBR.cs" />
+    <Compile Include="i18n\StringTextBR.cs" />
+    <Compile Include="i18n\StringTextTranBR.cs" />
+    <Compile Include="mem\MembershipAreaBR.cs" />
+    <Compile Include="mem\PermissionBR.cs" />
+    <Compile Include="mem\PermissionTypeBR.cs" />
+    <Compile Include="mem\ResourceBR.cs" />
+    <Compile Include="mem\ResourceTypeBR.cs" />
+    <Compile Include="mem\RoleBR.cs" />
+    <Compile Include="mem\UserApprovalStatusBR.cs" />
+    <Compile Include="mem\UserBR.cs" />
+    <Compile Include="mem\UserInRoleBR.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Framework\Framework.csproj">
+      <Project>{BCAB24BD-B4E9-40D7-9B77-BA15A3C07C90}</Project>
+      <Name>Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTD.Tricorder.Common\UTD.Tricorder.Common.csproj">
+      <Project>{DA99F770-52F5-4320-BE54-FBE8B670B888}</Project>
+      <Name>UTD.Tricorder.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UTD.Tricorder.DataAccess\UTD.Tricorder.DataAccess.csproj">
+      <Project>{A05ECE98-B2E7-498D-9161-0FE52322F664}</Project>
+      <Name>UTD.Tricorder.DataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

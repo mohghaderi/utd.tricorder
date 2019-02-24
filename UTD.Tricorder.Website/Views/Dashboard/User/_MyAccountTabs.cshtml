@@ -1,0 +1,13 @@
+﻿<!-- My Account tabs -->
+<div ng-controller="UserMyAccountTabsController">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="@(FWHtml.GetActiveTabClass("ProfileEdit", ViewBag.ActiveTab))">
+            <a href="#User-ProfileEdit" role="tab">Account Info</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("PersonEdit", ViewBag.ActiveTab))">
+            <a href="#Person-FormInsideProfileTab?MasterID={{MasterID}}" role="tab">Personal Info Edit</a>
+        </li>
+    </ul>
+</div>
+
+<!-- End My Account tabs -->

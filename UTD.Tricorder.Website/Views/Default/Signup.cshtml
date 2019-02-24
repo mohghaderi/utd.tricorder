@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Sign Up";
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_PublicWebLayout.cshtml");
+}
+
+@{
+    var entityName = "User";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Sign Up"; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+
+
+<form role="form"
+      ng-controller="@(entityName)SignupController"
+      id="@(entityName)SignupFrm"
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-sm-6">
+            @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.FirstName])
+        </div>
+        <div class="col-sm-6">
+            @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.LastName])
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.Email], "data-bv-notempty=\"true\"" + 
+                        "data-bv-callback='true' data-bv-callback-callback='remoteValidateSingleField' data-remote-function='ValidateEmailForInsert'")
+        </div>
+        <div class="col-sm-6">
+            @*@FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.PhoneNumber], 
+                        "data-bv-callback='true' data-bv-callback-callback='remoteValidateSingleField' data-remote-function='ValidatePhoneNumberForInsert'")*@
+
+            @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.PhoneNumber], "data-bv-notempty=\"true\" initialCountry=\"auto\" ")
+        </div>
+    </div>
+
+    
+    @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.UserName], "data-bv-callback='true' data-bv-callback-callback='remoteValidateSingleField' data-remote-function='ValidateUserNameForInsert'")
+
+    @*<div class="form-group">
+        <label class="control-label">User Name</label>
+        <input name="UserName"
+               class="form-control"
+               type="text"
+               pattern="^(?=.{5,50}$)([A-Za-z0-9][._]?)*$"
+               data-bv-regexp-message="UserName must be 5-50 characters (not case sensitive)&#10;should be a sequence of alphanumerics (A-Z, a-z, 0-9),&#10;can have dot (.) or underscore (_) but not consecutive"
+               data-bv-notempty="true"
+               data-ng-model="model.UserName"
+               data-bv-field="UserName"
+               date-remotefunction="ValidateUserNameForInsert"
+               data-bv-callback-callback="RemoteValidateSingleField"
+               data-bv-callback="true">
+    </div>*@
+
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Password</label>
+                <input type="password"
+                       name="password"
+                       class="form-control"
+                       placeholder="Password"
+                       data-ng-model="model.Password"
+                       data-bv-notempty="true"
+                       data-bv-stringlength="true"
+                       data-bv-stringlength-min="6" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label">Confirm Password</label>
+                <input type="password"
+                       name="confirmPassword"
+                       class="form-control"
+                       placeholder="Confirm Password"
+                       data-ng-model="model.ConfirmPassword"
+                       data-bv-notempty="true" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">Register As</label>
+        <div data-selectize="{}">
+            <select class="form-control"
+                    name="defaultRoleID"
+                    data-ng-model="model.defaultRoleID"
+                    data-bv-notempty="true">
+                <option value="">Please select</option>
+                <option value="1">Patient</option>
+                <option value="2">Doctor</option>
+            </select>
+        </div>
+    </div>
+
+    <div><p>Your information is safe with us. We never sell or disclose your personal or contact information.</p></div>
+    <div><p>By clicking Sign Up, you agree to our <a href="~/Default/Terms" target='_blank'>Terms of Service</a> and <a href="~/Default/PrivacyPolicy" target='_blank'>Privacy Policy</a></p></div>
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-success"
+                ng-click="Signup($event)">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sign Up   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+    </div>
+
+</form>
+
+<hr />
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <a class="btn btn-default btn-block"
+           href="Login">
+            Login
+        </a>
+    </div>
+    <div class="col-md-8">
+        <a class="btn btn-default btn-block"
+           href="ContinueQReg">
+            Continue incomplete registration
+        </a>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")
+
+@if (FWHtml.IsDebug()) {
+    @section DebugScripts
+    {
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                var pNumber = '22';
+                //var prefix = "Patient";
+                var prefix = "Doctor";
+                var scope = angular.element($("form").first()).scope();
+                scope.model = {};
+                scope.model.FirstName = prefix + 'F' + pNumber;
+                scope.model.LastName = prefix + 'L' + pNumber;
+                scope.model.Email = prefix + pNumber + "@@" + prefix + '.com';
+                scope.model.PhoneNumber = '+146923049' + pNumber;
+                scope.model.UserName = prefix + pNumber;
+                scope.model.Password = prefix + pNumber + "!";
+                scope.model.ConfirmPassword = prefix + pNumber + "!";
+                if (prefix == "Patient")
+                    scope.model.defaultRoleID = '1';
+                else
+                    scope.model.defaultRoleID = '2';
+                scope.$apply();
+            });
+        </script>
+    }
+}

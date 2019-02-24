@@ -1,0 +1,43 @@
+﻿<!-- MyDoctorsSelect-->
+<div id="Doctor_PatientMyDoctorsControllerDiv"
+     ng-controller="Doctor_PatientMyDoctorsController">
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="200">Title</th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        @UI.DoctorProfileImage("{{item.DoctorProfilePicUrl}}", "", 80)
+                        {{item.DoctorFullName}}
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-info" ng-click="$parent.DoctorSelected(item.DoctorID, item.DoctorFullName)">Select</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        Not in the list,
+        <a href="#Doctor-SearchByPhoneForm" class="btn btn-info">
+            Find By Phone Number
+        </a>
+    </div>
+
+    @*@Html.Partial("~/Views/Dashboard/Doctor/ProfileDialog.cshtml")*@
+
+</div><!-- end of Doctor_PatientMyDoctorsController controller -->
+<!-- end of MyDoctorsSelect-->

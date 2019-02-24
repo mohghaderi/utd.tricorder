@@ -1,0 +1,123 @@
+﻿@functions {
+
+    // Add code here.
+    public MvcHtmlString CurrentUserLink(string path)
+    {
+        return new MvcHtmlString("OpenPath('" + path + "', {MasterID : CurrentUserID})");
+    }
+
+}
+
+@helper MenuItem(string title, string iconClass, string href)
+{
+    <a data-ng-click="OpenPath('@href')" href=""><i class="fa-sidebar @iconClass"></i>  @title</a>
+}
+
+@helper MenuItemNG(string title, string iconClass, string href)
+{
+    <a data-ng-click="@href" href=""><i class="fa-sidebar @iconClass"></i>  @title</a>
+}
+@helper MenuCurrentUser(string title, string iconClass, string path)
+{
+    <a data-ng-click="OpenPath('@path', {MasterID: CurrentUserID})" href=""><i class="fa-sidebar @iconClass"></i>  @title</a>
+}
+
+
+
+
+<!-- Doctor's Side bar -->
+<div ng-hide="CurrentRoleCode != 'Doctor'" class="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li>
+            @MenuItemNG("Dashboard", "fa-dashboard", "GotoMainMenu()")
+        </li>
+        <li>
+            @MenuItem("Today's appointments", "fa-calendar", "Visit-TodaysAppointments")
+        </li>
+        <li>
+            @MenuItem("Appointments", "fa-calendar", "Visit-MyVisitsDoctor")
+            <ul>
+                <li>@MenuItem("Book new", "fa-book", "Visit-BookForDoctor")</li>
+                <li>@MenuItem("Register new patient", "fa-plus-circle", "User-RegisterQuickFromDoctor")</li>
+            </ul>
+        </li>
+        <li>
+            @MenuItem("My Patients", "fa-users", "Doctor_Patient-MyPatients")
+        </li>
+        <li>
+            @MenuItem("My Calendar", "fa-calendar-o", "DoctorSchedule-CalendarEdit")
+        </li>
+        <li>
+            @MenuItem("Professional Info", "fa-user-md", "DoctorInfoMenu")
+            <ul>
+                <li>@MenuItem("Basic Info", "fa-user-md", "Doctor-Form")</li>
+                <li>@MenuItem("Licensed States", "fa-user-md", "Doctor_USState-TwoKey")</li>
+                <li>@MenuItem("Insurance", "fa-user-md", "Doctor_Insurance-TwoKey")</li>
+                <li>@MenuItem("Specialty", "fa-user-md", "Doctor_Specialty-TwoKey")</li>
+                <li>@MenuItem("Languages", "fa-user-md", "User_Language-TwoKey")</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"></a>
+            @MenuItem("My account", "fa-user", "User-ProfileEdit")
+            <ul>
+                <li>@MenuItem("Change Password", "fa-key", "User-ChangePasswordForm")</li>
+                <li><a href="" class="fa-sidebar fa-sign-out" data-ng-click="logOut()">Logout</a></li>
+            </ul>
+        </li>
+        <li>&nbsp;&nbsp;</li>
+    </ul>
+</div>
+<!-- End Doctor's Side bar -->
+
+
+            <!-- Patient Side bar -->
+<div ng-hide="CurrentRoleCode != 'Patient'" class="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li>
+            @MenuItemNG("Dashboard", "fa-dashboard", "GotoMainMenu()")
+        </li>
+        <li>
+            @MenuItem("Breat Cancer Info", "fa-h-square", "BreastCancerInfo-BcInfo")
+            <ul>
+                <li>@MenuItem("Breat Cancer Info", "fa-info", "BreastCancerInfo-BcInfo")</li>
+                <li>@MenuItem("Breast Self-Examination", "fa-info", "BreastCancerInfo-BseTraining")</li>
+                @*<li>@MenuItem("Dr.Hall's calculator", "fa-info", "BreastCancerInfo-RiskAssessmentDrHall")</li>*@
+            </ul>
+        </li>
+        <li>
+            @MenuCurrentUser("Risk Assessment", "fa-h-square", "BreastCancer-PatientLabel")
+            <ul>
+                <li>@MenuCurrentUser("Family History", "fa-info", "BreastCancer-FamilyHistory")</li>
+                <li>@MenuCurrentUser("Allergy", "fa-info", "BreastCancer-Allergy")</li>
+                <li>@MenuCurrentUser("Current Medications", "fa-info", "BreastCancer-CurrentMed")</li>
+                <li>@MenuCurrentUser("Immunization", "fa-info", "BreastCancer-Immunization")</li>
+                <li>@MenuCurrentUser("Past Conditions", "fa-info", "BreastCancer-PastMed")</li>
+                <li>@MenuCurrentUser("Social", "fa-info", "BreastCancer-Social")</li>
+                <li>@MenuCurrentUser("Risk Assessment", "fa-info", "BreastCancer-RiskAssessment")</li>
+                <li>@MenuCurrentUser("Risk Assessment 2", "fa-info", "BreastCancer-RiskAssessment2")</li>
+                <li>@MenuCurrentUser("Risk Assessment 3", "fa-info", "BreastCancer-RiskAssessment3")</li>
+                <li>@MenuCurrentUser("Sign", "fa-info", "BreastCancer-Sign")</li>
+            </ul>
+
+
+        </li>
+        <li>
+            @MenuItem("My Profile", "fa-male", "Person-ProfileView")
+            <ul>
+                <li>@MenuCurrentUser("Insurance", "fa-info", "PatientInsurance-GridInsideProfileTab")</li>
+                <li>@MenuCurrentUser("Language", "fa-info", "User_Language-TwoKeyInsideProfileTab")</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"></a>
+            @MenuItem("My account", "fa-user", "User-ProfileEdit")
+            <ul>
+                <li>@MenuItem("Change Password", "fa-key", "User-ChangePasswordForm")</li>
+                <li><a href="" class="fa-sidebar fa-sign-out" data-ng-click="logOut()">Logout</a></li>
+            </ul>
+        </li>
+        <li>&nbsp;&nbsp;</li>
+    </ul>
+</div>
+<!-- End Patient Side bar -->

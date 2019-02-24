@@ -1,0 +1,82 @@
+﻿
+<div id="UserSearchFromVisitBookControllerDiv"
+     ng-controller="UserSearchFromVisitBookController">
+
+    @* This causes <form> inside <form> that is not allowed in html and makes problems for Bootstrap validator
+        TODO: Fix dialogs form in form problems later *@
+
+    @*<a ng-click="UserRegisterQuickFromDoctorDialogController.ShowDialog()" class="btn btn-info">
+            Add New Patient
+        </a>*@
+
+    <div class="panel panel-info">
+        <div class="panel-heading">Search</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input class="form-control" ng-model="SearchPhoneNumber" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input class="form-control" ng-model="SearchFirstName" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input class="form-control" ng-model="SearchLastName" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th width="200"></th>
+                <th></th>
+                <th width="50"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in itemsList">
+                <td>
+                    @UI.UserProfileImage("{{item.UserProfilePicUrl}}")
+                </td>
+                <td>
+                    <b>Name:</b>{{item.UserFullName}}<br/>
+                    <b>Tel:</b>{{item.PhoneNumber}}
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" ng-click="$parent.PatientSelected(item.UserID, item.UserFullName)">Select</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        @*@Html.Partial("~/Views/Dashboard/User/RegisterQuickFromDoctorDialog.cshtml")*@
+
+    </div>
+    <div>
+        Can't find your patient?&nbsp;
+        <a href="#User-RegisterQuickFromDoctor" class="btn btn-info">
+            Add New Patient
+        </a>
+    </div>
+</div>

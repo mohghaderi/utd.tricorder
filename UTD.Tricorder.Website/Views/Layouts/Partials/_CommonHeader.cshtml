@@ -1,0 +1,39 @@
+﻿@{
+
+    // gets website full path url
+    
+    string appPath = string.Empty;
+    var httpRequestBase = HttpContext.Current.Request;
+
+    if (httpRequestBase != null)
+    {
+        //Formatting the fully qualified website url/name
+        appPath = string.Format("{0}://{1}{2}{3}",
+                    httpRequestBase.Url.Scheme,
+                    httpRequestBase.Url.Host,
+                    httpRequestBase.Url.Port == 80 ? string.Empty : ":" + httpRequestBase.Url.Port,
+                    httpRequestBase.ApplicationPath);
+    }
+
+    if (!appPath.EndsWith("/"))
+    {
+        appPath += "/";
+    }
+
+}
+
+<meta charset="utf-8" />
+<meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<script>    @*Defines base page for all view accesses in the site *@
+    var settings = {};
+    settings.singlesignonserverurl = '@(appPath)';
+    settings.apiserverbaseurl = '@(appPath + UIText.CultureName() + "/")';
+    settings.websiteviewserverbaseurl = '@(appPath + UIText.CultureName() + "/")';
+    settings.isrtl = @UIText.IsRTL().ToString().ToLower();
+    window.AppSettings = settings;
+</script>
+
+
+@*<div style="display:none" id="" data-value=""></div>*@

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="AppFileType" table="AppFileType">
+
+		<id name="AppFileTypeID" column="AppFileTypeID" type="Int32" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt32, Framework">
+				<param name="table_name">dbo.AppFileType</param>
+			</generator>
+		</id>
+		
+		<property column="AppEntityID" name="AppEntityID" not-null="true" />
+		<property column="AppFileTypeTitle" name="AppFileTypeTitle" not-null="true" length="200" />
+		<property column="ParentFileTypeID" name="ParentFileTypeID" />
+		<property column="MaxNumberOfFiles" name="MaxNumberOfFiles" not-null="true" />
+		<property column="IsMandatory" name="IsMandatory" not-null="true" />
+		<property column="MinFileSize" name="MinFileSize" not-null="true" />
+		<property column="MaxFileSize" name="MaxFileSize" not-null="true" />
+		<property column="AcceptableFormatsCommaSeparated" name="AcceptableFormatsCommaSeparated" not-null="true" length="100" />
+		<property column="VirtualPathTemplate" name="VirtualPathTemplate" not-null="true" length="200" />
+		<property column="AppFileStorageTypeID" name="AppFileStorageTypeID" not-null="true" />
+		<property column="HasSecurityCheck" name="HasSecurityCheck" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

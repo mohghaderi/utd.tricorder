@@ -1,0 +1,119 @@
+using System;
+using System.Collections.Generic;
+using System.Xml.Serialization;
+using Framework.Common;
+using Framework.Common.Entity;
+using System.Diagnostics.CodeAnalysis;
+
+
+namespace UTD.Tricorder.Common.EntityObjects
+
+{
+	[Serializable]
+	[ExcludeFromCodeCoverage]
+	public partial class vFitActivityCategory : EntityObjectBase
+	{
+		#region Generator-Safe Area
+		//Please write your properties and functions here. This part will not be replaced.
+
+		
+
+		#endregion
+
+
+		public const string EntityName = "FitActivityCategory";
+
+		#region ColumnNames Class
+
+		public static class ColumnNames
+		{
+			public const string FitActivityCategoryID = "FitActivityCategoryID";
+			public const string FitActivityCategoryTitle = "FitActivityCategoryTitle";
+		}
+
+
+		private static List<String> _ColumnsList;
+
+		public static List<String> GetColumnNamesList()
+		{
+			if (_ColumnsList != null)
+				return _ColumnsList;
+			
+			_ColumnsList = new List<string>();
+			_ColumnsList.Add("FitActivityCategoryID");
+			_ColumnsList.Add("FitActivityCategoryTitle");
+
+			return _ColumnsList;
+		}
+
+		#endregion // end columnNames class 
+
+		#region Private Members
+
+		private int _fitactivitycategoryid; 
+		private string _fitactivitycategorytitle; 		
+		#endregion
+
+		#region Constructor
+
+		public vFitActivityCategory()
+		 //: base()
+		{
+			_fitactivitycategoryid = -1; 
+			_fitactivitycategorytitle = null; 
+		}
+		#endregion // End Constructor
+
+		#region Public Properties
+			
+		public virtual int FitActivityCategoryID
+		{
+			get
+			{ 
+				return _fitactivitycategoryid;
+			}
+			set
+			{
+				_fitactivitycategoryid = value;
+			}
+
+		}
+			
+		public virtual string FitActivityCategoryTitle
+		{
+			get
+			{ 
+				return _fitactivitycategorytitle;
+			}
+
+			set	
+			{	
+				//if( value == null )
+				//	throw new ArgumentOutOfRangeException("Null value not allowed for FitActivityCategoryTitle", value, "null");
+				
+				//if(  value.Length > 100)
+				//	throw new ArgumentOutOfRangeException("Invalid value for FitActivityCategoryTitle", value, value.ToString());
+				
+				_fitactivitycategorytitle = value;
+			}
+		}
+			
+				
+		#endregion 
+
+		#region Public Functions
+
+
+        /// <summary>
+        /// Gets the value of the primary key
+        /// </summary>
+        /// <returns></returns>
+        public override object GetPrimaryKeyValue()
+        {
+            return this.FitActivityCategoryID;
+			
+        }
+		
+		#endregion //Public Functions
+	}
+}

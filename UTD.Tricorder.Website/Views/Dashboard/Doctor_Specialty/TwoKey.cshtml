@@ -1,0 +1,47 @@
+﻿@{
+    string entityName = vDoctor_Specialty.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    
+}
+
+@{ ViewBag.ViewTitle = "Specialties"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+        <form role="form"
+              ng-controller="@(entityName)TwoKeyController"
+              id="@(entityName)TwoKeyFrm"
+              onsubmit="return false;">
+            @FWHtml.Editor(entity.EntityColumns[vDoctor_Specialty.ColumnNames.SpecialtyID])
+
+            <div>
+                <button class="btn btn-success" ng-click="Insert($event)">Add to list</button>
+            </div>
+
+
+            <div role="alert"
+                 data-ng-hide="itemsList.length > 0"
+                 class="alert alert-warning">
+                {{msgs.selectedItemsListIsEmpty}}
+            </div>
+
+            <div data-ng-hide="itemsList.length == 0">
+                <h3>Selected Items</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="200">Title</th>
+                            <th width="50"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in itemsList" class="animate-repeat">
+                            <td>{{item.@(vDoctor_Specialty.ColumnNames.SpecialtyTitle)}}</td>
+                            <td><button type="button" class="btn btn-danger" ng-click="DeleteItem(item.@(vDoctor_Specialty.ColumnNames.Doctor_SpecialtyID), $event)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

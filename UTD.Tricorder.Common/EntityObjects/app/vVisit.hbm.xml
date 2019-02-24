@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vVisit" table="vVisit" schema="app">
+
+		<id name="VisitID" column="VisitID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.Visit</param>
+			</generator>
+		</id>
+		
+		<property column="PatientUserID" name="PatientUserID" not-null="true" />
+		<property column="VisitStatusID" name="VisitStatusID" not-null="true" />
+		<property column="VisitStatusCode" name="VisitStatusCode" insert="false" update="false" not-null="true" length="50" />
+		<property column="VisitStatusTitle" name="VisitStatusTitle" insert="false" update="false" not-null="true" length="100" />
+		<property column="DoctorNamePrefix" name="DoctorNamePrefix" insert="false" update="false" length="4" />
+		<property column="DoctorFirstName" name="DoctorFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="DoctorLastName" name="DoctorLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="PatientNamePrefix" name="PatientNamePrefix" insert="false" update="false" length="4" />
+		<property column="PatientFirstName" name="PatientFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="PatientLastName" name="PatientLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="Description" name="Description" length="1073741823" />
+		<property column="DoctorReport" name="DoctorReport" length="1073741823" />
+		<property column="DoctorScheduleID" name="DoctorScheduleID" not-null="true" />
+		<property column="IllnessID" name="IllnessID" not-null="true" />
+		<property column="ChiefComplaint" name="ChiefComplaint" length="1073741823" />
+		<property column="DoctorID" name="DoctorID" insert="false" update="false" not-null="true" />
+		<property column="SlotUnixEpoch" name="SlotUnixEpoch" insert="false" update="false" not-null="true" />
+		<property column="PatientWorldTimeZoneID" name="PatientWorldTimeZoneID" insert="false" update="false" not-null="true" />
+		<property column="DoctorWorldTimeZoneID" name="DoctorWorldTimeZoneID" insert="false" update="false" not-null="true" />
+		<property column="UpdateUserID" name="UpdateUserID" />
+		<property column="UpdateDate" name="UpdateDate" />
+		<property column="InsertUserID" name="InsertUserID" not-null="true" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="DoctorScheduleVisitPlaceID" name="DoctorScheduleVisitPlaceID" insert="false" update="false" not-null="true" />
+		<property column="PatientVisitPlaceID" name="PatientVisitPlaceID" not-null="true" />
+		<property column="VisitPlaceTitle" name="VisitPlaceTitle" insert="false" update="false" not-null="true" length="50" />
+		<property column="VisitPlaceIcon" name="VisitPlaceIcon" insert="false" update="false" not-null="true" length="50" />
+		<property column="VisitStatusIcon" name="VisitStatusIcon" insert="false" update="false" not-null="true" length="50" />
+		<property column="AmountPaid" name="AmountPaid" insert="false" update="false" />
+		<property column="AmountOwed" name="AmountOwed" insert="false" update="false" />
+		<property column="Prescription" name="Prescription" length="1073741823" />
+		<property column="DoctorSystemReviewJson" name="DoctorSystemReviewJson" length="1073741823" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

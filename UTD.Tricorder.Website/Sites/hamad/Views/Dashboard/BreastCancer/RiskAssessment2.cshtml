@@ -1,0 +1,160 @@
+﻿
+@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vMedicalHistory.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+
+@{
+    string modelPrefix = "model.BCRisk2.";
+    string sectionName = "BCRisk2";
+
+    ViewBag.PanelTitle = "Risk Assessment";
+}
+
+@helper YesNoDesc(string title, string code, string modelPrefix)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <div class="control-label">@title</div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, code, false)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div ng-hide="!(@(modelPrefix + code) === true)">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="@(modelPrefix + code + "Desc")" placeholder="" data-ng-model="@(modelPrefix + code + "Desc")" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <hr />
+}
+
+@helper YesNoLastTestDate(string title, string code, string dateLabel, string modelPrefix)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <div class="control-label">@title</div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, code, false)
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div ng-hide="!(@(modelPrefix + code) === true)">
+                <div class="form-group">
+                    <label class="control-label col-sm-4">@dateLabel</label>
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control" name="@(modelPrefix + code + "TestDate")" placeholder="" data-ng-model="@(modelPrefix + code + "TestDate")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+}
+
+
+@{ ViewBag.ViewTitle = "Breast Cancer Questionnaire"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "RiskAssessment2";}
+@Html.Partial("~/Views/Dashboard/BreastCancer/_BreastCancerTabs.cshtml")
+
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    <h3>history of following breast symptoms</h3>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-sm-4">Breast Lump Location</label>
+                <div class=" col-sm-8">
+                    <input type="text" class="form-control" name="BreastLumpLocation" placeholder="" data-ng-model="@(modelPrefix + "BreastLumpLocation")" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    @YesNoDesc("Pain in Breast", "HasPaininBreast", modelPrefix)
+    @YesNoDesc("Pain in Armpit", "HasPaininArmpit", modelPrefix)
+    @YesNoDesc("Skin Changes in Breast", "HasSkinChangesinBreast", modelPrefix)
+    @YesNoDesc("Nipple Discharge", "HasNippleDischarge", modelPrefix)
+    @YesNoDesc("Nipple Change", "HasNippleChange", modelPrefix)
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Other (Specify) :</label>
+                <div class=" col-sm-10">
+                    <input type="tel" class="form-control" name="BreastPainOther" placeholder="" data-ng-model="@(modelPrefix + "BreastPainOther")" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    @YesNoDesc("Did or do you have any arm swelling?", "HasArmSwelling", modelPrefix)
+    @YesNoDesc("Did or do you have any breast swelling?", "HasBreastSwelling", modelPrefix)
+    @YesNoDesc("Do you practice breast self —exam?", "HasSelfExam", modelPrefix)
+
+
+    <h3>Past diagnostic screening methods</h3>
+    <div>History of performing any of the following tests as breast cancer screening :</div>
+
+    @YesNoLastTestDate("Ultrasound of Breast", "HasUltrasoundofBreast", "Last test date:", modelPrefix)
+    @YesNoLastTestDate("Mammogram", "HasMammogram", "Last test date:", modelPrefix)
+    @YesNoLastTestDate("MRI of Breast", "HasMRIofBreast", "Last test date:", modelPrefix)
+    @YesNoLastTestDate("Clinical Breast Exam", "HasClinicalBreastExam", "Last test date:", modelPrefix)
+    @YesNoLastTestDate("Biopsy/Needle Aspiration", "HasBiopsyNeedleAspiration", "Last test date:", modelPrefix)
+
+    @YesNoDesc("Have had any screening for gynecological cancer", "HasGynecologicalScreening", modelPrefix)
+
+    @YesNoLastTestDate("last PAP/Pelvic Exam", "HasPspExam", "date:", modelPrefix)
+    @YesNoLastTestDate("Have you had transvaginal ultrasound", "HasTransvaginalUltrasound", "date of last test:", modelPrefix)
+    @YesNoLastTestDate("Have done CA-125 blood", "HasCA125", "date of recent test:", modelPrefix)
+    @YesNoLastTestDate("Have done any endometrial biopsy", "HasEndometrialBiopsy", "test date", modelPrefix)
+    <div ng-hide="!(@(modelPrefix + "HasEndometrialBiopsy") === true)" class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-sm-2">endometrial biopsy results</label>
+                <div class=" col-sm-10">
+                    <input type="text" class="form-control" name="EndometrialBiopsyResults" placeholder="" data-ng-model="@(modelPrefix + "EndometrialBiopsyResults")" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-sm-3">Modified Glial score of </label>
+                <div class=" col-sm-9">
+                    <input type="text" class="form-control" name="MGlialScore" placeholder="" data-ng-model="@(modelPrefix + "MGlialScore")" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    @UI.StickySavePanel()
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

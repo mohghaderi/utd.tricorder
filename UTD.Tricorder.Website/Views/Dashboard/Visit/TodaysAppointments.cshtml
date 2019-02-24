@@ -1,0 +1,138 @@
+﻿@{
+    string entityName = vVisit.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    string controllerName = entityName + "TodaysAppointments";
+}
+
+@{ ViewBag.ViewTitle = "Today's appointments"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<div id="@(controllerName)ControllerDiv"
+     ng-controller="@(controllerName)Controller">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class=" form-group">
+                @*<div class="input-group">*@
+                <div datetimepicker="{pickTime: false}"
+                     data-ng-model="SelectedDateString">
+                    <input id="SelectedDateInput"
+                           name="SelectedDate"
+                           placeholder="YYYY/MM/DD"
+                           class="form-control"
+                           data-date-format="YYYY/MM/DD"
+                           data-mask="0000/00/00"
+                           data-bv-date="true"
+                           data-bv-date-format="YYYY/MM/DD"
+                           data-bv-notempty="true"
+                           data-datevalue=""
+                           readonly="readonly" />
+                </div>
+
+
+
+                @*<span class="input-group-btn">
+                        <button class="btn btn-primary"
+                                data-toggle="modal" data-target=".bs-changedate-modal-sm"
+                                >
+                            <span class="glyphicon glyphicon-calendar"></span> Select
+                        </button>
+                    </span>*@
+                @*</div>*@
+            </div>
+        </div>
+        <div class="col-md-8">
+            <button class="btn btn-info"
+                    ng-click="GotoOffset(-30)">
+                Prev Month
+            </button>
+
+            <button class="btn btn-info"
+                    ng-click="GotoOffset(-7)">
+                Prev Week
+            </button>
+
+            <button class="btn btn-info"
+                    ng-click="GotoOffset(-1)">
+                Prev Day
+            </button>
+
+            <button class="btn btn-primary"
+                    ng-click="GotoToday()">
+                Today
+            </button>
+
+
+            <button class="btn btn-info"
+                    ng-click="GotoOffset(+1)">
+                Next Day
+            </button>
+
+            <button class="btn btn-info"
+                    ng-click="GotoOffset(+7)">
+                Next Week
+            </button>
+
+            <button class="btn btn-info"
+                    ng-click="GotoOffset(+30)">
+                Next Month
+            </button>
+        </div>
+    </div>
+
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+
+        <div ng-repeat="item in itemsList">
+
+            <div class="row">
+                <div class="col-md-4">
+                    @UI.UserProfileImage("{{item.PatientProfilePicUrl}}")
+                    {{item.@(vVisit.ColumnNames.PatientFirstName)}} {{item.@(vVisit.ColumnNames.PatientLastName)}}
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        {{FormatDateTimeUnix(item.@(vVisit.ColumnNames.SlotUnixEpoch))}}
+                    </div>
+                    <div>
+                        <label>Type:</label>
+                        <i class="{{item.@(vVisit.ColumnNames.VisitPlaceIcon)}}" title="{{item.@(vVisit.ColumnNames.VisitPlaceTitle)}}"></i>
+                        <span>{{item.@(vVisit.ColumnNames.VisitPlaceTitle)}}</span>
+                    </div>
+                    <div>
+                        <label>Status:</label>
+                        <i class="{{item.@(vVisit.ColumnNames.VisitStatusIcon)}}" title="{{item.@(vVisit.ColumnNames.VisitStatusTitle)}}"></i>
+                        <span>{{item.@(vVisit.ColumnNames.VisitStatusTitle)}}</span>
+                    </div>
+                    <div>
+                        <label>Paid:</label>
+                        ${{item.@(vVisit.ColumnNames.AmountPaid)}}
+                    </div>
+                    <div>
+                        <label>Due:</label>
+                        ${{item.@(vVisit.ColumnNames.AmountOwed)}}
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <button ng-hide="item.@(vVisit.ColumnNames.VisitStatusID) !=0" type="button" class="btn btn-info" ng-click="GotoView('Visit-RescheduleForm?MasterID=' + item.VisitID)">Reschedule</button>
+                    <button ng-hide="item.@(vVisit.ColumnNames.VisitStatusID) !=0" type="button" class="btn btn-danger" ng-click="CancelVisit(item, $event)">Cancel</button>
+                    <button type="button" class="btn btn-info" ng-click="GotoView('Visit-InfoTab?MasterID=' + item.VisitID)">Details</button>
+                    <a ng-hide="item.@(vVisit.ColumnNames.VisitStatusID) !=0" href="" class="btn btn-success" ng-click="OpenPath('CallLog-VisitCallPatient', {MasterID: item.VisitID}, true)">Call Patient</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div><!-- end of VisitGridController -->
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="Post" table="Post" schema="crm">
+
+		<id name="PostID" column="PostID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">crm.Post</param>
+			</generator>
+		</id>
+		
+		<property column="ParentPostID" name="ParentPostID" />
+		<property column="Title" name="Title" not-null="true" length="200" />
+		<property column="CommentText" name="CommentText" not-null="true" length="1073741823" />
+		<property column="ViewAddress" name="ViewAddress" length="1073741823" />
+		<property column="InsertUserID" name="InsertUserID" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="PostTypeID" name="PostTypeID" not-null="true" />
+		<property column="SiteID" name="SiteID" not-null="true" />
+		<property column="VoteCount" name="VoteCount" not-null="true" />
+		<property column="ChildCount" name="ChildCount" not-null="true" />
+		<property column="TicketPriorityID" name="TicketPriorityID" not-null="true" />
+		<property column="TicketStatusID" name="TicketStatusID" not-null="true" />
+		<property column="TicketSourceTypeID" name="TicketSourceTypeID" not-null="true" />
+		<property column="RelatedTicketGroupID" name="RelatedTicketGroupID" />
+		<property column="TicketAssignedUserID" name="TicketAssignedUserID" />
+		<property column="InternalCompanyComment" name="InternalCompanyComment" length="1073741823" />
+		<property column="HappinessLevel" name="HappinessLevel" />
+		
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html data-ng-app="XecareApp">
+<head>
+    @Html.Partial("~/Views/Layouts/Partials/_CommonHeader.cshtml")
+
+    <title>@ViewBag.Title</title>
+
+    <link rel="icon"
+          type="image/png"
+          href="~/Content/Images/favicons/favicon.png" />
+
+    @Html.Partial("~/Views/Layouts/Partials/_CommonCSSLinks.cshtml")
+    <link href="~/Content/Styles/publicwebsite.css" rel="stylesheet" />
+    @*@if (UIText.IsRTL()) // right to left support for bootstrap
+    {
+        <link href="~/Content/Styles/publicwebsite-rtl.css" rel="stylesheet" />
+    }*@
+    <link href="@Url.GetCulturalUrl("css/app_css")" rel="stylesheet" />
+
+    @RenderSection("Head", required: false)
+</head>
+<body>
+
+    @Html.Partial("~/Views/Layouts/Partials/_NoScript.cshtml")
+
+    @Html.Partial("~/Views/Layouts/Partials/_PageMainLoadingMask.cshtml")
+
+
+    <div id="AngularJSMainController" data-ng-controller="indexController">
+
+        <nav role="navigation" class="navbar navbar-default">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="@Url.GetCulturalUrl("Default/Index")">
+                    <i class="fa fa-stethoscope" title=""></i> <b class="uppercase">Xecare</b>
+                </a>
+            </div>
+        </nav>
+
+        <div class="container">
+            @RenderBody()
+            <div data-ng-view="">
+            </div>
+        </div>
+
+        @* Mobile Application controllers *@
+        <div id="MobileAppCallBackControllerDiv"
+             ng-controller="MobileAppCallBackController">
+        </div>
+    </div>
+
+    @Html.Partial("~/Views/Layouts/Partials/_CommonJSLinks.cshtml", new CommonJSLinksViewModel() { IsDashboard = false, RenderAirBridge = false })
+
+    @Html.Partial("~/Views/Layouts/Partials/_UnsupportedBrowserDialog.cshtml")
+    @Html.Partial("~/Views/Layouts/Partials/_NoCookies.cshtml")
+    
+    <script type="text/javascript">
+        setFormValidations();
+    </script>
+
+
+    @RenderSection("Scripts", required: false)
+
+    @if (FWHtml.IsDebug()) { 
+        @RenderSection("DebugScripts", required: false)
+    }
+    
+
+    @Html.Partial("~/Views/Layouts/Partials/_GoogleAnalytics.cshtml", new GoogleAnlyticsViewModel() { RenderAngularJS = true })
+
+
+</body>
+</html>

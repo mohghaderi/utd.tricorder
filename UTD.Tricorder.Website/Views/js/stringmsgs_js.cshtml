@@ -1,0 +1,37 @@
+﻿<script>
+@*
+* Keeps all messages used in the client-side javascript.
+  It can be used later to translate the application
+*@
+    function getMessages() {
+        var msgs = {
+
+            common: {
+                pleasewait: "@UIText.js.msgs.common.pleasewait"
+            },
+
+            validation: {
+                errortitle: "@UIText.js.msgs.validation.errortitle",
+                completeformbeforeproceeding: "@UIText.js.msgs.validation.completeformbeforeproceeding"
+            },
+
+            login: {
+                welcome: "@UIText.js.msgs.login.welcome"
+            },
+
+            user: {
+                signup: {
+                    successmessage: "@UIText.js.msgs.user.signup.successmessage"
+                },
+                searchfromvisitbook: {
+                    selectedItemsListIsEmpty: "@UIText.js.msgs.user.searchfromvisitbook.selectedItemsListIsEmpty"
+                }
+            }
+
+        };
+        return msgs;
+    }
+
+    window.Msgs = getMessages();
+
+</script>

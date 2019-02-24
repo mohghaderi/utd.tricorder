@@ -1,0 +1,78 @@
+﻿
+@{ ViewBag.ViewTitle = "Profile"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "ProfileView";}
+@Html.Partial("~/Views/Dashboard/_PatientProfileTabs.cshtml")
+
+<div id="PersonProfileViewControllerDiv"
+     ng-controller="PersonProfileViewController">
+    <div class="row">
+        <div class="col-md-3 col-lg-3 " align="center">
+            @UI.UserProfileImage("{{model.UserProfilePicUrl}}")
+            <div>
+                &nbsp;
+            </div>
+        </div>
+
+        <div class=" col-md-9 col-lg-9 ">
+            <div ng-hide="CurrentUserID != MasterID">
+                <a ng-href="#User-ProfileEdit?MasterID={{MasterID}}"
+                   class="btn btn-default">Edit Profile</a>
+            </div>
+
+            <table class="table table-info">
+                <tbody>
+                    <tr>
+                        <td class="table-info-title">First Name</td>
+                        <td><span ng-bind="model.FirstName"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">Last Name</td>
+                        <td><span ng-bind="model.LastName"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">Birthday</td>
+                        <td><span ng-bind="FormatDate(model.Birthday)"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">Tel</td>
+                        <td><a href="tel:{{model.PhoneNumber}}" target="_blank"><span ng-bind="model.PhoneNumber"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">Email</td>
+                        <td><a href="mailto:{{model.Email}}" target="_blank"><span ng-bind="model.Email"></span></a></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">AddressLine1</td>
+                        <td><span ng-bind="model.AddressLine1"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">AddressLine2</td>
+                        <td><span ng-bind="model.AddressLine2"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">City</td>
+                        <td><span ng-bind="model.City"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">ZipCode</td>
+                        <td><span ng-bind="model.ZipCode"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">State</td>
+                        <td><span ng-hide="model.CountryID =='US'" ng-bind="model.NonUSStateTitle"></span><span ng-hide="model.CountryID != 'US'" ng-bind="model.StateName"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="table-info-title">Country</td>
+                        <td><span ng-bind="model.CountryName"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

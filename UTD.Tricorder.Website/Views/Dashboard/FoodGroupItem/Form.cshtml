@@ -1,0 +1,67 @@
+﻿@{
+    var entityName = vFoodGroupItem.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, @UI.GetViewName());
+    entity.EntityColumns[vFoodGroupItem.ColumnNames.FoodID].EditorControl = Framework.Common.EditorControlTypes.DropDownList;
+}
+
+@{ ViewBag.ViewTitle = "Food Calories"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form @UI.AngualrCtrlFormAttr(entityName, UI.GetViewName())
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Please enter the food name and calories consumed</h3>
+
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroupItem.ColumnNames.FoodID])
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroupItem.ColumnNames.ServingAmount])
+        </div>
+        <div class="col-md-6">
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroupItem.ColumnNames.FoodServingTypeID])
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-3">
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroupItem.ColumnNames.Calorie])
+        </div>
+        <div class="col-md-3">
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroupItem.ColumnNames.Fat])
+        </div>
+        <div class="col-md-3">
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroupItem.ColumnNames.Protein])
+        </div>
+        <div class="col-md-3">
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroupItem.ColumnNames.Carb])
+        </div>
+    </div>
+
+    
+
+
+
+
+
+
+    <hr />
+
+            <div class="form-group">
+                <button class="btn btn-lg btn-success btn-block"
+                        ng-click="Save($event)">
+                    Save
+                </button>
+            </div>
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")
+
+

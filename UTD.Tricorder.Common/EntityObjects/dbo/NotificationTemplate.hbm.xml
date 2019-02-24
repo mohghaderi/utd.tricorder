@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="NotificationTemplate" table="NotificationTemplate">
+
+		<id name="NotificationTemplateID" column="NotificationTemplateID" type="Int16" unsaved-value="-1">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="NotificationTitle" name="NotificationTitle" length="200" />
+		<property column="SMSBody" name="SMSBody" length="500" />
+		<property column="EmailSubject" name="EmailSubject" length="200" />
+		<property column="EmailBodyHTML" name="EmailBodyHTML" length="1073741823" />
+		<property column="ShortWebBody" name="ShortWebBody" length="1000" />
+		<property column="EmailBodyText" name="EmailBodyText" length="1073741823" />
+		<property column="Description" name="Description" length="1073741823" />
+		<property column="MobilePushType" name="MobilePushType" length="50" />
+		<property column="MobilePushSound" name="MobilePushSound" length="50" />
+		<property column="MobilePushParamsJSON" name="MobilePushParamsJSON" length="500" />
+		<property column="MobilePushAlert" name="MobilePushAlert" length="100" />
+		<property column="MobilePushTitle" name="MobilePushTitle" length="100" />
+		<property column="TimeToLiveSeconds" name="TimeToLiveSeconds" />
+		<property column="TemplateDotNetFullClassName" name="TemplateDotNetFullClassName" length="200" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

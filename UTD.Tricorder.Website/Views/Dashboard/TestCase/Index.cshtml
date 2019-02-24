@@ -1,0 +1,19 @@
+﻿@{
+    string entityName = "UserDeviceSetting";
+    string controllerTitle = entityName + "SendPushSanity";
+}
+
+@{ ViewBag.ViewTitle = "Test software"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+@*<div id="@(controllerTitle)ControllerDiv"
+     ng-controller="@(controllerTitle)Controller">*@
+
+    <a class="btn btn-lg btn-danger"
+       ng-click="SendPushSanity()">
+        Send Push Sanity
+    </a>
+
+@*</div>*@
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

@@ -1,0 +1,37 @@
+﻿@{
+    var entityName = "CallLog";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    var controllerName = entityName + "PhoneRing" + "Controller";
+}
+
+@{ ViewBag.ViewTitle = "Phone call"; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+<div id="@(controllerName)Div"
+     ng-controller="@controllerName">
+    <div class="row">
+        <div class="col-md-12 col-xs-12" align="center">
+            @*<div class="line"><h3>12 : 30 AM</h3></div>*@
+            <div class="outter">
+                @UI.UserProfileImage("{{model.SenderProfilePicUrl}}")
+            </div>
+            <h1 ng-bind="model.SenderFullName"></h1>
+            <span>is calling...</span>
+            <hr />
+        </div>
+        <div class="col-md-6 col-xs-6" align="center">
+            <a ng-click="AnswerCall()" class="btn btn-block btn-success" href=""><h4><i class="fa fa-phone"></i> <span>Answer</span></h4></a>
+        </div>
+        <div class="col-md-6 col-xs-6" align="center">
+            <a ng-click="DeclineCall()" class="btn btn-block btn-danger" href=""><h4><i class="fa fa-minus"></i> <span>Decline</span></h4></a>
+        </div>
+    </div>
+</div>
+
+    <audio id="RingtonAudio" autoplay="autoplay" loop="loop" preload="auto">
+        <source src="~/Content/Sounds/Rington2.mp3" type="audio/mpeg" />
+        Your browser does not support playing audio.
+    </audio>
+
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")

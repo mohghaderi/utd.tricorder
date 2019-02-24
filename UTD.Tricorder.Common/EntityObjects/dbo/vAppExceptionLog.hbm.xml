@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vAppExceptionLog" table="vAppExceptionLog">
+
+		<id name="AppExceptionLogID" column="AppExceptionLogID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">dbo.AppExceptionLog</param>
+			</generator>
+		</id>
+		
+		<property column="Message" name="Message" not-null="true" length="2147483647" />
+		<property column="Source" name="Source" length="2147483647" />
+		<property column="UserID" name="UserID" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="ClassType" name="ClassType" length="2147483647" />
+		<property column="StackTrace" name="StackTrace" length="2147483647" />
+		<property column="Target" name="Target" length="2147483647" />
+		<property column="IPAddress" name="IPAddress" length="50" />
+		<property column="Url" name="Url" length="2048" />
+		<property column="DataInformation" name="DataInformation" length="1073741823" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vStringText" table="vStringText" schema="i18n">
+
+		<id name="StringTextID" column="StringTextID" type="Guid">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="KeyFullName" name="KeyFullName" not-null="true" length="512" />
+		<property column="ValueEn" name="ValueEn" not-null="true" length="250" />
+		<property column="SystemID" name="SystemID" not-null="true" />
+		<property column="NumberOfArguments" name="NumberOfArguments" not-null="true" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="LastUsedDate" name="LastUsedDate" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

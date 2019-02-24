@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vDailyActivity" table="vDailyActivity" schema="app">
+
+		<id name="DailyActivityID" column="DailyActivityID" type="Guid">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="UserID" name="UserID" not-null="true" />
+		<property column="RecordDateTimeUserLocal" name="RecordDateTimeUserLocal" not-null="true" />
+		<property column="DailyActivityTypeID" name="DailyActivityTypeID" not-null="true" />
+		<property column="DailyActivityTitle" name="DailyActivityTitle" length="500" />
+		<property column="IsManualEntry" name="IsManualEntry" not-null="true" />
+		<property column="DurationSeconds" name="DurationSeconds" not-null="true" />
+		<property column="ExternalEntityID" name="ExternalEntityID" />
+		<property column="Calorie" name="Calorie" not-null="true" />
+		<property column="Fat" name="Fat" not-null="true" />
+		<property column="Carb" name="Carb" not-null="true" />
+		<property column="Protein" name="Protein" not-null="true" />
+		<property column="Comment" name="Comment" length="1073741823" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,93 @@
+﻿@{ ViewBag.ViewTitle = "Visit information"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "Info";}
+@Html.Partial("~/Views/Dashboard/Visit/_VisitDetailsTabs.cshtml")
+
+<div id="VisitInfoDetailControllerDiv"
+     ng-controller="VisitInfoDetailController">
+    @*<div class="row">
+        <div class="col-md-3 col-lg-3 " align="center">
+
+        </div>
+
+        <div class=" col-md-9 col-lg-9 ">*@
+    <table class="table table-info">
+        <tbody>
+            <tr>
+                <td class="table-info-title">Patient</td>
+                <td><a href="#Person-ProfileView?MasterID={{model.PatientUserID}}"><span ng-bind="model.PatientFullName"></span></a></td>
+            </tr>
+            <tr>
+                <td class="table-info-title">Doctor</td>
+                <td><a href="#Doctor-Profile?MasterID={{model.DoctorID}}"><span ng-bind="model.DoctorFullName"></span></a></td>
+            </tr>
+            <tr>
+                <td class="table-info-title">Status</td>
+                <td><span ng-bind="FormatDateTimeUnix(model.SlotUnixEpoch)"></span></td>
+            </tr>
+            <tr>
+                <td class="table-info-title">Status</td>
+                <td>
+                    <span ng-bind="model.VisitStatusTitle"></span>
+                    <button ng-hide="model.DoctorID != CurrentUserID || (model.VisitStatusCode != 'Scheduled' && model.VisitStatusCode != 'InWaitingRoom')"
+                            class="btn btn-success"
+                            ng-click="ExecInline('CompleteVisit', model.VisitID)">
+                        End Successfully
+                    </button>
+                    <button ng-hide="model.DoctorID != CurrentUserID || (model.VisitStatusCode != 'EndSuccess')"
+                            class="btn btn-info"
+                            ng-click="ExecInline('UndoStatusToRescheduled', model.VisitID)">
+                        Undo to Scheduled
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-info-title">Type</td>
+                <td><span ng-bind="model.VisitPlaceTitle"></span></td>
+            </tr>
+            <tr>
+                <td class="table-info-title">Paid</td>
+                <td>$<span ng-bind="model.AmountPaid"></span></td>
+            </tr>
+            <tr>
+                <td class="table-info-title">Due</td>
+                <td>$<span ng-bind="model.AmountOwed"></span></td>
+            </tr>
+            <tr>
+                <td class="table-info-title">Reason</td>
+                <td><span ng-bind="model.IllnessTitle"></span></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <span class="table-info-title">Chief Complaint</span>
+                    <div>
+                        <span ng-bind-html="TextToHtml(model.ChiefComplaint) | unsafe"></span>
+                    </div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    <button ng-hide="model.VisitStatusCode != 'Scheduled' && model.VisitStatusID != 'InWaitingRoom'"
+            type="button"
+            class="btn btn-danger"
+            ng-click="CancelVisit(model, $event)">
+        Cancel Appointment
+    </button>
+
+    <button ng-hide="model.@(vVisit.ColumnNames.VisitStatusCode) != 'Scheduled'"
+            type="button"
+            class="btn btn-info"
+            ng-click="GotoView('Visit-RescheduleForm?MasterID=' + model.VisitID)">
+        Reschedule
+    </button>
+
+    @*</div>
+        </div>*@
+</div>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

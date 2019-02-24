@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="UserPaymentInfo" table="UserPaymentInfo" schema="app">
+
+		<id name="UserPaymentInfoID" column="UserPaymentInfoID" type="Int64" unsaved-value="-1">
+			<generator class="assigned">
+				<param name="table_name">app.UserPaymentInfo</param>
+			</generator>
+		</id>
+		
+		<property column="UserPaymentInfoPayPalEmail" name="UserPaymentInfoPayPalEmail" length="170" />
+		<property column="Notes" name="Notes" length="1000" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

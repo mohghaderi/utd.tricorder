@@ -1,0 +1,142 @@
+﻿@{
+    var entityName = "Person";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Personal Info"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form role="form"
+      ng-controller="PersonFormController"
+      id="PersonFormFrm"
+      onsubmit="return false;">
+
+    @*Address information based on
+        http://www.uxmatters.com/mt/archives/2008/06/international-address-fields-in-web-forms.php*@
+
+    <div class="row">
+
+        <div class="col-md-6">
+            @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.Birthday])
+            @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.GenderTypeID])
+            @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.CountryID])
+            <div data-ng-hide="model.CountryID !== 'US'">
+                @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.USStateID])
+            </div>
+            <div data-ng-hide="model.CountryID === 'US'">
+                @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.NonUSStateTitle])
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.AddressLine1])
+            @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.AddressLine2])
+            @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.City])
+            @FWHtml.Editor(entity.EntityColumns[vPerson.ColumnNames.ZipCode])
+        </div>
+
+    </div>
+
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="Save($event)">
+            Save
+        </button>
+    </div>
+
+
+    @*<div class="form-group" style="display:none">
+                <label>PersonID</label>
+                <input name="PersonID" class="form-control" type="text" data-ng-model="model.PersonID">
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <select class="form-control"
+                        name="GenderTypeID"
+                        data-ng-model="model.GenderTypeID"
+                        data-bv-notempty="true"
+                        data-selectize="{create: true}"
+                        autofocus>
+                    <option value=""></option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Birthday</label>
+                <input type="text"
+                        name="Birthday"
+                        placeholder="YYYY/MM/DD"
+                        class="form-control"
+                        data-ng-model="model.Birthday"
+                        data-mask="0000/00/00"
+                        data-bv-date="true"
+                        data-bv-date-format="YYYY/MM/DD"
+                        data-bv-notempty="true">
+            </div>
+            <div class="form-group">
+                <label class="control-label">Country</label>
+                <select class="form-control"
+                        name="CountryID"
+                        data-ng-model="model.CountryID"
+                        data-bv-notempty="true"
+                        data-selectize="{create: true}">
+                    <option value=""></option>
+                    @UTD.Tricorder.Website.Helpers.FWHtml.OptionsListForEntity("Country")
+                </select>
+            </div>
+            <div class=" form-group">
+                <label class="control-label">Address Line 1</label>
+                <input name="AddressLine1" class="form-control" placeholder="street address" data-ng-model="model.AddressLine1" data-bv-notempty="true">
+            </div>
+            <div class=" form-group">
+                <label class="control-label">Address Line 2</label>
+                <input name="address" class="form-control" placeholder="apartment, suite, etc." data-ng-model="model.AddressLine2">
+            </div>
+            <div data-ng-hide="model.CountryID != 'US'">
+                <div class="form-group">
+                    <label class="control-label">US State</label>
+                    <select class="form-control"
+                            name="USStateID"
+                            data-ng-model="model.USStateID"
+                            data-bv-notempty="true"
+                            ng-disabled="model.CountryID != 'US'"
+                            data-selectize="{create: true}">
+                        <option value=""></option>
+                        @UTD.Tricorder.Website.Helpers.FWHtml.OptionsListForEntity("USState")
+                    </select>
+                </div>
+            </div>
+
+            <div data-ng-hide="model.CountryID == 'US'">
+                <div class="form-group">
+                    <label>State</label>
+                    <input type="text"
+                            name="NonUSStateTitle"
+                            class="form-control"
+                            placeholder="e.g. Paris"
+                            data-ng-model="model.NonUSStateTitle"
+                            ng-disabled="model.CountryID == 'US'">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" name="City" class="form-control" placeholder="e.g. Dallas" data-ng-model="model.City" data-bv-notempty="true">
+            </div>
+            <div class="form-group">
+                <label>ZipCode</label>
+                <input type="text" name="zipCode" class="form-control" placeholder="e.g. 75080" data-ng-model="model.ZipCode">
+            </div>
+
+        <div class="form-group">
+            <button class="btn btn-lg btn-info btn-block"
+                    type="submit"
+                    onclick="SaveForm">
+                Save
+            </button>
+        </div>*@
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

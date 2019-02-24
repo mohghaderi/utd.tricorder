@@ -1,0 +1,47 @@
+﻿@{
+    string controllerName = @"UserVerifyPhoneNumber";
+}
+
+@{ ViewBag.ViewTitle = "Verify Phone Number"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+<form id="@(controllerName)Frm"
+      role="form"
+      onsubmit="return false"
+      ng-controller="@(controllerName)Controller">
+
+    <p>If you don't have the verification code, use "Send Verification Code" button and open your PhoneNumber to get it.</p>
+    <button class="btn btn-info"
+            ng-click="SendPhoneNumberVerificationLetter()">
+        Send Verification Code
+    </button>
+
+    <div class="form-group">
+        <label>PhoneNumber</label>
+        <input class="form-control"
+               name="PhoneNumber"
+               placeholder="PhoneNumber"
+               data-ng-model="model.PhoneNumber"
+               readonly="readonly"
+               data-bv-notempty="true" />
+    </div>
+
+
+    <div class="form-group">
+        <label>Verification Code</label>
+        <input class="form-control"
+               name="PhoneVerificationCode"
+               placeholder="Verification Code"
+               data-ng-model="model.PhoneVerificationCode"
+               data-bv-notempty="true" />
+    </div>
+
+    <button class="btn btn-success"
+            ng-click="VerifyPhoneNumber()">
+        Verify PhoneNumber
+    </button>
+
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

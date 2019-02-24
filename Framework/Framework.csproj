@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BCAB24BD-B4E9-40D7-9B77-BA15A3C07C90}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Framework</RootNamespace>
+    <AssemblyName>Framework</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>FrameworkSignKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\Library\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\Library\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Library\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\Library\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NodaTime">
+      <HintPath>..\Library\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Transformer.NET">
+      <HintPath>..\Library\Transformer.NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\BusinessRuleBase.cs" />
+    <Compile Include="Business\BusinessRuleError.cs" />
+    <Compile Include="Business\BusinessRulesCheckUtils.cs" />
+    <Compile Include="Business\IBusinessRuleBase.cs" />
+    <Compile Include="Business\IBusinessRuleBaseT.cs" />
+    <Compile Include="Common\AbstractAgent.cs" />
+    <Compile Include="Common\Config\AmazonCloudConfigElement.cs" />
+    <Compile Include="Common\Config\MobilePushConfigElement.cs" />
+    <Compile Include="Common\Config\S3ConfigElement.cs" />
+    <Compile Include="Common\Config\PaypalConfigElements.cs" />
+    <Compile Include="Common\Config\TwilioConfigElement.cs" />
+    <Compile Include="Common\DateTimeEpoch.cs" />
+    <Compile Include="Common\Entity\DetailObjectInfo.cs" />
+    <Compile Include="Common\Entity\EntityAction.cs" />
+    <Compile Include="Common\Exceptions\AuthenticationIsRequiredException.cs" />
+    <Compile Include="Common\Exceptions\DatabaseNotAvailableException.cs" />
+    <Compile Include="Common\Exceptions\HoneyPotException.cs" />
+    <Compile Include="Common\Exceptions\ObjectChangedBeforeUpdate.cs" />
+    <Compile Include="Common\Exceptions\FWPropertySetValueException.cs" />
+    <Compile Include="Common\Exceptions\ImpossibleExecutionException.cs" />
+    <Compile Include="Common\Exceptions\FWPropertyNotFoundException.cs" />
+    <Compile Include="Common\Exceptions\ServiceSecurityException.cs" />
+    <Compile Include="Common\FIcon.cs" />
+    <Compile Include="Common\i18n\i18nLib.cs" />
+    <Compile Include="Common\i18n\i18nText.cs" />
+    <Compile Include="Common\Logging\IAppExceptionLog.cs" />
+    <Compile Include="Common\Logging\IAppLog.cs" />
+    <Compile Include="Business\RuleFunctionSEnum.cs" />
+    <Compile Include="Common\Cache\SimpleObjectCacheManagement.cs" />
+    <Compile Include="Common\Config\ApplicationSetting.cs" />
+    <Compile Include="Common\Config\DatabaseContextConfigElement.cs" />
+    <Compile Include="Common\Config\DatabaseContextsCollection.cs" />
+    <Compile Include="Common\Config\ExceptionSettingConfigElement.cs" />
+    <Compile Include="Common\Config\LocalizationSettingConfigElement.cs" />
+    <Compile Include="Common\Config\LogSettingConfigElement.cs" />
+    <Compile Include="Common\Config\ProjectSettingConfigElement.cs" />
+    <Compile Include="Common\Config\SecuritySettingConfigElement.cs" />
+    <Compile Include="Common\EntityObjectTypeEnum.cs" />
+    <Compile Include="Common\Entity\ColumnInfo.cs" />
+    <Compile Include="Common\ConfigurationBase.cs" />
+    <Compile Include="Common\Entity\DBDataTypeEnum.cs" />
+    <Compile Include="Common\Entity\DeleteParameters.cs" />
+    <Compile Include="Common\Entity\DetailEntityTabViewEnum.cs" />
+    <Compile Include="Common\Entity\EditFormOpenModeEnum.cs" />
+    <Compile Include="Common\Entity\EditorControlsEnum.cs" />
+    <Compile Include="Common\Entity\EntityDetail.cs" />
+    <Compile Include="Common\Entity\EntityDetailsDictionary.cs" />
+    <Compile Include="Common\Entity\EntityInfoBase.cs" />
+    <Compile Include="Common\Entity\EntityFactory.cs" />
+    <Compile Include="Common\Entity\EntityObjectBase.cs" />
+    <Compile Include="Common\Entity\GetByFilterParameters.cs" />
+    <Compile Include="Common\Entity\GetByIDParameters.cs" />
+    <Compile Include="Common\Entity\IEntityCRUDFunctions.cs" />
+    <Compile Include="Common\Entity\IEntityCRUDFunctionsT.cs" />
+    <Compile Include="Common\Entity\IEntityFactory.cs" />
+    <Compile Include="Common\Entity\IInitializeByEntity.cs" />
+    <Compile Include="Common\Entity\InsertParameters.cs" />
+    <Compile Include="Common\Entity\ListTypeEnum.cs" />
+    <Compile Include="Common\Entity\ProjectEntityFactory.cs" />
+    <Compile Include="Common\Entity\TextAlignEnum.cs" />
+    <Compile Include="Common\Entity\UpdateParameters.cs" />
+    <Compile Include="Common\Exceptions\BRException.cs" />
+    <Compile Include="Common\Exceptions\ExceptionBase.cs" />
+    <Compile Include="Common\Exceptions\ExceptionHandler.cs" />
+    <Compile Include="Common\Exceptions\ExceptionTranslator.cs" />
+    <Compile Include="Common\Exceptions\FWException.cs" />
+    <Compile Include="Common\Exceptions\UserException.cs" />
+    <Compile Include="Common\Filter.cs" />
+    <Compile Include="Common\FilterExpression.cs" />
+    <Compile Include="Common\FilterOperatorEnum.cs" />
+    <Compile Include="Common\FWConsts.cs" />
+    <Compile Include="Common\IFilter.cs" />
+    <Compile Include="Common\Logging\ExpceptionLogger.cs" />
+    <Compile Include="Common\Logging\Logger.cs" />
+    <Compile Include="Common\Logging\LogTypeEnum.cs" />
+    <Compile Include="Common\FilterLogicalOperatorEnum.cs" />
+    <Compile Include="Common\i18n\IFWStringTextService.cs" />
+    <Compile Include="Common\i18n\IFWStringTextTranObj.cs" />
+    <Compile Include="Common\i18n\IFWStringTextTranService.cs" />
+    <Compile Include="Common\Utils\EncryptionUtils.cs" />
+    <Compile Include="Common\Security\IFWSiteDomainService.cs" />
+    <Compile Include="Common\Security\IFWSiteService.cs" />
+    <Compile Include="Common\TemplateParams.cs" />
+    <Compile Include="Common\PermissionCommonClasses.cs" />
+    <Compile Include="Common\Security\PasswordHash.cs" />
+    <Compile Include="Common\SortExperssion.cs" />
+    <Compile Include="Common\SortInfo.cs" />
+    <Compile Include="Common\SortTypeEnum.cs" />
+    <Compile Include="Common\i18n\StringMsgs.cs" />
+    <Compile Include="Common\Utils\CommaSeperatedUtils.cs" />
+    <Compile Include="Common\Utils\CompressionUtils.cs" />
+    <Compile Include="Common\Utils\ConfigUtils.cs" />
+    <Compile Include="Common\Utils\DBTypeUtils.cs" />
+    <Compile Include="Common\Utils\DesignByContract.cs" />
+    <Compile Include="Common\Utils\EntityJsonConvert.cs" />
+    <Compile Include="Common\Utils\EntityUtils.cs" />
+    <Compile Include="Common\Utils\ExpLogUtils.cs" />
+    <Compile Include="Common\Utils\FWUtils.cs" />
+    <Compile Include="Common\Utils\MiscUtils.cs" />
+    <Compile Include="Common\Utils\RandomUtils.cs" />
+    <Compile Include="Common\Utils\ReflectionUtils.cs" />
+    <Compile Include="Common\Utils\SecurityUtils.cs" />
+    <Compile Include="Common\Utils\UrlTemplateUtils.cs" />
+    <Compile Include="Common\Utils\WebUIUtils.cs" />
+    <Compile Include="Common\Xml\XmlSerializable.cs" />
+    <Compile Include="DataAccess\SiteIdGeneratorBase.cs" />
+    <Compile Include="DataAccess\SiteIdGeneratorInt64.cs" />
+    <Compile Include="DataAccess\DataAccessBase.cs" />
+    <Compile Include="DataAccess\SiteIdGeneratorInt32.cs" />
+    <Compile Include="DataAccess\IDataAccessBaseT.cs" />
+    <Compile Include="DataAccess\IDataAccessBase.cs" />
+    <Compile Include="DataAccess\IMasterEntity.cs" />
+    <Compile Include="DataAccess\NHibernateSessionMgmt\NHibernateSessionContext.cs" />
+    <Compile Include="DataAccess\NHibernateSessionMgmt\NHibernateSessionManager.cs" />
+    <Compile Include="DataAccess\NHibernateSessionMgmt\NHibernateSessionManagerMultiDB.cs" />
+    <Compile Include="DataAccess\SiteIdUtils.cs" />
+    <Compile Include="Common\Security\IvUserInRole.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\Audit\IAuditService.cs" />
+    <Compile Include="Service\BaseService.cs" />
+    <Compile Include="Service\DoEntityActionSP.cs" />
+    <Compile Include="Service\IServiceBaseT.cs" />
+    <Compile Include="Service\IServiceBase.cs" />
+    <Compile Include="Service\Security\DisableServicesEntitySecurity.cs" />
+    <Compile Include="Service\Security\EntitySecurityBase.cs" />
+    <Compile Include="Service\Security\EventBasedEntitySecurity.cs" />
+    <Compile Include="Service\Security\MyRowEntitySecurity.cs" />
+    <Compile Include="Service\Security\MyRowViewAllEditMeEntitySecurity.cs" />
+    <Compile Include="Service\Security\ResourceCheckEntitySecurity.cs" />
+    <Compile Include="Service\Security\SecurityFunctionSEnum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FrameworkBaseObjects\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LayerInterfacesDiagram.cd" />
+    <None Include="FrameworkSignKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

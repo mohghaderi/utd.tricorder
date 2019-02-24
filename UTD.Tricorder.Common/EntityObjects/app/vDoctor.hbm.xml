@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vDoctor" table="vDoctor" schema="app">
+
+		<id name="DoctorID" column="DoctorID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.Doctor</param>
+			</generator>
+		</id>
+		
+		<property column="ProfessionalStatement" name="ProfessionalStatement" not-null="true" length="1073741823" />
+		<property column="RegistrationNumber" name="RegistrationNumber" not-null="true" length="200" />
+		<property column="DefaultVisitPrice" name="DefaultVisitPrice" not-null="true" />
+		<property column="ClinicAddress" name="ClinicAddress" length="2048" />
+		<property column="FirstName" name="FirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="LastName" name="LastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="NamePrefix" name="NamePrefix" insert="false" update="false" length="4" />
+		<property column="Degrees" name="Degrees" not-null="true" length="300" />
+		<property column="BoardCertificationYear" name="BoardCertificationYear" not-null="true" />
+		<property column="LicenseNumbers" name="LicenseNumbers" not-null="true" length="500" />
+		<property column="MedicalSchool" name="MedicalSchool" not-null="true" length="300" />
+		<property column="ResidencyPlace" name="ResidencyPlace" not-null="true" length="100" />
+		<property column="HospitalPrivileges" name="HospitalPrivileges" not-null="true" />
+		<property column="HasRevokedLicense" name="HasRevokedLicense" not-null="true" />
+		<property column="FederalDEAInformation" name="FederalDEAInformation" length="2000" />
+		<property column="HasMilitaryExperience" name="HasMilitaryExperience" not-null="true" />
+		<property column="ClinicPhoneNumber" name="ClinicPhoneNumber" length="42" />
+		<property column="ClinicPhoneNumberSearchable" name="ClinicPhoneNumberSearchable" length="42" />
+		<property column="SpecialtiesList" name="SpecialtiesList" insert="false" update="false" length="1073741823" />
+		<property column="InsuranceFullNamesList" name="InsuranceFullNamesList" insert="false" update="false" length="1073741823" />
+		<property column="USStatesList" name="USStatesList" insert="false" update="false" length="1073741823" />
+		<property column="LanguagesList" name="LanguagesList" insert="false" update="false" length="1073741823" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

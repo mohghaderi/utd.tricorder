@@ -1,0 +1,71 @@
+﻿@{
+    string entityName = vVisit.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+
+}
+
+@{ ViewBag.ViewTitle = "My appointments"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<div id="VisitGridForPatientControllerDiv"
+     ng-controller="VisitGridForPatientController">
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <h3>Appointments</h3>
+    <div>
+        <a href="#Visit-BookForPatient" class="btn btn-info">Book a new appointment</a>
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+
+        <div ng-repeat="item in itemsList">
+
+            <div class="row">
+                <div class="col-md-4">
+                    @UI.DoctorProfileImage("{{item.DoctorProfilePicUrl}}")
+                    {{item.@(vVisit.ColumnNames.DoctorFirstName)}} {{item.@(vVisit.ColumnNames.DoctorLastName)}}
+                </div>
+                <div class="col-md-4">
+                    <div>
+                        {{FormatDateTimeUnix(item.@(vVisit.ColumnNames.SlotUnixEpoch))}}
+                    </div>
+                    <div>
+                        <label>Type:</label>
+                        <i class="{{item.@(vVisit.ColumnNames.VisitPlaceIcon)}}" title="{{item.@(vVisit.ColumnNames.VisitPlaceTitle)}}"></i>
+                        <span>{{item.@(vVisit.ColumnNames.VisitPlaceTitle)}}</span>
+                    </div>
+                    <div>
+                        <label>Status:</label>
+                        <i class="{{item.@(vVisit.ColumnNames.VisitStatusIcon)}}" title="{{item.@(vVisit.ColumnNames.VisitStatusTitle)}}"></i>
+                        <span>{{item.@(vVisit.ColumnNames.VisitStatusTitle)}}</span>
+                    </div>
+                    <div>
+                        <label>Paid:</label>
+                        ${{item.@(vVisit.ColumnNames.AmountPaid)}}
+                    </div>
+                    <div>
+                        <label>Due:</label>
+                        ${{item.@(vVisit.ColumnNames.AmountOwed)}}
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <button ng-hide="item.@(vVisit.ColumnNames.AmountOwed) ==0" type="button" class="btn btn-success" ng-click="ShowPaymentDialog(item.@(vVisit.ColumnNames.VisitID))">Pay</button>
+                    <button ng-hide="item.@(vVisit.ColumnNames.VisitStatusID) !=0" type="button" class="btn btn-info" ng-click="GotoView('Visit-RescheduleForm?MasterID=' + item.@(vVisit.ColumnNames.VisitID))">Reschedule</button>
+                    <button ng-hide="item.@(vVisit.ColumnNames.VisitStatusID) !=0" type="button" class="btn btn-danger" ng-click="CancelVisit(item, $event)">Cancel</button>
+                    <button type="button" class="btn btn-info" ng-click="GotoView('Visit-InfoTab?MasterID=' + item.@(vVisit.ColumnNames.VisitID))">Details</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    @Html.Partial("~/Views/Dashboard/Visit/RescheduleDialog.cshtml")
+
+</div><!-- end of VisitGridController -->

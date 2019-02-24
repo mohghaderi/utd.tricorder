@@ -1,0 +1,33 @@
+﻿<!--
+    You can find existing browser definitions at
+    <windir>\Microsoft.NET\Framework\<ver>\CONFIG\Browsers
+-->
+<browsers>
+  <browser id="GenericDownlevel" parentID="Default">
+    <identification>
+      <userAgent match="^Generic Downlevel$" />
+    </identification>
+
+
+    <capture>
+    </capture>
+
+
+    <capabilities>
+      <capability name="cookies"                     value="true" />
+      <capability name="ecmascriptversion"           value="1.0" />
+      <capability name="tables"                      value="true" />
+      <capability name="type"                        value="Downlevel" />
+    </capabilities>
+
+    <controlAdapters>
+      <adapter controlType="System.Web.UI.WebControls.Menu"
+               adapterType="System.Web.UI.WebControls.Adapters.MenuAdapter" />
+    </controlAdapters>
+  </browser>
+  <browser refID="Mozilla" >
+    <capabilities>
+      <capability name="cookies"  value="true" />
+    </capabilities>
+  </browser>  
+</browsers>

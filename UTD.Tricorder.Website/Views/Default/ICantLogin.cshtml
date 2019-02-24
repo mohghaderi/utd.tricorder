@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_PublicWebLayout.cshtml");
+}
+
+@{
+    var entityName = "User";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Can't Login?"; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+
+
+<div>
+    If you are registered by your doctor, but you don't have a user name and password, you need to complete your registration before login.
+    <div>
+        <a class="btn btn-default"
+           href="ContinueQReg">
+            Continue incomplete registration
+        </a>
+    </div>
+</div>
+
+<p>
+
+</p>
+<p>
+
+</p>
+<p>
+
+</p>
+
+<div>
+    If you have forgotten you password, you can reset your password.
+    <div>
+        <a class="btn btn-primary"
+           href="ResetPassword">
+            Reset Password
+        </a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <a class="btn btn-default btn-block"
+           href="Login">
+            Login
+        </a>
+    </div>
+    <div class="col-md-6">
+        <a class="btn btn-default btn-block"
+           href="ContinueQReg">
+            Continue incomplete registration
+        </a>
+    </div>
+</div>
+
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")
+

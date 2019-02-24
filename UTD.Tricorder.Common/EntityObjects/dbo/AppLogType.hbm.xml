@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="AppLogType" table="AppLogType">
+
+		<id name="AppLogTypeID" column="AppLogTypeID" type="Int16" unsaved-value="-1">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="AppLogTypeName" name="AppLogTypeName" not-null="true" length="100" />
+		<property column="AppLogTypeCode" name="AppLogTypeCode" not-null="true" length="50" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

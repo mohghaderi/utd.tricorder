@@ -1,0 +1,41 @@
+﻿@{
+    var entityName = "CallLog";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    var controllerName = entityName + "VideoMeeting" + "Controller";
+}
+
+@{ ViewBag.ViewTitle = "Meeting"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+<div id="@(controllerName)Div"
+     ng-controller="@controllerName">
+    <div>
+
+        <div class="embed-responsive" style="padding-bottom: 75%;">
+            <iframe id="VideoMeetingIFrame"
+                    class="embed-responsive-item"
+                    src="AjaxView/CallLog-_VideoMeetingFrame"
+                    onload="injectIframeComponents(this)"></iframe>
+        </div>
+
+        @*<div class="row">
+            <div class="col-md-6 hidden-xs">
+                <video id="localwebcamvideo" class="video mine cool-background" autoplay="autoplay"></video>
+            </div>
+            <div class="col-md-6">
+                <video id="partnerwebcamvideo" class="video partner cool-background" autoplay="autoplay"></video>
+            </div>
+        </div>*@
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-xs-12" align="center" style="padding-top:10px">
+            <a ng-click="EndCall()" class="btn btn-block btn-danger" href=""><h4><i class="fa fa-minus"></i> <span>End</span></h4></a>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")
+
+

@@ -1,0 +1,380 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vMedicalHistory.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+
+@{
+    string modelPrefix = "model.BCRisk.";
+    string sectionName = "BCRisk";
+
+    ViewBag.PanelTitle = "Risk Assessment";
+}
+
+@{ ViewBag.ViewTitle = "Breast Cancer Questionnaire"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "RiskAssessment";}
+@Html.Partial("~/Views/Dashboard/BreastCancer/_BreastCancerTabs.cshtml")
+
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+
+    @* --------------------------   1. Is History of breast Cancer   --------------------------  *@
+    <div class="row">
+        <div class="col-md-3">
+            l) Personal History of breast cancer?
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadBC", false)
+            </div>
+        </div>
+
+        <div class="col-md-3" ng-hide="!(@(modelPrefix + "HadBC") === true)">
+            <div class="input-group">
+                <label class="control-label">Date of Diagnosis</label>
+                <input type="date" class="form-control" name="DateOfDiagnosisBC" placeholder="Date of Diagnosis" data-ng-model="@(modelPrefix + "dateOfDiagnosisBC")" />
+            </div>
+        </div>
+
+        <div class="col-md-3" ng-hide="!(@(modelPrefix + "HadBC") === true)">
+            <div class="form-group input-group">
+                <label class="control-label">Age at Diagnosis</label>
+                <input type="number" class="form-control" name="AgeAtDiagnosisBC" placeholder="Age" data-ng-model="@(modelPrefix + "AgeAtDiagnosisBC")" />
+            </div>
+        </div>
+
+
+    </div>
+
+    <div ng-hide="!(@(modelPrefix + "HadBC") === true)">
+        <div> (please give details in the past medical history section which include: stage at diagnosis, site of tumor and treatment patient received)</div>
+        <div class="form-group">
+            <label class="control-label"></label>
+            <input type="text" class="form-control" name="BBDesc" placeholder="" data-ng-model="@(modelPrefix + "BBDesc")" />
+        </div>
+    </div>
+
+    <hr />
+    @* --------------------------   2) Family history of breast cancer   --------------------------  *@
+    <div class="row">
+        <div class="col-md-3">
+            2) Family history of breast cancer
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadFamilyBC", false)
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div ng-hide="!(@(modelPrefix + "HadFamilyBC") === true)">
+        <div class="form-group">
+            <label class="control-label">please give details</label>
+            <input type="text" class="form-control" name="BCFamilyDesc" placeholder="" data-ng-model="@(modelPrefix + "BCFamilyDesc")" />
+        </div>
+    </div>
+
+    <hr />
+
+    @* --------------------------   3) Others   --------------------------  *@
+    <div class="row">
+        <div class="col-md-3">
+            3) Others
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadOtherBC", false)
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+
+    <div ng-hide="!(@(modelPrefix + "HadOtherBC") === true)">
+        <div class="form-group">
+            <label class="control-label">please give details</label>
+            <input type="text" class="form-control" name="BCOtherDesc" placeholder="" data-ng-model="@(modelPrefix + "BCOtherDesc")" />
+        </div>
+    </div>
+
+    <hr />
+
+    @* --------------------------   Risk factor for breast cancer   --------------------------  *@
+    <b>Risk factor for breast cancer</b>
+
+    @* --------------------------   Age at your first period   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="control-label col-sm-3">
+                    Age at your first period
+                </div>
+                <div class="input-group col-sm-9">
+                    <input type="number" class="form-control" name="FirstPreiodYears" placeholder="Years" data-ng-model="@(modelPrefix + "FirstPreiodYears")" />
+                    <span class="input-group-addon"> years</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   Number of pregnancies:   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="control-label">
+                    Number of pregnancies:
+                </div>
+                <input type="number" class="form-control" name="PregnanciesCount" placeholder="" data-ng-model="@(modelPrefix + "PregnanciesCount")" />
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="control-label">
+                    Age at First pregnancy:
+                </div>
+                <input type="number" class="form-control" name="AgeAtFirstPregnancy" placeholder="" data-ng-model="@(modelPrefix + "AgeAtFirstPregnancy")" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="control-label">
+                    Number of live births:
+                </div>
+                <input type="number" class="form-control" name="NumberOfLiveBirths" placeholder="" data-ng-model="@(modelPrefix + "NumberOfLiveBirths")" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="control-label">
+                    Vaginal:
+                </div>
+                <input type="number" class="form-control" name="NumberOfVaginalBirth" placeholder="" data-ng-model="@(modelPrefix + "NumberOfVaginalBirth")" />
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="control-label">
+                    C-Section:
+                </div>
+                <input type="number" class="form-control" name="NumberOfCSectionBirth" placeholder="" data-ng-model="@(modelPrefix + "NumberOfCSectionBirth")" />
+            </div>
+        </div>
+
+    </div>
+    <hr />
+
+    @* --------------------------   Number of pregnancies:   --------------------------  *@
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label col-sm-8">Number of abortions/miscarriages:</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" name="AbortionsCount" placeholder="" data-ng-model="@(modelPrefix + "AbortionsCount")" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Any history of infertility</label>
+                @FWHtml.YesNoRadios(modelPrefix, "HadInfertility", false)
+            </div>
+            <div ng-hide="!(@(modelPrefix + "HadInfertility") === true)">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="InfertilityDesc" placeholder="Provide details" data-ng-model="@(modelPrefix + "InfertilityDesc")" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    @* --------------------------   Breastfeeding ?   --------------------------  *@
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="control-label">Breastfeeding ?</div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadBreastfeeding", false)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div ng-hide="!(@(modelPrefix + "HadBreastfeeding") === true)">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="BreastfeedingMonths" placeholder="" data-ng-model="@(modelPrefix + "BreastfeedingMonths")" />
+                        <span class="input-group-addon"> months</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <hr />
+
+    @* --------------------------   Use of birth control pills in the past?   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Use of birth control pills in the past?</label>
+                @FWHtml.YesNoRadios(modelPrefix, "HadBirthPills", false)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div ng-hide="!(@(modelPrefix + "HadBirthPills") === true)">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="BirthPillsMonths" placeholder="" data-ng-model="@(modelPrefix + "BirthPillsMonths")" />
+                        <span class="input-group-addon"> months</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <hr />
+
+    @* --------------------------   Date of last period:   --------------------------  *@
+    @* This should probably be removed as it can change over time*@
+
+    <div class="row">
+        <div class="col-md-3">
+            <label class="control-label">Date of last period:</label>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="date" class="form-control" name="LastPeriodDate" placeholder="" data-ng-model="@(modelPrefix + "LastPeriodDate")" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+    <hr />
+
+    @* --------------------------   History ovary removed (oophrectomy)?   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-3">
+            <label class="control-label">History ovary removed (oophrectomy)?</label>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadOophrectomy", false)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div ng-hide="!(@(modelPrefix + "HadOophrectomy") === true)">
+                <div class="form-group">
+                    <input type="date" class="form-control" name="OophrectomyDate" placeholder="" data-ng-model="@(modelPrefix + "OophrectomyDate")" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   Post menopause?   --------------------------  *@
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <label class="control-label">Post menopause?</label>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadMenopause", false)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div ng-hide="!(@(modelPrefix + "HadMenopause") === true)">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="MenopauseAge">Age:</label>
+                    <div class=" col-sm-10">
+                        <input type="text" class="form-control" name="MenopauseAge" placeholder="" data-ng-model="@(modelPrefix + "MenopauseAge")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div ng-hide="!(@(modelPrefix + "HadMenopause") === true)">
+                <div class="form-group">
+                    <label class="control-label">Type: </label>
+                    @FWHtml.OptionsRadio(modelPrefix, "MenopauseType", false, "Natural", "Natural", "Surgical", "Surgical", "Chemo-Induced", "ChemoInduced")
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    @* --------------------------   History of using hormone replacement?  --------------------------  *@
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <label class="control-label">History of using hormone replacement?</label>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadHormoneReplace", false)
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div ng-hide="!(@(modelPrefix + "HadHormoneReplace") === true)">
+                <div class="input-group">
+                    <input type="number" class="form-control" name="HormoneReplaceMonths" placeholder="" data-ng-model="@(modelPrefix + "HormoneReplaceMonths")" />
+                    <span class="input-group-addon"> months</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   History of Mantel field radiation  --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-9">
+            <label class="control-label">History of Mantel field radiation (chest radiotherapy for lymphoma) before age of thirty and at least 8 years previously?</label>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadMantelRadiation", false)
+            </div>
+        </div>
+    </div>
+
+    <div ng-hide="!(@(modelPrefix + "HadMantelRadiation") === true)">
+        <div class="form-group">
+            <label class="control-label col-sm-2">Date of radiotherapy</label>
+            <div class=" col-sm-10">
+                <input type="date" class="form-control" name="DateOfMantelRadiotherapy" placeholder="" data-ng-model="@(modelPrefix + "DateOfMantelRadiotherapy")" />
+            </div>
+        </div>
+    </div>
+
+
+    @UI.StickySavePanel()
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

@@ -1,0 +1,110 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vMedicalHistory.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+
+@{
+    string modelPrefix = "model.BCRisk3.";
+    string sectionName = "BCRisk3";
+
+    ViewBag.PanelTitle = "Risk Assessment";
+}
+
+@helper TextInput(string title, string code, string placeHolder, string modelPrefix)
+{
+    if (string.IsNullOrEmpty(placeHolder)) { placeHolder = title; }               
+                
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="control-label col-sm-3">@title</label>
+                <div class=" col-sm-9">
+                    <input type="text" class="form-control" name="@code" placeholder="@placeHolder" data-ng-model="@(modelPrefix + code)" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@{ ViewBag.ViewTitle = "Breast Cancer Questionnaire"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "RiskAssessment3";}
+@Html.Partial("~/Views/Dashboard/BreastCancer/_BreastCancerTabs.cshtml")
+
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    <h3>Physical Exam Initial Assessment for high risk breast clinic</h3>
+
+    @TextInput("General condition", "GCondition", null, modelPrefix)
+    <hr />
+    
+    @TextInput("Vital signs", "VitalSigns", null, modelPrefix)
+    <hr />
+    
+    <h3>BREAST EXAM</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            @TextInput("Clinical Breast Assessment", "BE_ClinicalBA", null, modelPrefix)
+            @TextInput("Normal", "BE_Normal", null, modelPrefix)
+            @TextInput("Dimpling", "BE_Dimpling", null, modelPrefix)
+            @TextInput("Fixation", "BE_Fixation", null, modelPrefix)
+            @TextInput("Peau D'orange", "BE_Peau", null, modelPrefix)
+            @TextInput("Erythema", "BE_Erythema", null, modelPrefix)
+            @TextInput("Retraction", "BE_Retraction", null, modelPrefix)
+            @TextInput("Nipple Inversion", "BE_NippleInversion", null, modelPrefix)
+            @TextInput("Hyper pigmentation", "BE_HyperPig", null, modelPrefix)
+            @TextInput("Breast Scare", "BE_BreastScare", null, modelPrefix)
+            @TextInput("Other", "BE_Other", null, modelPrefix)
+        </div>
+        <div class="col-md-6">
+            <img src="~/Content/Images/breastcancer/breastexam.jpg" class="img-responsive" />
+        </div>
+    </div>
+    
+
+
+    <hr />
+
+    @DoctorReview.GetSectionHeader(modelPrefix, "Skin", "Skin")
+    @FWHtml.CheckBox(modelPrefix, "SkinHasItching", "Itching")
+    @FWHtml.CheckBox(modelPrefix, "SkinHasRash", "Rash")
+    @FWHtml.CheckBox(modelPrefix, "SkinHasUnusualDryness", "Unusual dryness")
+    @FWHtml.CheckBox(modelPrefix, "SkinHasChangesInHair", "Changes in hair")
+    @FWHtml.CheckBox(modelPrefix, "SkinHasChangesInPigmentation", "Changes in pigmentation")
+    @DoctorReview.GetSectionFooter(modelPrefix, "Skin", "Skin")
+
+    @TextInput("Head and neck", "ReviewHead", null, modelPrefix)
+    @TextInput("Chest", "ReviewChest", null, modelPrefix)
+    @TextInput("CVS", "ReviewCVS", null, modelPrefix)
+    @TextInput("Abdomen", "ReviewAbdomen", null, modelPrefix)
+    @TextInput("CNS", "ReviewCNS", null, modelPrefix)
+
+    <hr />
+
+    @TextInput("Genetic Risk Assessment according to (modified glial score )", "GeneticRiskAssMGS", null, modelPrefix)
+
+    <hr />
+
+    @TextInput("Patient summary", "PatientSummary", null, modelPrefix)
+
+    <hr />
+
+    @TextInput("Plan", "Plan", null, modelPrefix)
+
+
+    <hr />
+
+
+    @UI.StickySavePanel()
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

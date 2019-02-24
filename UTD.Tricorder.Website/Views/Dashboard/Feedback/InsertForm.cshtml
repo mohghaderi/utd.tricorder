@@ -1,0 +1,87 @@
+﻿
+@{
+    var entityName = "Feedback";
+    ViewBag.EntityName = entityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Contact us"; }
+@*@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")*@
+
+<form role="form"
+      ng-controller="@(entityName)InsertFormController"
+      id="@(entityName)InsertFormFrm"
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">Type :</label>
+                <div data-selectize="{}"
+                     data-ng-model="model.FeedbackTypeID">
+                    <select class="form-control"
+                            name="FeedbackTypeID"
+                            data-bv-notempty="true">
+                        <option value="">Please select</option>
+                        <option value="1">Question</option>
+                        <option value="3">Bug Report</option>
+                        <option value="4">Issue / Problem</option>
+                        <option value="5">Change Request</option>
+                        <option value="7">Feature Request / Idea</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="control-label">I am :</label>
+                <div data-selectize="{}"
+                     data-ng-model="model.HappinessLevel">
+                    <select class="form-control"
+                            name="HappinessLevel"
+                            data-bv-notempty="true">
+                        <option value="">Please select</option>
+                        <option value="1">Angry</option>
+                        <option value="3">Upset</option>
+                        <option value="5">Neither happy nor upset</option>
+                        <option value="8">Happy</option>
+                        <option value="10">Very happy</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @*<div class="form-group">
+        <label class="control-label">is it related to the current page?</label>
+        @FWHtml.YesNoRadios("", "IsRelatedToCurrentUrl", true)
+    </div>*@
+
+    @*<div ng-hide="IsRelatedToCurrentUrl !== true">
+        @FWHtml.Editor(entity.EntityColumns[vFeedback.ColumnNames.ViewAddress])
+    </div>*@
+
+    @FWHtml.Editor(entity.EntityColumns[vFeedback.ColumnNames.Title], "data-bv-notempty='true'")
+
+    <div ng-hide="model.FeedbackTypeID != 7">
+        <p>Please write your request in this format: As a [Your role], I would like [Your feature request] because [The reason you need that (the problem behind asking this feature)]</p>
+        @*<p> You can still use your own format, but please include the problem behind what you ask for</p>
+        <p>For exmaple, as a buyer, I would like to see my preivous orders because 1- sometimes I need to see what I bought  2- how much I spent 3- keep track of my shoppings 4- decide for ordering a new item </p>*@
+    </div>
+
+    @FWHtml.Editor(entity.EntityColumns[vFeedback.ColumnNames.CommentText])
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="SubmitFeedback($event)">
+            Submit
+        </button>
+    </div>
+
+</form>
+
+
+@*@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")*@

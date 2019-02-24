@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vNotification" table="vNotification">
+
+		<id name="NotificationID" column="NotificationID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">dbo.Notification</param>
+			</generator>
+		</id>
+		
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="SenderUserID" name="SenderUserID" />
+		<property column="ReceiverUserID" name="ReceiverUserID" not-null="true" />
+		<property column="ParametersValues" name="ParametersValues" length="1073741823" />
+		<property column="NotificationErrorMessage" name="NotificationErrorMessage" length="1073741823" />
+		<property column="NotificationTemplateID" name="NotificationTemplateID" not-null="true" />
+		<property column="IsSMS" name="IsSMS" not-null="true" />
+		<property column="IsEmail" name="IsEmail" not-null="true" />
+		<property column="IsWebMessage" name="IsWebMessage" not-null="true" />
+		<property column="IsMobilePushMessage" name="IsMobilePushMessage" not-null="true" />
+		<property column="SMSBody" name="SMSBody" insert="false" update="false" length="500" />
+		<property column="EmailSubject" name="EmailSubject" insert="false" update="false" length="200" />
+		<property column="EmailBodyHTML" name="EmailBodyHTML" insert="false" update="false" length="1073741823" />
+		<property column="ShortWebBody" name="ShortWebBody" insert="false" update="false" length="1000" />
+		<property column="EmailBodyText" name="EmailBodyText" insert="false" update="false" length="1073741823" />
+		<property column="GotoURL" name="GotoURL" length="2048" />
+		<property column="ReceiverUserFirstName" name="ReceiverUserFirstName" insert="false" update="false" not-null="true" length="100" />
+		<property column="ReceiverUserLastName" name="ReceiverUserLastName" insert="false" update="false" not-null="true" length="100" />
+		<property column="ReceiverUserEmail" name="ReceiverUserEmail" insert="false" update="false" length="100" />
+		<property column="ReceiverUserPhoneNumber" name="ReceiverUserPhoneNumber" insert="false" update="false" length="18" />
+		<property column="RecieverUserUserName" name="RecieverUserUserName" insert="false" update="false" not-null="true" length="50" />
+		<property column="SenderUserFirstName" name="SenderUserFirstName" insert="false" update="false" length="100" />
+		<property column="SenderUserLastName" name="SenderUserLastName" insert="false" update="false" length="100" />
+		<property column="SenderUserEmail" name="SenderUserEmail" insert="false" update="false" length="100" />
+		<property column="SenderUserPhoneNumber" name="SenderUserPhoneNumber" insert="false" update="false" length="18" />
+		<property column="SenderUserUserName" name="SenderUserUserName" insert="false" update="false" length="50" />
+		<property column="SMSNotificationStatusID" name="SMSNotificationStatusID" not-null="true" />
+		<property column="EmailNotificationStatusID" name="EmailNotificationStatusID" not-null="true" />
+		<property column="EmailSendDate" name="EmailSendDate" />
+		<property column="SMSSendDate" name="SMSSendDate" />
+		<property column="RecieverUserNamePrefix" name="RecieverUserNamePrefix" insert="false" update="false" length="4" />
+		<property column="SenderUserNamePrefix" name="SenderUserNamePrefix" insert="false" update="false" length="4" />
+		<property column="RecieverUserWorldTimeZoneID" name="RecieverUserWorldTimeZoneID" insert="false" update="false" not-null="true" />
+		<property column="RecieverUserEmailVerificationCode" name="RecieverUserEmailVerificationCode" insert="false" update="false" not-null="true" />
+		<property column="RecieverUserPhoneVerificationCode" name="RecieverUserPhoneVerificationCode" insert="false" update="false" not-null="true" />
+		<property column="MobilePushType" name="MobilePushType" insert="false" update="false" length="50" />
+		<property column="MobilePushParamsJSON" name="MobilePushParamsJSON" insert="false" update="false" length="500" />
+		<property column="MobilePushAlert" name="MobilePushAlert" insert="false" update="false" length="100" />
+		<property column="MobilePushTitle" name="MobilePushTitle" insert="false" update="false" length="100" />
+		<property column="MobilePushSound" name="MobilePushSound" insert="false" update="false" length="50" />
+		<property column="TimeToLiveSeconds" name="TimeToLiveSeconds" insert="false" update="false" />
+		<property column="MobilePushNotificationStatusID" name="MobilePushNotificationStatusID" not-null="true" />
+		<property column="TemplateDotNetFullClassName" name="TemplateDotNetFullClassName" insert="false" update="false" length="200" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

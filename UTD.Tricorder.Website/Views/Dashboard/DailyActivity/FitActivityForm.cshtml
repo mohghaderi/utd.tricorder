@@ -1,0 +1,203 @@
+﻿@{
+    var entityName = "DailyActivity";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, @UI.GetViewName());
+    var fitActivityEntity = Framework.Common.EntityFactory.GetEntityInfoByName("FitActivity", @UI.GetViewName());
+    var colExternalEntityID = entity.EntityColumns[vDailyActivity.ColumnNames.ExternalEntityID];
+    colExternalEntityID.EditorControl = Framework.Common.EditorControlTypes.DropDownList;
+    colExternalEntityID.ForeignEntityName = "FitActivity";
+    colExternalEntityID.ForeignEntityMapColumnName = "FitActivityID";
+    colExternalEntityID.ForeignEntityAdditionalDataKey = @UI.GetViewName();
+    colExternalEntityID.Caption = "Activity";
+    colExternalEntityID.DropDownUseCustomLoad = true;
+
+    entity.EntityColumns[vDailyActivity.ColumnNames.RecordDateTimeUserLocal].EditorControl = Framework.Common.EditorControlTypes.DateTimePicker;
+}
+
+@{ ViewBag.ViewTitle = "Physical Activity"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)FitActivityFormController"
+      id="@(entityName)FitActivityFormFrm"
+      onsubmit="return false;">
+
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Height</label>
+                <select name="Height" ng-model="uimodel.height" class="form-control" data-bv-notempty="true" data-bv-field="Height">
+                    <option value="122">4ft 0in (122cm)</option>
+                    <option value="124">4ft 1in (124cm)</option>
+                    <option value="127">4ft 2in (127cm)</option>
+                    <option value="130">4ft 3in (130cm)</option>
+                    <option value="132">4ft 4in (132cm)</option>
+                    <option value="135">4ft 5in (135cm)</option>
+                    <option value="137">4ft 6in (137cm)</option>
+                    <option value="140">4ft 7in (140cm)</option>
+                    <option value="142">4ft 8in (142cm)</option>
+                    <option value="145">4ft 9in (145cm)</option>
+                    <option value="147">4ft 10in (147cm)</option>
+                    <option value="150">4ft 11in (150cm)</option>
+                    <option value="152">5ft 0in (152cm)</option>
+                    <option value="155">5ft 1in (155cm)</option>
+                    <option value="157">5ft 2in (157cm)</option>
+                    <option value="160">5ft 3in (160cm)</option>
+                    <option value="163">5ft 4in (163cm)</option>
+                    <option value="165">5ft 5in (165cm)</option>
+                    <option value="168">5ft 6in (168cm)</option>
+                    <option value="170">5ft 7in (170cm)</option>
+                    <option value="173">5ft 8in (173cm)</option>
+                    <option value="175">5ft 9in (175cm)</option>
+                    <option value="178">5ft 10in (178cm)</option>
+                    <option value="180">5ft 11in (180cm)</option>
+                    <option value="183">6ft 0in (183cm)</option>
+                    <option value="185">6ft 1in (185cm)</option>
+                    <option value="188">6ft 2in (188cm)</option>
+                    <option value="191">6ft 3in (191cm)</option>
+                    <option value="193">6ft 4in (193cm)</option>
+                    <option value="196">6ft 5in (196cm)</option>
+                    <option value="198">6ft 6in (198cm)</option>
+                    <option value="201">6ft 7in (201cm)</option>
+                    <option value="203">6ft 8in (203cm)</option>
+                    <option value="206">6ft 9in (206cm)</option>
+                    <option value="208">6ft 10in (208cm)</option>
+                    <option value="211">6ft 11in (211cm)</option>
+                    <option value="213">7ft 0in (213cm)</option>
+                    <option value="216">7ft 1in (216cm)</option>
+                    <option value="218">7ft 2in (218cm)</option>
+                    <option value="221">7ft 3in (221cm)</option>
+                    <option value="224">7ft 4in (224cm)</option>
+                    <option value="226">7ft 5in (226cm)</option>
+                    <option value="229">7ft 6in (229cm)</option>
+                    <option value="231">7ft 7in (231cm)</option>
+                    <option value="234">7ft 8in (234cm)</option>
+                    <option value="236">7ft 9in (236cm)</option>
+                    <option value="239">7ft 10in (239cm)</option>
+                    <option value="241">7ft 11in (241cm)</option>
+                    <option value="244">8ft 0in (244cm)</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Weight (lbs)</label>
+                <input type="text" name="Weight" class="form-control" data-ng-model="uimodel.weight" data-bv-notempty="true" data-bv-field="Weight">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Age</label>
+                <input type="text" name="Age" class="form-control" data-ng-model="uimodel.age" data-bv-notempty="true" data-bv-field="Age">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label class="control-label">Gender</label>
+                <input type="text" name="Gender" class="form-control" data-ng-model="uimodel.gender" data-bv-notempty="true" data-bv-field="Gender">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            @FWHtml.Editor(colExternalEntityID)
+        </div>
+    </div>
+
+    @*<div class="row">
+        <div class="col-md-6">
+            @FWHtml.Editor(fitActivityEntity.EntityColumns[vFitActivity.ColumnNames.FitActivityCategoryID])
+        </div>
+        <div class="col-md-6">
+            @FWHtml.Editor(colExternalEntityID)
+        </div>
+    </div>*@
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Hours</label>
+                <div selectize="{}" ng-model="uimodel.hours">
+                    <select class="form-control" data-bv-notempty="true" name="hoursSelect" data-bv-field="hoursSelect">
+                        @for (int i = 0; i <= 12; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Minutes</label>
+                <div selectize="{}" ng-model="uimodel.minutes">
+                    <select class="form-control" data-bv-notempty="true" name="minutesSelect" data-bv-field="minutesSelect">
+                        @for (int i = 0; i <= 60; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Seconds</label>
+                <div selectize="{}" ng-model="uimodel.seconds">
+                    <select class="form-control" data-bv-notempty="true" name="secondsSelect" data-bv-field="secondsSelect">
+                        @for (int i = 0; i <= 60; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label class="control-label">Calories burn</label>
+                <input type="text" name="Calorie" class="form-control" data-ng-model="calculatedCalorie" readonly="readonly" data-bv-notempty="true" data-bv-field="Calorie">
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            @FWHtml.Editor(entity.EntityColumns[vDailyActivity.ColumnNames.RecordDateTimeUserLocal])
+
+        </div>
+    </div>
+
+
+    @*<div class="row">
+        <div class="col-md-12">
+
+            @FWHtml.Editor(entity.EntityColumns[vDailyActivity.ColumnNames.Comment])
+
+        </div>
+    </div>*@
+
+
+
+
+
+
+
+    <hr />
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="Save($event)">
+            Save
+        </button>
+    </div>
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")
+
+

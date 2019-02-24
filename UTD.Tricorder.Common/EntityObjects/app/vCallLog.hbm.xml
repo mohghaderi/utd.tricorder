@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vCallLog" table="vCallLog" schema="app">
+
+		<id name="CallLogID" column="CallLogID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.CallLog</param>
+			</generator>
+		</id>
+		
+		<property column="StartDate" name="StartDate" not-null="true" />
+		<property column="SenderUserID" name="SenderUserID" not-null="true" />
+		<property column="ReceiverUserID" name="ReceiverUserID" not-null="true" />
+		<property column="EndDate" name="EndDate" />
+		<property column="DurationSeconds" name="DurationSeconds" not-null="true" />
+		<property column="EntityRecordID" name="EntityRecordID" />
+		<property column="AppEntityID" name="AppEntityID" not-null="true" />
+		<property column="CallStatusID" name="CallStatusID" not-null="true" />
+		<property column="SenderNamePrefix" name="SenderNamePrefix" insert="false" update="false" length="4" />
+		<property column="SenderFirstName" name="SenderFirstName" insert="false" update="false" length="100" />
+		<property column="SenderLastName" name="SenderLastName" insert="false" update="false" length="100" />
+		<property column="ReceiverFirstName" name="ReceiverFirstName" insert="false" update="false" length="100" />
+		<property column="ReceiverLastName" name="ReceiverLastName" insert="false" update="false" length="100" />
+		<property column="ReceiverNamePrefix" name="ReceiverNamePrefix" insert="false" update="false" length="4" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

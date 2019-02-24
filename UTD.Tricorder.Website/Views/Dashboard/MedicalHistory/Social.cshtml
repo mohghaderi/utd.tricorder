@@ -1,0 +1,568 @@
+﻿@{
+    var entityName = vMedicalHistory.EntityName;
+    
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{
+    string modelPrefix = "model.Social.";
+    string sectionName = "Social";
+    ViewBag.PanelTitle = "Social and Health Behaviors";
+}
+
+@{ ViewBag.ViewTitle = "Medical History"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "Social";}
+@Html.Partial("~/Views/Dashboard/MedicalHistory/_MedicalHistoryTabs.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+
+    @* --------------------------   1. Is Smoker   --------------------------  *@
+    <div class="row">
+        <div class="col-md-6">
+            1. Do you currently smoke or chew tobacco?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "IsSmoker", false)
+            </div>
+
+            <div class="form-group" ng-hide="(@(modelPrefix + "IsSmoker") === undefined) || @(modelPrefix + "IsSmoker") === true">
+                have you in the past?
+                @FWHtml.YesNoRadios(modelPrefix, "WasSmoker", false)
+            </div>
+
+            <div ng-hide="!((@(modelPrefix + "IsSmoker") === true) || (@(modelPrefix + "WasSmoker") === true))">
+                How many per day?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="SmokePacks" placeholder="Pack(s)" data-ng-model="@(modelPrefix + "SmokePacks")" />
+                    <span class="input-group-addon">Packs</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="SmokeCigars" placeholder="Cigar(s)" data-ng-model="@(modelPrefix + "SmokeCigars")" />
+                    <span class="input-group-addon">  Cigars</span>
+                </div>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="SmokeECigarettes" placeholder="eCigarette(s)" data-ng-model="@(modelPrefix + "SmokeECigaret")" />
+                    <span class="input-group-addon">eCigarettes</span>
+                </div>
+                For how long?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="SmokeYears" placeholder="Years" data-ng-model="@(modelPrefix + "SmokeYears")" />
+                    <span class="input-group-addon"> Years</span>
+                </div>
+
+                <div ng-hide="!(@(modelPrefix + "WasSmoker") === true)">
+                    when did you quit?
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="QuitDate" placeholder="Quit date" data-ng-model="@(modelPrefix + "QuitDate")" />
+                        <span class="input-group-addon"> Years</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   2. Is Drinker   --------------------------  *@
+    <div class="row">
+        <div class="col-md-6">
+            2. Do you sometimes drink alcohol, beer or wine?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "IsDrinker", false)
+            </div>
+
+            <div class="form-group" ng-hide="(@(modelPrefix + "IsDrinker") === undefined) || @(modelPrefix + "IsDrinker") === false">
+                how often?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="DrinkOften" placeholder="" data-ng-model="@(modelPrefix + "DrinkOften")" />
+                    <span class="input-group-addon">drinks per week</span>
+                </div>
+                What kind?
+                @FWHtml.CheckBox(modelPrefix, "IsAlcoholDrinker", "Alcohol")
+                @FWHtml.CheckBox(modelPrefix, "IsWineDrinker", "Wine")
+                @FWHtml.CheckBox(modelPrefix, "IsBeerDrinker", "Beer")
+                <input type="text" class="form-control" name="OtherDrink" placeholder="Other" data-ng-model="@(modelPrefix + "OtherDrink")" />
+            </div>
+
+        </div>
+    </div>
+    <hr />
+
+
+    @* --------------------------   3. Is Caffeine   --------------------------  *@
+    <div class="row">
+        <div class="col-md-6">
+            3. Do you drink caffeine?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "IsCaffeineDrinker", false)
+            </div>
+
+            <div class="form-group" ng-hide="(@(modelPrefix + "IsCaffeineDrinker") === undefined) || @(modelPrefix + "IsCaffeineDrinker") === false">
+                how many cups per day?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="CaffeineCupsPerDay" placeholder="" data-ng-model="@(modelPrefix + "CaffeineCupsPerDay")" />
+                    <span class="input-group-addon">cups</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   4. Helmet bike   --------------------------  *@
+    <div class="row">
+        <div class="col-md-6">
+            4. Do you wear a helmet when riding a bike?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "DoesWearHelmetWithBike", false)
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+    @* --------------------------   5. Seat Belt Driving   --------------------------  *@
+    <div class="row">
+        <div class="col-md-6">
+            5. Do you use seat belts while driving?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "DoesUseSeatBelt", false)
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   6. CounterDrugs   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            6. Do you use non-prescription or over the counter drugs?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "CounterDrugs", false)
+            </div>
+
+            <div class="form-group" ng-hide="(@(modelPrefix + "CounterDrugs") === undefined) || @(modelPrefix + "CounterDrugs") === false">
+                what kind?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="CounterDrugsKind" placeholder="" data-ng-model="@(modelPrefix + "CounterDrugsKind")" />
+                    <span class="input-group-addon"> </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   7. Exercise   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            7. Do you exercise?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "Exercise", false)
+            </div>
+
+            <div class="form-group" ng-hide="(@(modelPrefix + "Exercise") === undefined) || @(modelPrefix + "Exercise") === false">
+                how often?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="ExerciseOften" placeholder="" data-ng-model="@(modelPrefix + "ExerciseOften")" />
+                    <span class="input-group-addon">times/week</span>
+                </div>
+                what type of exercise?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="ExerciseKind" placeholder="" data-ng-model="@(modelPrefix + "ExerciseKind")" />
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   8. Visit Dentist   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            8. When was your last visit to the dentist?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="date" class="form-control" name="LastTimeDentist" placeholder="" data-ng-model="@(modelPrefix + "LastTimeDentist")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   9. Live alone   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            9. Do you live alone?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "DoesLiveAlone", false)
+            </div>
+            <div class="form-group" ng-hide="(@(modelPrefix + "DoesLiveAlone") === undefined) || @(modelPrefix + "DoesLiveAlone") === true">
+                With whom?
+                <div class="input-group">
+                    <input type="text" class="form-control" name="LiveWithPerson" placeholder="" data-ng-model="@(modelPrefix + "LiveWithPerson")" />
+                    <span class="input-group-addon"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+    @* --------------------------   10. Assistive equipment   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            10. Do you use any assistive equipment (i.e. cane, walker)?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "UseAssistive", false)
+            </div>
+            <div class="form-group" ng-hide="(@(modelPrefix + "UseAssistive") === undefined) || @(modelPrefix + "UseAssistive") === false">
+                what equipment?
+                @FWHtml.CheckBox(modelPrefix, "UseAssistiveCane", "Cane")
+                @FWHtml.CheckBox(modelPrefix, "UseAssistiveWheelchair", "Wheelchair")
+                @FWHtml.CheckBox(modelPrefix, "UseAssistiveWalker", "Walker")
+                <input type="text" class="form-control" name="AssistiveOther" placeholder="Other" data-ng-model="@(modelPrefix + "AssistiveOther")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   11. SevereFight   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            11. Has a fight between you or your partner ever gotten so bad
+            that one of you got hurt, kicked, hit or punched?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HasSevereFight", false)
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   12. Colonoscopy   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            12. Have you ever had a colonoscopy or sigmoidoscopy to screen
+            for colon cancer?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HasColonoscopyOrSigmoidoscopy", false)
+            </div>
+            <div class="form-group" ng-hide="(@(modelPrefix + "HasColonoscopyOrSigmoidoscopy") === undefined) || @(modelPrefix + "HasColonoscopyOrSigmoidoscopy") === false">
+                What test?
+                @FWHtml.CheckBox(modelPrefix, "HadColonoscopy", "Colonoscopy")
+                @FWHtml.CheckBox(modelPrefix, "HadSigmoidoscopy", "Sigmoidoscopy")
+                when was your last test?
+                <input type="date" class="form-control" name="ColonoscopyLastDate" placeholder="Date" data-ng-model="@(modelPrefix + "ColonoscopyLastDate")" />
+                what were the results:
+                <input type="text" class="form-control" name="ColonoscopyResults" placeholder="Results" data-ng-model="@(modelPrefix + "ColonoscopyResult")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+    @* --------------------------   13. Bone Density Test   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            13. Have you ever had a bone density test?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HasBoneDensityTest", false)
+            </div>
+            <div class="form-group" ng-hide="(@(modelPrefix + "HasBoneDensityTest") === undefined) || @(modelPrefix + "HasBoneDensityTest") === false">
+                when was your last test?
+                <input type="date" class="form-control" name="BoneDensityTestDate" placeholder="Date" data-ng-model="@(modelPrefix + "BoneDensityTestDate")" />
+                what were the results:
+                <input type="text" class="form-control" name="BoneDensityTestResult" placeholder="Results" data-ng-model="@(modelPrefix + "BoneDensityTestResult")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   14. Tetanus Vaccine   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            14. Have you ever had the Tetanus Vaccine?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HasTetanusVaccine", false)
+            </div>
+            <div class="form-group" ng-hide="(@(modelPrefix + "HasTetanusVaccine") === undefined) || @(modelPrefix + "HasTetanusVaccine") === false">
+                when was your last vaccine?
+                <input type="date" class="form-control" name="BoneDensityTestDate" placeholder="Date" data-ng-model="@(modelPrefix + "TetanusVaccineDate")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   15. Flu vaccine   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            15. Have you had the Flu vaccine?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HasFluVaccine", false)
+            </div>
+            <div class="form-group" ng-hide="(@(modelPrefix + "HasFluVaccine") === undefined) || @(modelPrefix + "HasFluVaccine") === false">
+                when was your last vaccine?
+                <input type="date" class="form-control" name="FluVaccineDate" placeholder="Date" data-ng-model="@(modelPrefix + "FluVaccineDate")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   16. Pneumonia vaccine   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            16. Have you had a Pneumonia vaccine?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HasPneumoniaVaccine", false)
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   17. Shingles vaccine   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            17. Have you had a Shingles vaccine?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HasShinglesVaccine", false)
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   18. Menstrual History   --------------------------  *@
+
+    @*<div class="row">
+            <div class="col-md-6">
+                18. Menstrual History:
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    @FWHtml.YesNoRadios(modelPrefix, "HasMenstrual", false)
+                </div>
+                <div class="form-group" ng-hide="(@(modelPrefix + "HasMenstrual") === undefined) || @(modelPrefix + "HasMenstrual") === false">
+                    Age at onset:
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="MenstrualAgeYears" placeholder="" data-ng-model="@(modelPrefix + "MenstrualAgeYears")" />
+                        <span class="input-group-addon">years</span>
+                    </div>
+                    Is regular?
+                    <div class="form-group">
+                        @FWHtml.YesNoRadios(modelPrefix, "IsRegularMenstrual", false)
+                    </div>
+                    Cycle
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="MenstrualCycleDays" placeholder="" data-ng-model="@(modelPrefix + "MenstrualCycleDays")" />
+                        <span class="input-group-addon">days</span>
+                    </div>
+                    Duration
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="MenstrualDurationDays" placeholder="" data-ng-model="@(modelPrefix + "MenstrualDurationDays")" />
+                        <span class="input-group-addon">days</span>
+                    </div>
+                    Pains or cramps
+                    <div class="form-group">
+                        @FWHtml.YesNoRadios(modelPrefix, "HasMenstrualPains", false)
+                    </div>
+                    Flow
+                    <div class="form-group">
+                        @FWHtml.RadioButton(modelPrefix, "MenstrualFlowType", false, "Light", "Light", "Light") ;
+                        @FWHtml.RadioButton(modelPrefix, "MenstrualFlowType", false, "Moderate", "Moderate", "Moderate") ;
+                        @FWHtml.RadioButton(modelPrefix, "MenstrualFlowType", false, "Heavy", "Heavy", "Heavy") ;
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />*@
+
+    @* --------------------------   19. Pregnant   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            19. How many times have you been pregnant?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="text" data-mask="00" class="form-control" name="PregnancyCount" placeholder="" data-ng-model="@(modelPrefix + "PregnancyCount")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   20. Pap Smears   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            20. Have you had Pap Smears?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadPapSmears", false)
+            </div>
+            <div ng-hide="(@(modelPrefix + "HadPapSmears") === undefined) || @(modelPrefix + "HadPapSmears") === false">
+                was it abnormal?
+                <div class="form-group">
+                    @FWHtml.YesNoRadios(modelPrefix, "HadAbnormalPapSmears", false)
+                </div>
+                diagnosis
+                <div class="form-group">
+                    <input type="text" class="form-control" name="PapSmearsDiagnosis" placeholder="Diagnosis" data-ng-model="@(modelPrefix + "PapSmearsDiagnosis")" />
+                </div>
+                follow up
+                <div class="form-group">
+                    <input type="text" class="form-control" name="PapSmearsFollowUp" placeholder="Follow Up" data-ng-model="@(modelPrefix + "PapSmearsFollowUp")" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   21. Mammogram   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            21. Have you had mammogram?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadMammogram", false)
+            </div>
+            <div ng-hide="(@(modelPrefix + "HadMammogram") === undefined) || @(modelPrefix + "HadMammogram") === false">
+                Date of last mammogram:
+                <input type="date" class="form-control" name="MammogramLastDate" placeholder="Last Mammogram Date" data-ng-model="@(modelPrefix + "MammogramLastDate")" />
+                results:
+                <input type="text" class="form-control" name="MammogramResults" placeholder="Results" data-ng-model="@(modelPrefix + "MammogramResults")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   22. breast biopsy   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            22. Have you ever had a breast biopsy?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadBreastBiopsy", false)
+            </div>
+            <div ng-hide="(@(modelPrefix + "HadBreastBiopsy") === undefined) || @(modelPrefix + "HadBreastBiopsy") === false">
+                results:
+                <input type="text" class="form-control" name="BreastBiopsyResults" placeholder="Results" data-ng-model="@(modelPrefix + "BreastBiopsyResults")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   23. Men's testicular exams   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            23. Do you perform regular testicular exams?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "HadRegularTesticularExams", false)
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   24. Student   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            24. Are you a student?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "IsStudent", false)
+            </div>
+            <div ng-hide="(@(modelPrefix + "IsStudent") === undefined) || @(modelPrefix + "IsStudent") === false">
+                <div class="form-group">
+                    @FWHtml.YesNoRadios(modelPrefix, "IsStudentFullTime", false, "Full-time", "Part-time")
+                </div>
+                Name of school:
+                <input type="text" class="form-control" name="StudentSchool" placeholder="School name" data-ng-model="@(modelPrefix + "StudentSchool")" />
+                Grade:
+                <input type="text" class="form-control" name="StudentGrade" placeholder="Grade" data-ng-model="@(modelPrefix + "StudentGrade")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    @* --------------------------   25. Sports   --------------------------  *@
+
+    <div class="row">
+        <div class="col-md-6">
+            25. Do you play sports?
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @FWHtml.YesNoRadios(modelPrefix, "DoesPlaySport", false)
+            </div>
+            <div ng-hide="(@(modelPrefix + "DoesPlaySport") === undefined) || @(modelPrefix + "DoesPlaySport") === false">
+                specify please:
+                <input type="text" class="form-control" name="SportName" placeholder="e.g Basketball, ..." data-ng-model="@(modelPrefix + "SportName")" />
+            </div>
+        </div>
+    </div>
+    <hr />
+
+
+    @UI.StickySavePanel()
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

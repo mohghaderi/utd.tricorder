@@ -1,0 +1,83 @@
+﻿@{
+    var entityName = vDailyActivity.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, @UI.GetViewName());
+
+    entity.EntityColumns[vDailyActivity.ColumnNames.RecordDateTimeUserLocal].EditorControl = Framework.Common.EditorControlTypes.DateTimePicker;
+}
+
+@{ ViewBag.ViewTitle = "Sleep Form"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)SleepFormController"
+      id="@(entityName)SleepFormFrm"
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Hours</label>
+                <div selectize="{}" ng-model="uimodel.hours">
+                    <select class="form-control" data-bv-notempty="true" name="hoursSelect" data-bv-field="hoursSelect">
+                        @for (int i = 0; i <= 12; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Minutes</label>
+                <div selectize="{}" ng-model="uimodel.minutes">
+                    <select class="form-control" data-bv-notempty="true" name="minutesSelect" data-bv-field="minutesSelect">
+                        @for (int i = 0; i <= 60; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">Seconds</label>
+                <div selectize="{}" ng-model="uimodel.seconds">
+                    <select class="form-control" data-bv-notempty="true" name="secondsSelect" data-bv-field="secondsSelect">
+                        @for (int i = 0; i <= 60; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            @FWHtml.Editor(entity.EntityColumns[vDailyActivity.ColumnNames.RecordDateTimeUserLocal])
+        </div>
+        <div class="col-md-6">
+            @FWHtml.Editor(entity.EntityColumns[vDailyActivity.ColumnNames.Comment])
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-success btn-block"
+                ng-click="Save($event)">
+            Save
+        </button>
+    </div>
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")
+
+
+
+

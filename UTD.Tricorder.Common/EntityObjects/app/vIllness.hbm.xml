@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vIllness" table="vIllness" schema="app">
+
+		<id name="IllnessID" column="IllnessID" type="Int32" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt32, Framework">
+				<param name="table_name">app.Illness</param>
+			</generator>
+		</id>
+		
+		<property column="IllnessTitle" name="IllnessTitle" not-null="true" length="350" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

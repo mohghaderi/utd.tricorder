@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vUser" table="vUser" schema="mem">
+
+		<id name="UserID" column="UserID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">mem.User</param>
+			</generator>
+		</id>
+		
+		<property column="UserName" name="UserName" not-null="true" length="50" />
+		<property column="FirstName" name="FirstName" not-null="true" length="100" />
+		<property column="LastName" name="LastName" not-null="true" length="100" />
+		<property column="PasswordHash" name="PasswordHash" not-null="true" />
+		<property column="PasswordSalt" name="PasswordSalt" not-null="true" />
+		<property column="Email" name="Email" length="100" />
+		<property column="PhoneNumber" name="PhoneNumber" length="18" />
+		<property column="UserApprovalStatusID" name="UserApprovalStatusID" not-null="true" />
+		<property column="ApprovalUserID" name="ApprovalUserID" />
+		<property column="MembershipAreaID" name="MembershipAreaID" not-null="true" />
+		<property column="InsertUserID" name="InsertUserID" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="UpdateUserID" name="UpdateUserID" />
+		<property column="UpdateDate" name="UpdateDate" />
+		<property column="LastLoginDate" name="LastLoginDate" />
+		<property column="LastPasswordChangedDate" name="LastPasswordChangedDate" not-null="true" />
+		<property column="LastStatusChangeDate" name="LastStatusChangeDate" not-null="true" />
+		<property column="FailedPasswordAttemptCount" name="FailedPasswordAttemptCount" not-null="true" />
+		<property column="MembershipAreaName" name="MembershipAreaName" insert="false" update="false" length="100" />
+		<property column="MembershipAreaCode" name="MembershipAreaCode" insert="false" update="false" length="100" />
+		<property column="DefaultRoleID" name="DefaultRoleID" not-null="true" />
+		<property column="RoleName" name="RoleName" insert="false" update="false" length="100" />
+		<property column="RoleCode" name="RoleCode" insert="false" update="false" length="50" />
+		<property column="UserApprovalStatusTitle" name="UserApprovalStatusTitle" insert="false" update="false" not-null="true" length="100" />
+		<property column="UserApprovalStatusCode" name="UserApprovalStatusCode" insert="false" update="false" not-null="true" length="50" />
+		<property column="EmailVerificationCode" name="EmailVerificationCode" not-null="true" />
+		<property column="PhoneVerificationCode" name="PhoneVerificationCode" not-null="true" />
+		<property column="IsEmailVerified" name="IsEmailVerified" not-null="true" />
+		<property column="IsPhoneVerified" name="IsPhoneVerified" not-null="true" />
+		<property column="NamePrefix" name="NamePrefix" length="4" />
+		<property column="PrimaryLanguageID" name="PrimaryLanguageID" not-null="true" />
+		<property column="MiddleName" name="MiddleName" length="100" />
+		<property column="WorldTimeZoneTitle" name="WorldTimeZoneTitle" insert="false" update="false" not-null="true" length="1000" />
+		<property column="WorldTimeZoneIANAName" name="WorldTimeZoneIANAName" insert="false" update="false" not-null="true" length="1000" />
+		<property column="WorldTimeZoneID" name="WorldTimeZoneID" not-null="true" />
+		<property column="ReferrerUserID" name="ReferrerUserID" />
+		<property column="ResetPasswordCode" name="ResetPasswordCode" />
+		<property column="ResetPasswordRequestDate" name="ResetPasswordRequestDate" />
+		<property column="IsOnline" name="IsOnline" not-null="true" />
+		<property column="LastOnlineDate" name="LastOnlineDate" />
+		<property column="InsertSiteID" name="InsertSiteID" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

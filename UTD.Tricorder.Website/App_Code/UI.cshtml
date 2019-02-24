@@ -1,0 +1,61 @@
+﻿@helper UserProfileImage(string picUrl, string additionalAttributes = "", int size= 128)
+{
+    var noImage = @VirtualPathUtility.ToAbsolute("~/Content/Images/users/user_nopicture.png");
+
+    <img alt="User Pic"
+         src="@noImage"
+         ng-src="@picUrl"
+         onerror="this.onerror=null; this.src='@noImage';"
+         class="img-circle"
+         height="@size"
+         width="@size"
+         @additionalAttributes>
+}
+
+@helper DoctorProfileImage(string picUrl, string additionalAttributes = "", int size=128)
+{
+    var noImage = @VirtualPathUtility.ToAbsolute("~/Content/Images/users/doctor_nopicture.png");
+
+    <img alt="User Pic"
+         src="@noImage"
+         ng-src="@picUrl"
+         onerror="this.onerror=null; this.src='@noImage';"
+         class="img-circle"
+         height="@size"
+         width="@size"
+         @additionalAttributes>
+}
+
+@functions { 
+
+    public static System.Web.Mvc.MvcHtmlString AngualrCtrlDivAttr(string entityName, string viewName)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.Append("id=\"").Append(entityName).Append(viewName).Append("ControllerDiv\"");
+        sb.Append(" ng-controller=\"").Append(entityName).Append(viewName).Append("Controller\"");
+        return new System.Web.Mvc.MvcHtmlString(sb.ToString());
+    }
+
+    public static System.Web.Mvc.MvcHtmlString AngualrCtrlFormAttr(string entityName, string viewName)
+    {
+        System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        sb.Append("id=\"").Append(entityName).Append(viewName).Append("Frm\"");
+        sb.Append(" ng-controller=\"").Append(entityName).Append(viewName).Append("Controller\"");
+        sb.Append(" role=\"form\"");
+        return new System.Web.Mvc.MvcHtmlString(sb.ToString());
+    }
+
+    public static string GetViewName()
+    {
+        return Path.GetFileNameWithoutExtension(Server.MapPath(VirtualPath));
+    }
+}
+
+@helper StickySavePanel() {
+    <div class="form-group stickysave">
+        <button class="btn btn-lg btn-success btn-save"
+                ng-click="Save($event)">
+            Save
+        </button>
+    </div>
+}

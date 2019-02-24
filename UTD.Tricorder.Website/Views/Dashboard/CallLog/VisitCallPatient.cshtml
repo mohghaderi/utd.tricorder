@@ -1,0 +1,38 @@
+﻿@{
+    var entityName = "CallLog";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    var controllerName = entityName + "VisitCallPatient" + "Controller";
+}
+
+@{ ViewBag.ViewTitle = "Phone ring"; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+
+<div id="@(controllerName)Div"
+     ng-controller="@controllerName">
+
+    <div class="row">
+        <div class="col-md-12 col-xs-12" align="center">
+            @*<div class="line"><h3>12 : 30 AM</h3></div>*@
+            <div class="outter">
+                @UI.UserProfileImage("{{model.ReceiverProfilePicUrl}}")
+            </div>
+            <span>Calling...</span>
+            <h1 ng-bind="model.ReceiverFullName"></h1>
+            <hr />
+        </div>
+        <div class="col-md-12 col-xs-12" align="center">
+            <a ng-click="CancelCall()" class="btn btn-block btn-danger" href=""><h4><i class="fa fa-minus"></i> <span>End</span></h4></a>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")
+
+
+<audio id="RingtonAudio" autoplay="autoplay" loop="loop" preload="auto">
+    <source src="~/Content/Sounds/DialTone.mp3" type="audio/mpeg" />
+    Your browser does not support playing audio.
+</audio>
+
+

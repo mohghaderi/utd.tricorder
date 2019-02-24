@@ -1,0 +1,21 @@
+﻿<!-- Visit Details tabs -->
+<div ng-controller="VisitDetailsTabController">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="@(FWHtml.GetActiveTabClass("Info", ViewBag.ActiveTab))">
+            <a href="#Visit-InfoTab?MasterID={{MasterID}}" role="tab">Visit Info</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Payments", ViewBag.ActiveTab))">
+            <a href="#Payment-VisitDetailGridTab?MasterID={{MasterID}}" role="tab">Payments</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("DoctorReport", ViewBag.ActiveTab))">
+            <a href="#Visit-DoctorReport?MasterID={{MasterID}}" role="tab">Doctor Report</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("DoctorReview", ViewBag.ActiveTab))">
+            <a href="#Visit-DoctorReview?MasterID={{MasterID}}" role="tab">Doctor Review</a>
+        </li>
+        <li class="@(FWHtml.GetActiveTabClass("Attachments", ViewBag.ActiveTab))">
+            <a href="#Visit-Attachments?MasterID={{MasterID}}" role="tab">File Attachments</a>
+        </li>
+    </ul>
+</div>
+<!-- End Personal Info tabs -->

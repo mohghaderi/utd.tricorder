@@ -1,0 +1,28 @@
+﻿@{
+    var entityName = "User";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Register Patient"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+    <form role="form"
+          ng-controller="@(entityName)RegisterQuickFromDoctorController"
+          id="@(entityName)RegisterQuickFromDoctorFrm"
+          onsubmit="return false;">
+
+
+        @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.FirstName])
+        @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.LastName])
+        @FWHtml.Editor(entity.EntityColumns[vUser.ColumnNames.PhoneNumber])
+
+        <div class="form-group">
+            <button class="btn btn-lg btn-success btn-block"
+                    ng-click="RegisterQuickFromDoctor()">
+                Register
+            </button>
+        </div>
+
+    </form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

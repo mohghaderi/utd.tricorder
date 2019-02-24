@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Uknown Error";
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_PublicWebLayout.cshtml");
+}
+
+@{ ViewBag.ViewTitle = "Uknown Error"; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+
+<h1>Unknown Error</h1>
+<p>We regret to say that an unknown exception happened in the website. We saved all necessary information, and we will try to fix it as soon as possible. Sorry for any inconvenience.</p>
+
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")

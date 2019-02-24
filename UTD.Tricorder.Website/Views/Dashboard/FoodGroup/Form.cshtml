@@ -1,0 +1,39 @@
+﻿@{
+    var entityName = vFoodGroup.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, @UI.GetViewName());
+    entity.EntityColumns[vFoodGroup.ColumnNames.RecordDateTimeUserLocal].EditorControl = Framework.Common.EditorControlTypes.DateTimePicker;
+}
+
+@{ ViewBag.ViewTitle = "Food Group"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<form @UI.AngualrCtrlFormAttr(entityName, UI.GetViewName())
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroup.ColumnNames.FoodServingTimeTypeID])
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroup.ColumnNames.RecordDateTimeUserLocal])
+
+            @FWHtml.Editor(entity.EntityColumns[vFoodGroup.ColumnNames.FoodGroupTitle])
+
+            <h3>Items</h3>
+            @Html.Partial("~/Views/Dashboard/FoodGroupItem/_Grid.cshtml")
+
+
+        </div>
+    </div>
+
+    <hr />
+
+    @UI.StickySavePanel()
+
+</form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")
+
+
+
+

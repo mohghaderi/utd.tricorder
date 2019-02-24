@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="FoodGroupItem" table="FoodGroupItem" schema="app">
+
+		<id name="FoodGroupItemID" column="FoodGroupItemID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">app.FoodGroupItem</param>
+			</generator>
+		</id>
+		
+		<property column="FoodID" name="FoodID" not-null="true" />
+		<property column="FoodGroupID" name="FoodGroupID" not-null="true" />
+		<property column="ServingAmount" name="ServingAmount" not-null="true" />
+		<property column="ServingGrams" name="ServingGrams" not-null="true" />
+		<property column="FoodServingTypeID" name="FoodServingTypeID" not-null="true" />
+		<property column="Calorie" name="Calorie" not-null="true" />
+		<property column="Fat" name="Fat" not-null="true" />
+		<property column="Carb" name="Carb" not-null="true" />
+		<property column="Protein" name="Protein" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

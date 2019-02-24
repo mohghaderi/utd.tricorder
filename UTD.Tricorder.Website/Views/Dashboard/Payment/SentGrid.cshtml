@@ -1,0 +1,52 @@
+﻿@* DEVELOPER NOTE: Rename this file with PayPalController file. *@
+
+@{ ViewBag.ViewTitle = "Payments"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+<div id="PaymentSentGridControllerDiv"
+     ng-controller="PaymentSentGridController">
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        @*<h3>My Payments</h3>*@
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="200">Receiver</th>
+                    <th width="50">Amount</th>
+                    <th width="100">Status</th>
+                    <th width="100">Completed Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        @UI.UserProfileImage("{{item.ReceiverProfilePicUrl}}", "", 45)
+                        {{item.ReceiverFirstName}} {{item.ReceiverLastName}}
+                    </td>
+                    <td>
+                        ${{item.Amount}}
+                    </td>
+                    <td>
+                        <span><i class="{{item.PaymentStatusIcon}}" title="{{item.PaymentStatusName}}"></i>{{item.PaymentStatusName}}</span>
+                    </td>
+                    <td>
+                        {{FormatDateTime(item.CompletedDateTime)}}
+                        @*<button ng-hide="!IsCancelable(item)" type="button" class="btn btn-danger" ng-click="Cancel(item.@(vPayment.ColumnNames.PaymentID), $event)">Cancel</button>*@
+                        <button ng-hide="!IsPayable(item)" type="button" class="btn btn-info" ng-click="Pay(item, $event)">Pay</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+</div><!-- end of PaymentsGridController controller -->
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

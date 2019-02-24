@@ -1,0 +1,44 @@
+﻿
+@{ ViewBag.ViewTitle = "Upload"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+<div id="AppFileUploadSingleControllerDiv"
+     data-ng-controller="AppFileUploadSingleController">
+
+    @*https://github.com/danialfarid/ng-file-upload*@
+
+    <div class="btn btn-default"
+         type="file"
+         ng-file-select
+         ng-model="files"
+         ng-file-change="fileSelected($files, $event)"
+         ng-multiple="false"
+         ng-capture='camera'
+         @*accept="'image/*'"
+         ng-accept="'image/*'|validate($file)"
+         ng-model-rejected="rejFiles"*@>Upload</div>
+
+    <div id="dropzone"
+         class="dropzone fade well"
+         ng-file-drop
+         ng-model="files"
+         ng-file-change="fileDropped($files, $event, $rejectedFiles)"
+         ng-multiple="false"
+         ng-accept="validate($file)"
+         ng-model-rejected="rejFiles"
+         allow-dir="false"
+         drag-over-class="{accept:'acceptClass', reject:'rejectClass', delay:100}"
+         drop-available="dropSupported"
+         stop-propagation="true"
+         hide-on-drop-not-available="false">
+        Drop files here
+    </div>
+
+    <div ng-no-file-drop>
+        File Drag/drop is not supported
+    </div>
+
+</div>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")
+

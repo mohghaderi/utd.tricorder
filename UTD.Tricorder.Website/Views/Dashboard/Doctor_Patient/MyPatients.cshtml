@@ -1,0 +1,40 @@
+﻿@{ ViewBag.ViewTitle = "My Patients"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+<div id="Doctor_PatientMyPatientsControllerDiv"
+     ng-controller="Doctor_PatientMyPatientsController">
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <div data-ng-hide="itemsList.length == 0">
+        <h3>My Patients</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="200">Title</th>
+                    <th width="50"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in itemsList">
+                    <td>
+                        @UI.UserProfileImage("{{item.PatientProfilePicUrl}}", "", 80)
+                        {{item.PatientFullName}}
+                    </td>
+                    <td>
+                        <a href="#Person-ProfileView?MasterID={{item.PatientUserID}}" class="btn btn-info">View Profile</a>
+                        <button type="button" class="btn btn-danger" ng-click="DeleteItem(item.@(vDoctor_Patient.ColumnNames.Doctor_PatientID), $event)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div><!-- end of Doctor_Patient controller -->
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

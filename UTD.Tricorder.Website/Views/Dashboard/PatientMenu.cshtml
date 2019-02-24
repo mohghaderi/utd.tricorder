@@ -1,0 +1,30 @@
+﻿@{ ViewBag.ViewTitle = "Dashboard"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@helper MenuItem(string caption, string link, string ngClick, string thumbFileName)
+{
+    <div class='col-sm-3 col-xs-4 col-md-3 col-lg-2'>
+        <div class="text-center" style="height:210px">
+            <a class="" href="@link" data-ng-click="@ngClick">
+                <img class="menu-img-responsive"
+                     alt=""
+                     src="~/Content/Images/Menu/@thumbFileName" />
+                <div class=''>@caption</div>
+            </a>
+        </div>
+    </div> <!-- col-6 / end -->
+}
+
+
+<div class="row" ng-controller="DashboardController">
+
+    @MenuItem("My Doctors", "#Doctor_Patient-MyDoctors", null, "MyDoctors.jpg")
+    @MenuItem("My Appointments", "#Visit-MyVisitsPatient", null, "MyAppointments.jpg")
+    @MenuItem("My Payments", "#Payment-SentGrid", null, "MyTransactions.jpg")
+
+    @MenuItem("My Profile", "#Person-ProfileView", null, "Profile.png")
+    @MenuItem("My Account", "#User-ProfileEdit", null, "MyAccount.jpg")
+
+</div> <!-- row / end -->
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

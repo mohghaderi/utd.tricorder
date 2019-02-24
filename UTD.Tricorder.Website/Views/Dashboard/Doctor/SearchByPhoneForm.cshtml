@@ -1,0 +1,82 @@
+﻿@{ ViewBag.ViewTitle = "Search doctors"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@*<a href="#Doctor_Patient-MyDoctors" class="btn btn-info">
+    Return to my doctors
+</a>*@
+
+<h3>Find Doctor by phone number</h3>
+
+<div id="DoctorSearchByPhoneFormControllerDiv"
+     ng-controller="DoctorSearchByPhoneFormController">
+
+    <form role="form"
+          id="DoctorSearchByPhoneFormFrm"
+          onsubmit="return false;">
+
+        <div class="form-group">
+            <label class="control-label">Clinic Phone Number</label>
+            <input name="PhoneNumber"
+                   class="form-control"
+                   ng-model="ClinicPhoneNumber"
+                   data-bv-notempty="true"
+                   data-bv-notempty-message="Enter a phone number to start searching"
+                   data-bv-stringlength-min="5"
+                   data-bv-stringlength-trim="true"
+                   data-bv-stringlength-message="Phone Number should at least be 5 character."
+                   maxlength="20" />
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-lg btn-success"
+                    ng-click="DoSearch()">
+                Search
+            </button>
+        </div>
+    </form>
+
+
+    <div role="alert"
+         data-ng-hide="itemsList.length > 0"
+         class="alert alert-warning">
+        {{msgs.selectedItemsListIsEmpty}}
+    </div>
+
+    <table class="table table-striped" data-ng-hide="itemsList.length == 0">
+        <thead>
+            <tr>
+                <th width="150">Title</th>
+                <td width="100">Info</td>
+                <th width="50"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in itemsList">
+                <td>
+                    @UI.DoctorProfileImage("{{item.DoctorProfilePicUrl}}", "", 80)
+                    {{item.DoctorFullName}}
+                </td>
+                <td>
+                    <div>
+                        <b>Tel:</b>{{item.ClinicPhoneNumber}}
+                    </div>
+                    <div>
+                        <b>Address:</b>{{item.ClinicAddress}}
+                    </div>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-info" ng-click="DoctorProfileDialogController.ShowDialog(item.@(vDoctor_Patient.ColumnNames.DoctorID), $event)">View</button>
+                    <button type="button" class="btn btn-info" ng-click="Doctor_PatientController.AddDoctor(item.@(vDoctor_Patient.ColumnNames.DoctorID), $event)">Add</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="Doctor_PatientControllerDiv"
+         ng-controller="Doctor_PatientController"></div>
+
+    @Html.Partial("~/Views/Dashboard/Doctor/ProfileDialog.cshtml")
+
+</div>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

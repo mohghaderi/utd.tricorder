@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_PublicWebLayout.cshtml");
+}
+
+@{
+    var entityName = "User";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Login"; }
+@Html.Partial("~/Views/Default/_Layout/_SmallFormHeader.cshtml")
+
+<form role="form"
+      ng-controller="loginController"
+      id="@(entityName)LoginFrm"
+      onsubmit="return false;">
+
+    <div class="form-group">
+        <label> <i class="fa fa-user"></i> @UIText.Default.Login.UserNameLabel</label>
+        <input type="text"
+               name="username"
+               class="form-control"
+               placeholder="@UIText.Default.Login.UserNameLabel"
+               data-ng-model="loginData.userName"
+               autofocus data-bv-notempty="true">
+    </div>
+
+    <div class="form-group">
+        <label> <i class="fa fa-key"></i> @UIText.Default.Login.PasswordLabel</label>
+        <input type="password"
+               name="password"
+               class="form-control"
+               placeholder="@UIText.Default.Login.PasswordLabel"
+               data-ng-model="loginData.password"
+               data-bv-notempty="true">
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-lg btn-success"
+                ng-click="login($event)">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @UIText.Default.GeneralButtons.LoginButtonText   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-default btn-block"
+               href="Signup">
+                @UIText.Default.GeneralButtons.SignupButtonText
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-default btn-block"
+               href="ICantLogin">
+                @UIText.Default.GeneralButtons.CantLoginText
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-default btn-block"
+               href="ContinueQReg">
+                @UIText.Default.GeneralButtons.ContinueIncompleteReg
+            </a>
+        </div>
+    </div>
+
+</form>
+
+
+
+@Html.Partial("~/Views/Default/_Layout/_SmallFormFooter.cshtml")
+
+
+@if (FWHtml.IsDebug()) {
+    @section DebugScripts
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var scope = angular.element($("form").first()).scope();
+                //scope.loginData.userName = 'patient4';
+                //scope.loginData.password = 'Patient4!';
+                scope.loginData.userName = 'Doctor4';
+                scope.loginData.password = 'Doctor4!';
+                scope.$apply();
+            });
+        </script>
+    }
+}

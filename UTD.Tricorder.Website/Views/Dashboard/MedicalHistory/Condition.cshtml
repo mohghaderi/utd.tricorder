@@ -1,0 +1,462 @@
+﻿@{
+    var entityName = vMedicalHistory.EntityName;
+    
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{
+    string modelPrefix = "model.Condition.";
+    string sectionName = "Condition";    
+}
+
+@{ ViewBag.ViewTitle = "Medical History"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "Condition";}
+@Html.Partial("~/Views/Dashboard/MedicalHistory/_MedicalHistoryTabs.cshtml")
+
+
+@*<div class="panel-group" id="accordion">*@
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    <div class="row">
+        <div class="col-sm-4 col-md-4">
+            @*<h3 class=""><a href="javascript:void(0)">Allergies</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Allergies")
+            @PatientHistory.MedicalCheckBox("Anaphylaxis (Severe Allergic Reaction)", "Allergies")
+            @PatientHistory.MedicalCheckBox("Chronic Rhinitis", "Allergies")
+            @PatientHistory.MedicalCheckBox("Cold / Flu / Allergies", "Allergies")
+            @PatientHistory.MedicalCheckBox("Food Allergy", "Allergies")
+            @PatientHistory.MedicalCheckBox("Hives", "Allergies")
+            @PatientHistory.MedicalCheckBox("Latex Allergy", "Allergies")
+            @PatientHistory.MedicalCheckBox("Sinusitis", "Allergies")
+            @PatientHistory.GetAccordionSectionFooter("Allergies")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Alzheimer's</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Alzheimer's")
+            @PatientHistory.MedicalCheckBox("Alzheimer's Disease", "Alzheimer's")
+            @PatientHistory.MedicalCheckBox("Bladder Incontinence", "Alzheimer's")
+            @PatientHistory.MedicalCheckBox("Dementia", "Alzheimer's")
+            @PatientHistory.GetAccordionSectionFooter("Alzheimer's")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Arthritis</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Arthritis")
+            @PatientHistory.MedicalCheckBox("Arthritis", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Ankylosing Spondylitis", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Fibromyalgia", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Gout", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Lupus", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Osteoarthritis", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Psoriatic Arthritis", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Reactive Arthritis", "Arthritis")
+            @PatientHistory.MedicalCheckBox("Rheumatoid Arthritis", "Arthritis")
+            @PatientHistory.GetAccordionSectionFooter("Arthritis")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Cancer</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Cancer")
+            @PatientHistory.MedicalCheckBox("Cancer - General", "Cancer")
+            @PatientHistory.MedicalCheckBox("Brain Tumor", "Cancer")
+            @PatientHistory.MedicalCheckBox("Bladder Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Breast Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Cervical Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Colon Polyps", "Cancer")
+            @PatientHistory.MedicalCheckBox("Liver Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Lung Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Pancreatic Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Prostate Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Skin Cancer", "Cancer")
+            @PatientHistory.MedicalCheckBox("Testicular Cancer", "Cancer")
+            @PatientHistory.GetAccordionSectionFooter("Cancer")
+
+            @*<h3 class=""><a href="javascript:void(0)">Cholesterol</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Cholesterol")
+            @PatientHistory.MedicalCheckBox("Cholesterol", "Cholesterol")
+            @PatientHistory.MedicalCheckBox("Fiber", "Cholesterol")
+            @PatientHistory.MedicalCheckBox("Heart Attack", "Cholesterol")
+            @PatientHistory.GetAccordionSectionFooter("Cholesterol")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Chronic Pain</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Chronic Pain")
+            @PatientHistory.MedicalCheckBox("Acupuncture", "Chronic Pain")
+            @PatientHistory.MedicalCheckBox("Acute and Chronic Pain", "Chronic Pain")
+            @PatientHistory.MedicalCheckBox("Cortisone Injection", "Chronic Pain")
+            @PatientHistory.MedicalCheckBox("Degenerative Disc", "Chronic Pain")
+            @PatientHistory.MedicalCheckBox("Low Back Pain", "Chronic Pain")
+            @PatientHistory.GetAccordionSectionFooter("Chronic Pain")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Cold &amp; Flu</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Aches, Pain, Fever", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Chronic Cough", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Common Cold", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Encephalitis and Meningitis", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Eustachian Tube Problems", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Flu (Influenza)", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Pneumonia", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("SARS", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Sinusitis", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Sore Throat", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Strep Throat", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Swine Flu (H1N1 Virus)", "Cold and Flu")
+            @PatientHistory.MedicalCheckBox("Tonsillitis and Adenoiditis", "Cold and Flu")
+            @PatientHistory.GetAccordionSectionFooter("Cold &amp; Flu")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Depression</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Depression")
+            @PatientHistory.MedicalCheckBox("Bipolar Disorder", "Depression")
+            @PatientHistory.MedicalCheckBox("Depression", "Depression")
+            @PatientHistory.MedicalCheckBox("Dysthymia", "Depression")
+            @PatientHistory.MedicalCheckBox("Panic Disorder", "Depression")
+            @PatientHistory.MedicalCheckBox("Post Traumatic Stress Disorder", "Depression")
+            @PatientHistory.MedicalCheckBox("Seasonal Affective Disorder (SAD)", "Depression")
+            @PatientHistory.MedicalCheckBox("Stress", "Depression")
+            @PatientHistory.GetAccordionSectionFooter("Depression")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Diabetes</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Diabetes")
+            @PatientHistory.MedicalCheckBox("Diabetes Mellitus", "Diabetes")
+            @PatientHistory.MedicalCheckBox("Diabetes Insipidus", "Diabetes")
+            @PatientHistory.GetAccordionSectionFooter("Diabetes")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Digestion</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Digestion")
+            @PatientHistory.MedicalCheckBox("Abdominal Pain", "Digestion")
+            @PatientHistory.MedicalCheckBox("Appendicitis", "Digestion")
+            @PatientHistory.MedicalCheckBox("Ulcerative Colitis", "Digestion")
+            @PatientHistory.MedicalCheckBox("Constipation", "Digestion")
+            @PatientHistory.MedicalCheckBox("Crohn's Disease", "Digestion")
+            @PatientHistory.MedicalCheckBox("Diarrhea", "Digestion")
+            @PatientHistory.MedicalCheckBox("Dyspepsia (Indigestion)", "Digestion")
+            @PatientHistory.MedicalCheckBox("Inflammatory Bowel Disease (IBD)", "Digestion")
+            @PatientHistory.MedicalCheckBox("Intestinal Gas", "Digestion")
+            @PatientHistory.MedicalCheckBox("GERD (Heartburn, Acid Reflux)", "Digestion")
+            @PatientHistory.MedicalCheckBox("Hemorrhoids", "Digestion")
+            @PatientHistory.MedicalCheckBox("Irritable Bowel Syndrome (IBS)", "Digestion")
+            @PatientHistory.MedicalCheckBox("Lactose Intolerance", "Digestion")
+            @PatientHistory.MedicalCheckBox("Laxatives for Constipation", "Digestion")
+            @PatientHistory.MedicalCheckBox("Motion Sickness", "Digestion")
+            @PatientHistory.GetAccordionSectionFooter("Digestion")
+
+            @*<h3><a href="javascript:void(0)">Eyesight</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Eyesight")
+            @PatientHistory.MedicalCheckBox("Cataracts", "Eyesight")
+            @PatientHistory.MedicalCheckBox("Eye Allergy", "Eyesight")
+            @PatientHistory.MedicalCheckBox("Eye Care", "Eyesight")
+            @PatientHistory.MedicalCheckBox("Glaucoma", "Eyesight")
+            @PatientHistory.MedicalCheckBox("LASIK Eye Surgery", "Eyesight")
+            @PatientHistory.MedicalCheckBox("Macular Degeneration", "Eyesight")
+            @PatientHistory.MedicalCheckBox("Pink Eye (Conjunctivitis)", "Eyesight")
+            @PatientHistory.MedicalCheckBox("Retinal Detachment", "Eyesight")
+            @PatientHistory.MedicalCheckBox("Sjogren's Syndrome", "Eyesight")
+            @PatientHistory.GetAccordionSectionFooter("Eyesight")
+
+
+
+        </div>
+        <div class="col-sm-4 col-md-4">
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Heart</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Heart")
+            @PatientHistory.MedicalCheckBox("Angina", "Heart")
+            @PatientHistory.MedicalCheckBox("Congenital Heart Disease", "Heart")
+            @PatientHistory.MedicalCheckBox("Coronary Angiogram", "Heart")
+            @PatientHistory.MedicalCheckBox("Coronary Angioplasty", "Heart")
+            @PatientHistory.MedicalCheckBox("Coronary Artery Bypass", "Heart")
+            @PatientHistory.MedicalCheckBox("Heart Attack", "Heart")
+            @PatientHistory.MedicalCheckBox("Heart Murmurs", "Heart")
+            @PatientHistory.MedicalCheckBox("Heart Palpitations", "Heart")
+            @PatientHistory.MedicalCheckBox("High Cholesterol", "Heart")
+            @PatientHistory.MedicalCheckBox("Stroke", "Heart")
+            @PatientHistory.GetAccordionSectionFooter("Heart")
+
+
+            @*<h3><a href="javascript:void(0)">Hepatitis</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Hepatitis")
+            @PatientHistory.MedicalCheckBox("Cirrhosis of the Liver", "Hepatitis")
+            @PatientHistory.MedicalCheckBox("Essential Mixed Cryoglobulinemia", "Hepatitis")
+            @PatientHistory.MedicalCheckBox("Hepatitis B", "Hepatitis")
+            @PatientHistory.MedicalCheckBox("Hepatitis C", "Hepatitis")
+            @PatientHistory.MedicalCheckBox("Hepatitis A and B", "Hepatitis")
+            @PatientHistory.MedicalCheckBox("Jaundice", "Hepatitis")
+            @PatientHistory.MedicalCheckBox("Lichen Planus", "Hepatitis")
+            @PatientHistory.GetAccordionSectionFooter("Hepatitis")
+            @*<h3 class=""><a href="javascript:void(0)">High Blood Pressure</a></h3>*@
+
+            @PatientHistory.GetAccordionSectionHeader("High Blood Pressure")
+            @PatientHistory.MedicalCheckBox("High Blood Pressure (Hypertension)", "High Blood Pressure")
+            @PatientHistory.MedicalCheckBox("Pulmonary Hypertension", "High Blood Pressure")
+            @PatientHistory.GetAccordionSectionFooter("High Blood Pressure")
+
+            @*<h3 class=""><a href="javascript:void(0)">Infectious Disease</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Botulism", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Dengue Fever", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Mad Cow Disease", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Malaria", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Meningitis", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("MRSA", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Rabies", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Staph Infection", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("Thrush", "Infectious Disease")
+            @PatientHistory.MedicalCheckBox("West Nile Virus", "Infectious Disease")
+            @PatientHistory.GetAccordionSectionFooter("Infectious Disease")
+
+
+            @*<h3><a href="javascript:void(0)">Liver</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Liver")
+            @PatientHistory.MedicalCheckBox("Cirrhosis of the Liver", "Liver")
+            @PatientHistory.MedicalCheckBox("Non-alcoholic Fatty Liver", "Liver")
+            @PatientHistory.MedicalCheckBox("Hemochromatosis (Iron Overload)", "Liver")
+            @PatientHistory.MedicalCheckBox("Hepatitis B", "Liver")
+            @PatientHistory.MedicalCheckBox("Hepatitis C", "Liver")
+            @PatientHistory.MedicalCheckBox("Jaundice", "Liver")
+            @PatientHistory.MedicalCheckBox("Liver Blood Tests", "Liver")
+            @PatientHistory.MedicalCheckBox("Primary Biliary Cirrhosis (PBC)", "Liver")
+            @PatientHistory.MedicalCheckBox("Primary Sclerosing Cholangitis (PSC)", "Liver")
+            @PatientHistory.GetAccordionSectionFooter("Liver")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Lungs</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Lungs")
+            @PatientHistory.MedicalCheckBox("Asthma", "Lungs")
+            @PatientHistory.MedicalCheckBox("Chronic Obstructive Pulmonary Disease (COPD)", "Lungs")
+            @PatientHistory.MedicalCheckBox("Emphysema", "Lungs")
+            @PatientHistory.MedicalCheckBox("Lung Cancer", "Lungs")
+            @PatientHistory.MedicalCheckBox("Pneumonia", "Lungs")
+            @PatientHistory.MedicalCheckBox("Severe Acute Respiratory Syndrome (SARS)", "Lungs")
+            @PatientHistory.MedicalCheckBox("Smoker's Lung Photo Essay", "Lungs")
+            @PatientHistory.MedicalCheckBox("Smoking and Quitting Smoking", "Lungs")
+            @PatientHistory.MedicalCheckBox("", "Lungs")
+            @PatientHistory.MedicalCheckBox("Hormone Creams", "Lungs")
+            @PatientHistory.MedicalCheckBox("Hormone Replacement Therapy", "Lungs")
+            @PatientHistory.MedicalCheckBox("Hot Flashes - Alternative Treatments", "Lungs")
+            @PatientHistory.GetAccordionSectionFooter("Lungs")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Men's Health</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Men's Health")
+            @PatientHistory.MedicalCheckBox("Angina", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Benign Prostatic Hyperplasia (BPH)", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Erectile Dysfunction (Impotence)", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Hair Loss (Baldness)", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Prostate Cancer", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Prostatitis", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Sexually Transmitted Diseases", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Testicular Cancer", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Vasectomy", "Men's Health")
+            @PatientHistory.MedicalCheckBox("Viagra", "Men's Health")
+            @PatientHistory.GetAccordionSectionFooter("Men's Health")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Mental Health</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Mental Health")
+            @PatientHistory.MedicalCheckBox("Anxiety", "Mental Health")
+            @PatientHistory.MedicalCheckBox("Body Dysmorphic Disorder", "Mental Health")
+            @PatientHistory.MedicalCheckBox("Panic Attacks", "Mental Health")
+            @PatientHistory.MedicalCheckBox("Postpartum Depression", "Mental Health")
+            @PatientHistory.MedicalCheckBox("Separation Anxiety", "Mental Health")
+            @PatientHistory.MedicalCheckBox("Stress", "Mental Health")
+            @PatientHistory.GetAccordionSectionFooter("Mental Health")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Migraine</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Migraine")
+            @PatientHistory.MedicalCheckBox("Cluster Headaches", "Migraine")
+            @PatientHistory.MedicalCheckBox("Headache", "Migraine")
+            @PatientHistory.MedicalCheckBox("Tension Headache", "Migraine")
+            @PatientHistory.GetAccordionSectionFooter("Migraine")
+
+
+            @*<h3><a href="javascript:void(0)">Osteoporosis</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Osteoporosis")
+            @PatientHistory.MedicalCheckBox("Bone Density", "Osteoporosis")
+            @PatientHistory.MedicalCheckBox("Estradiol", "Osteoporosis")
+            @PatientHistory.MedicalCheckBox("Hormone Replacement Therapy", "Osteoporosis")
+            @PatientHistory.MedicalCheckBox("Menopause", "Osteoporosis")
+            @PatientHistory.MedicalCheckBox("Osteoporosis", "Osteoporosis")
+            @PatientHistory.GetAccordionSectionFooter("Osteoporosis")
+
+
+            @*<h3><a href="javascript:void(0)">Pediatrics / Healthy Kids</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Attention Deficit Disorder (ADD)", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Bedwetting", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Birth Defects", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Chickenpox", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Colic", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Diaper Rash", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Lactose Intolerance", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Nosebleeds", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Pink Eye", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Measles", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Mumps", "Pediatrics / Healthy Kids")
+            @PatientHistory.MedicalCheckBox("Tonsillectomy", "Pediatrics / Healthy Kids")
+            @PatientHistory.GetAccordionSectionFooter("Pediatrics / Healthy Kids")
+
+        </div>
+        <div class="col-sm-4 col-md-4">
+
+            @*<h3><a href="javascript:void(0)">Rheumatoid Arthritis</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Rheumatoid Arthritis")
+            @PatientHistory.MedicalCheckBox("Arthroscopy", "Rheumatoid Arthritis")
+            @PatientHistory.MedicalCheckBox("Celebrex", "Rheumatoid Arthritis")
+            @PatientHistory.MedicalCheckBox("Cortisone Injection", "Rheumatoid Arthritis")
+            @PatientHistory.MedicalCheckBox("Remicade", "Rheumatoid Arthritis")
+            @PatientHistory.MedicalCheckBox("Rheumatoid Arthritis", "Rheumatoid Arthritis")
+            @PatientHistory.MedicalCheckBox("Total Hip Replacement", "Rheumatoid Arthritis")
+            @PatientHistory.MedicalCheckBox("Total Knee Replacement", "Rheumatoid Arthritis")
+            @PatientHistory.GetAccordionSectionFooter("Rheumatoid Arthritis")
+
+
+
+
+            @*<h3><a href="javascript:void(0)">Senior Health</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Senior Health")
+            @PatientHistory.MedicalCheckBox("Alzheimer's Disease", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Anemia", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Angina", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Cataracts", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Dementia", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Glaucoma", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Macular Degeneration", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Hearing Loss", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Heart Attack", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Sleep Disturbance", "Senior Health")
+            @PatientHistory.MedicalCheckBox("Stroke", "Senior Health")
+            @PatientHistory.GetAccordionSectionFooter("Senior Health")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Skin</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Skin")
+            @PatientHistory.MedicalCheckBox("Acne", "Skin")
+            @PatientHistory.MedicalCheckBox("Actinic Keratosis", "Skin")
+            @PatientHistory.MedicalCheckBox("Atopic Dermatitis (Eczema)", "Skin")
+            @PatientHistory.MedicalCheckBox("Boils", "Skin")
+            @PatientHistory.MedicalCheckBox("Bumps and Bruises", "Skin")
+            @PatientHistory.MedicalCheckBox("Burns", "Skin")
+            @PatientHistory.MedicalCheckBox("Dandruff", "Skin")
+            @PatientHistory.MedicalCheckBox("Hives", "Skin")
+            @PatientHistory.MedicalCheckBox("Itch", "Skin")
+            @PatientHistory.MedicalCheckBox("Keloid", "Skin")
+            @PatientHistory.MedicalCheckBox("Melanoma", "Skin")
+            @PatientHistory.MedicalCheckBox("Nail Fungus", "Skin")
+            @PatientHistory.MedicalCheckBox("Poison Ivy", "Skin")
+            @PatientHistory.MedicalCheckBox("Psoriasis", "Skin")
+            @PatientHistory.MedicalCheckBox("Rash (Dermatitis)", "Skin")
+            @PatientHistory.MedicalCheckBox("Rosacea", "Skin")
+            @PatientHistory.MedicalCheckBox("Scleroderma", "Skin")
+            @PatientHistory.MedicalCheckBox("Shingles", "Skin")
+            @PatientHistory.MedicalCheckBox("Skin Cancer", "Skin")
+            @PatientHistory.MedicalCheckBox("Warts", "Skin")
+            @PatientHistory.MedicalCheckBox("Wrinkles", "Skin")
+            @PatientHistory.GetAccordionSectionFooter("Skin")
+
+
+            @*<h3 class=""><a href="javascript:void(0)">Sleep</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Sleep")
+            @PatientHistory.MedicalCheckBox("Insomnia", "Sleep")
+            @PatientHistory.MedicalCheckBox("Jet Lag", "Sleep")
+            @PatientHistory.MedicalCheckBox("Narcolepsy", "Sleep")
+            @PatientHistory.MedicalCheckBox("Sleep", "Sleep")
+            @PatientHistory.MedicalCheckBox("Sleep Apnea", "Sleep")
+            @PatientHistory.MedicalCheckBox("Snoring (Somnoplasty)", "Sleep")
+            @PatientHistory.GetAccordionSectionFooter("Sleep")
+
+
+            @*<h3><a href="javascript:void(0)">Thyroid</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Thyroid")
+            @PatientHistory.MedicalCheckBox("Hashimoto's Thyroiditis", "Thyroid")
+            @PatientHistory.MedicalCheckBox("Hyperthyroidism", "Thyroid")
+            @PatientHistory.MedicalCheckBox("Hypothyroidism", "Thyroid")
+            @PatientHistory.MedicalCheckBox("Synthroid (levothyroxine sodium)", "Thyroid")
+            @PatientHistory.MedicalCheckBox("Thyroid Cancer", "Thyroid")
+            @PatientHistory.MedicalCheckBox("Thyroid Nodules", "Thyroid")
+            @PatientHistory.GetAccordionSectionFooter("Thyroid")
+
+
+            @*<h3><a href="javascript:void(0)">Urology</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Urology")
+            @PatientHistory.MedicalCheckBox("Bladder Infection", "Urology")
+            @PatientHistory.MedicalCheckBox("Bladder Spasms", "Urology")
+            @PatientHistory.MedicalCheckBox("Blood In Urine (Hematuria)", "Urology")
+            @PatientHistory.MedicalCheckBox("Cystinuria", "Urology")
+            @PatientHistory.MedicalCheckBox("Interstitial Cystitis", "Urology")
+            @PatientHistory.MedicalCheckBox("Kidney Stone", "Urology")
+            @PatientHistory.MedicalCheckBox("Nerve Disease and Bladder Control", "Urology")
+            @PatientHistory.MedicalCheckBox("Overactive Bladder", "Urology")
+            @PatientHistory.MedicalCheckBox("Prostatitis", "Urology")
+            @PatientHistory.MedicalCheckBox("Urethral Stricture", "Urology")
+            @PatientHistory.MedicalCheckBox("Urinalysis", "Urology")
+            @PatientHistory.MedicalCheckBox("Urinary Retention", "Urology")
+            @PatientHistory.MedicalCheckBox("Urinary Tract Infections", "Urology")
+            @PatientHistory.GetAccordionSectionFooter("Urology")
+
+
+
+            @*<h3><a href="javascript:void(0)">Weight Loss</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Weight Loss")
+            @PatientHistory.MedicalCheckBox("Anorexia Nervosa", "Weight Loss")
+            @PatientHistory.MedicalCheckBox("Bulimia", "Weight Loss")
+            @PatientHistory.MedicalCheckBox("Cellulite", "Weight Loss")
+            @PatientHistory.MedicalCheckBox("Childhood Obesity", "Weight Loss")
+            @PatientHistory.GetAccordionSectionFooter("Weight Loss")
+
+
+            @*<h3><a href="javascript:void(0)">Women's Health</a></h3>*@
+            @PatientHistory.GetAccordionSectionHeader("Women's Health")
+            @PatientHistory.MedicalCheckBox("Birth Control", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Breast Cancer", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Breastfeeding", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Hormone Therapy", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Hysterectomy", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Menopause", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Miscarriage", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Osteoporosis", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Ovarian Cancer", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Ovarian Cysts", "Women's Health")
+            @PatientHistory.MedicalCheckBox("PMS (Premenstrual Syndrome)", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Sexually Transmitted Diseases (STDs)", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Uterine Cancer", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Varicose Veins", "Women's Health")
+            @PatientHistory.MedicalCheckBox("Yeast Infections", "Women's Health")
+            @PatientHistory.GetAccordionSectionFooter("Women's Health")
+
+
+            @PatientHistory.GetAccordionSectionHeader("Other")
+            <div class="form-group">
+                <input type="text" class="form-control" name="Other1" placeholder="other" data-ng-model="@(modelPrefix).other1">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="other2" placeholder="other" data-ng-model="@(modelPrefix).other2">
+            </div>
+            @PatientHistory.GetAccordionSectionFooter("Women's Health")
+
+
+        </div>
+    </div>
+
+
+
+
+
+    <!-- End Accordian -->
+    @*</div>*@
+
+
+    @UI.StickySavePanel()
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

@@ -1,0 +1,51 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+
+@{
+    string entityName = vDoctor_USState.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    
+}
+
+
+@{ ViewBag.ViewTitle = "Certified States"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+        <form role="form"
+              ng-controller="@(entityName)TwoKeyController"
+              id="@(entityName)TwoKeyFrm"
+              onsubmit="return false;">
+
+            <h3>Please select states that you are allowed to visit patients in the United States</h3>
+
+            @FWHtml.Editor(entity.EntityColumns[vDoctor_USState.ColumnNames.USStateID])
+
+            <div>
+                <button class="btn btn-success" ng-click="Insert($event)">Add to list</button>
+            </div>
+
+            <div role="alert"
+                 data-ng-hide="itemsList.length > 0"
+                 class="alert alert-warning">
+                {{msgs.selectedItemsListIsEmpty}}
+            </div>
+
+            <div data-ng-hide="itemsList.length == 0">
+                <h3>Selected Items</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="200">Title</th>
+                            <th width="50"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in itemsList">
+                            <td>{{item.@(vDoctor_USState.ColumnNames.StateName)}}</td>
+                            <td><button type="button" class="btn btn-danger" ng-click="DeleteItem(item.@(vDoctor_USState.ColumnNames.Doctor_USStateID), $event)">Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

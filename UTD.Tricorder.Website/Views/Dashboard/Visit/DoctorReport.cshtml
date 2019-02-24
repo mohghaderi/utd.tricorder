@@ -1,0 +1,31 @@
+﻿@{
+    var entityName = "Visit";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Visit information"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "DoctorReport";}
+@Html.Partial("~/Views/Dashboard/Visit/_VisitDetailsTabs.cshtml")
+
+<div class="navbar-default">
+
+    <form role="form"
+          ng-controller="@(entityName)DoctorReportFormController"
+          id="@(entityName)DoctorReportFormFrm"
+          onsubmit="return false">
+
+
+        @FWHtml.Editor(entity.EntityColumns[vVisit.ColumnNames.DoctorReport])
+        @FWHtml.Editor(entity.EntityColumns[vVisit.ColumnNames.Prescription])
+
+        <div ng-hide="CurrentRoleCode != 'Doctor'">
+            @UI.StickySavePanel()
+        </div>
+
+    </form>
+
+</div>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

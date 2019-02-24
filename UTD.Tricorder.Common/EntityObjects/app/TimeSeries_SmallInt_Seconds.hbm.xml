@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="TimeSeries_SmallInt_Seconds" table="TimeSeries_SmallInt_Seconds" schema="app">
+
+    <!-- #DONT REGENERATE -->
+
+    <composite-id>
+      <key-property name="TSDateOffset" column="TSDateOffset"/>
+      <key-property name="TimeSeriesTypeID" column="TimeSeriesTypeID"/>
+      <key-property name="UserID" column="UserID"/>
+    </composite-id>
+
+
+    <!--<property column="TSDateOffset" name="TSDateOffset" not-null="true" />-->
+    <property column="TSValue" name="TSValue" not-null="true" />
+		<!--<property column="TimeSeriesTypeID" name="TimeSeriesTypeID" not-null="true" />
+		<property column="UserID" name="UserID" not-null="true" />-->
+		<property column="TSValueBinary" name="TSValueBinary" not-null="true" />
+    <property column="TimeSeriesStripID" name="TimeSeriesStripID" not-null="true" />
+      
+    <sql-insert>
+      exec app.TimeSeries_SmallInt_Insert ?,?,?,?,?,?
+    </sql-insert>
+
+    <sql-query name="TimeSeries_SmallInt_Get" callable="true">
+      <!--<return class="TimeSeries_SmallInt_Seconds">
+        <return-property column="TSDateOffset" name="TSDateOffset" />
+        <return-property column="TSValue" name="TSValue" />
+        <return-property column="TSValueBinary" name="TSValueBinary" />
+      </return>-->
+      exec app.TimeSeries_SmallInt_Get ?, ?, ?, ?
+    </sql-query>
+    
+	</class>
+</hibernate-mapping>

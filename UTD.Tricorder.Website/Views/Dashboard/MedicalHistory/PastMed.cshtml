@@ -1,0 +1,65 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+@{
+    var entityName = vMedicalHistory.EntityName;
+    
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{
+    string col1Title = "Past medical history";
+    string col2Title = "Date";
+    string col1PlaceHolder = "Reason / Diagnosis / Procedure";
+    string col2PlaceHolder = col2Title;
+    string col1Name = "Title";
+    string col2Name = "Date";
+    string modelPrefix = "model.PastMed.";
+    string sectionName = "PastMed";
+
+    ViewBag.PanelTitle = "Past medical history: Hospitalization and surgeries";
+}
+
+@{ ViewBag.ViewTitle = "Medical History"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "PastMed";}
+@Html.Partial("~/Views/Dashboard/MedicalHistory/_MedicalHistoryTabs.cshtml")
+
+<form role="form"
+      ng-controller="@(entityName)@(sectionName)Controller"
+      id="@(entityName)@(sectionName)Frm"
+      onsubmit="return false;">
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-8">
+                <label>@col1Title</label>
+            </div>
+
+            <div class="col-md-4">
+                <label>@col2Title</label>
+            </div>
+        </div>
+    </div>
+
+    @for (int i = 0; i < 5; i++)
+    {
+        <div class="form-group">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" name="@(col1Name + i.ToString())" placeholder="@col1PlaceHolder" data-ng-model="@(modelPrefix + col1Name + i.ToString())">
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" name="@(col2Name + i.ToString())" placeholder="@col2PlaceHolder" data-ng-model="@(modelPrefix + col2Name + i.ToString())">
+                </div>
+            </div>
+        </div>
+    }
+
+
+    @UI.StickySavePanel()
+
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="StringTextTran" table="StringTextTran" schema="i18n">
+
+		<id name="StringTextTranID" column="StringTextTranID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">i18n.StringTextTran</param>
+			</generator>
+		</id>
+		
+		<property column="StringTextID" name="StringTextID" not-null="true" />
+		<property column="TranValue" name="TranValue" not-null="true" length="500" />
+		<property column="LanguageID" name="LanguageID" not-null="true" />
+		<property column="IsAccepted" name="IsAccepted" not-null="true" />
+		<property column="InsertUserID" name="InsertUserID" not-null="true" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="AcceptedUserID" name="AcceptedUserID" />
+		<property column="AcceptedDate" name="AcceptedDate" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

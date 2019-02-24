@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = SiteUI.GetViewPath("~/Views/Layouts/_DashboardSPA.cshtml");
+}
+
+<a class="btn btn-info" onclick="mobileApp.registerPushNotify()">Register Push</a>
+<a class="btn btn-info" onclick="mobileApp.setBadge(3)">Set Badge</a>
+<a class="btn btn-info" onclick="alert('getDeviceUUID:' + mobileApp.getDeviceUUID())">getDeviceUUID</a>
+<a class="btn btn-info" onclick="alert('getGeneratedUUID:' + mobileApp.getGeneratedUUID())">getGeneratedUUID</a>
+<a class="btn btn-info" onclick="alert('getDeviceInfoString:' + mobileApp.getDeviceInfoString())">getDeviceInfoString</a>
+
+
+<div @UI.AngualrCtrlDivAttr("UserDeviceSetting", "SendPushSanity")>
+    <a class="btn btn-info" ng-click="SendPushSanity()" href="">Test Push Sanity</a>
+</div>

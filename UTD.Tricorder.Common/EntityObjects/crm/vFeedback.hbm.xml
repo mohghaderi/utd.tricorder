@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="vFeedback" table="vFeedback" schema="crm">
+
+		<id name="FeedbackID" column="FeedbackID" type="Int64" unsaved-value="-1">
+			<generator class="Framework.DataAccess.SiteIdGeneratorInt64, Framework">
+				<param name="table_name">crm.Feedback</param>
+			</generator>
+		</id>
+		
+		<property column="ParentFeedbackID" name="ParentFeedbackID" />
+		<property column="Title" name="Title" length="200" />
+		<property column="CommentText" name="CommentText" not-null="true" length="1073741823" />
+		<property column="ViewAddress" name="ViewAddress" length="1073741823" />
+		<property column="InsertUserID" name="InsertUserID" />
+		<property column="InsertDate" name="InsertDate" not-null="true" />
+		<property column="FeedbackTypeID" name="FeedbackTypeID" not-null="true" />
+		<property column="SiteID" name="SiteID" />
+		<property column="VoteCount" name="VoteCount" not-null="true" />
+		<property column="ChildCount" name="ChildCount" not-null="true" />
+		<property column="TicketPriorityID" name="TicketPriorityID" not-null="true" />
+		<property column="TicketStatusID" name="TicketStatusID" not-null="true" />
+		<property column="TicketSourceTypeID" name="TicketSourceTypeID" not-null="true" />
+		<property column="RelatedTicketGroupID" name="RelatedTicketGroupID" />
+		<property column="TicketAssignedUserID" name="TicketAssignedUserID" />
+		<property column="InternalCompanyComment" name="InternalCompanyComment" length="1073741823" />
+		<property column="HappinessLevel" name="HappinessLevel" />
+		<property column="TicketStatusTitle" name="TicketStatusTitle" insert="false" update="false" length="100" />
+		<property column="TicketStatusCode" name="TicketStatusCode" insert="false" update="false" length="50" />
+		<property column="TicketPriorityTitle" name="TicketPriorityTitle" insert="false" update="false" length="100" />
+		<property column="TicketPriorityCode" name="TicketPriorityCode" insert="false" update="false" length="50" />
+		<property column="TicketSourceTypeTitle" name="TicketSourceTypeTitle" insert="false" update="false" length="100" />
+		<property column="TicketSourceTypeCode" name="TicketSourceTypeCode" insert="false" update="false" length="50" />
+		<property column="TicketGroupName" name="TicketGroupName" insert="false" update="false" length="100" />
+		<property column="FeedbackTypeName" name="FeedbackTypeName" insert="false" update="false" length="100" />
+		<property column="FeedbackTypeCode" name="FeedbackTypeCode" insert="false" update="false" length="50" />
+		<property column="FeedbackTypeCanBeStarted" name="FeedbackTypeCanBeStarted" insert="false" update="false" />
+		<property column="InsertLanguageID" name="InsertLanguageID" not-null="true" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

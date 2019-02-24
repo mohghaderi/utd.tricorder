@@ -1,0 +1,81 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+
+@{
+    string entityName = vPatientInsurance.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    
+}
+
+<!-- Patient Insurance Form Dialog -->
+
+<div id="@(entityName)FormDlg"
+     class="modal fade bs-PatientInsurance-modal-lg"
+     tabindex="-1" role="dialog"
+     aria-labelledby="myPatientInsuranceLabel"
+     aria-hidden="true"
+     ng-controller="@(entityName)FormController">
+
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title">Insurance</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form"
+                      id="@(entityName)FormFrm"
+                      onsubmit="return false;">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Insurance</label>
+                                <div selectize="{}"
+                                     ng-model="model.InsuranceID">
+                                    <select class="form-control"
+                                            name="InsuranceID"
+                                            data-bv-notempty="true"
+                                            autofocus>
+                                        <option value=""></option>
+                                        @UTD.Tricorder.Website.Helpers.FWHtml.OptionsListForEntity("Insurance")
+                                    </select>
+                                </div>
+                            </div>
+                            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.InsurancePlanID])
+
+                            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.SubscriberName])
+                            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.GroupNumber])
+                        </div>
+
+                        <div class="col-md-6">
+                            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.InsuranceCoNumber])
+                            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.CoPayAmount])
+                            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.IsPrimary])
+                            @FWHtml.Editor(entity.EntityColumns[vPatientInsurance.ColumnNames.BenefitIdentifier])
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-lg btn-success"
+                        ng-click="Save($event)">
+                    Save
+                </button>
+                @*<button class="btn btn-danger"
+                            ng-click="Delete()"
+                            data-toggle="button"
+                            ng-hide="IsInsertForm !== true">
+                        Delete
+                    </button>*@
+                <button class="btn btn-link"
+                        ng-click="Cancel()"
+                        data-toggle="button"
+                        data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+</div>  <!-- end Patient Insurance Form Dialog -->
+

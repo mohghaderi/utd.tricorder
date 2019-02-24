@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="PostType" table="PostType" schema="crm">
+
+		<id name="PostTypeID" column="PostTypeID" type="Byte">
+			<generator class="assigned">
+			</generator>
+		</id>
+		
+		<property column="PostTypeName" name="PostTypeName" not-null="true" length="100" />
+		<property column="PostTypeCode" name="PostTypeCode" not-null="true" length="50" />
+		
+		
+	</class>
+</hibernate-mapping>

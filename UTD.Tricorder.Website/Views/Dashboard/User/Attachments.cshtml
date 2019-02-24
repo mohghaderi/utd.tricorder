@@ -1,0 +1,28 @@
+﻿@{
+    var entityName = "User";
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Attachments"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+@{ ViewBag.ActiveTab = "Attachments";}
+@Html.Partial("~/Views/Dashboard/_PatientProfileTabs.cshtml")
+
+<div @UI.AngualrCtrlDivAttr(entityName, "Attachments")>
+
+    <div id="AppFileUploadSingleControllerDiv"
+         data-ng-controller="AppFileUploadSingleController">
+        <div class="btn btn-info"
+             type="file"
+             ng-file-select
+             ng-model="files"
+             ng-file-change="fileSelected($files, $event)"
+             ng-multiple="true"
+             ng-capture='camera'>Upload</div>
+    </div>
+
+    @Html.Partial("~/Views/Dashboard/AppFile/_List.cshtml")
+</div>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")

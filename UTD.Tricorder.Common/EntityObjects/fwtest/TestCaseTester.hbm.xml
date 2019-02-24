@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="UTD.Tricorder.Common" namespace="UTD.Tricorder.Common.EntityObjects">
+	<class name="TestCaseTester" table="TestCaseTester" schema="fwtest">
+
+		<id name="TestCaseTesterID" column="TestCaseTesterID" type="Guid">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<version name="FieldTimeStamp" generated="always" unsaved-value="null" type="BinaryBlob">
+			<column name="FieldTimeStamp" not-null="false" sql-type="timestamp" />
+		</version>
+		<property column="TestCaseTesterTitle" name="TestCaseTesterTitle" length="100" />
+		<property column="TestCaseTesterCode" name="TestCaseTesterCode" length="50" />
+		<property column="FieldGuid" name="FieldGuid" />
+		<property column="FieldByte" name="FieldByte" />
+		<property column="FieldInt16" name="FieldInt16" />
+		<property column="FieldInt32" name="FieldInt32" />
+		<property column="FieldInt64" name="FieldInt64" />
+		<property column="FieldDouble" name="FieldDouble" />
+		<property column="FieldFloat" name="FieldFloat" />
+		<property column="FieldNtext" name="FieldNtext" length="1073741823" />
+		<property column="FieldDateTime" name="FieldDateTime" />
+		<property column="FieldByteArray50" name="FieldByteArray50" />
+		<property column="FieldVarByteArrayMax1024" name="FieldVarByteArrayMax1024" />
+		<property column="FieldDecimal" name="FieldDecimal" />
+		<property column="FieldString" name="FieldString" length="2147483647" />
+		<property column="InsertUser" name="InsertUser" />
+		<property column="InsertDate" name="InsertDate" />
+		<property column="UpdateUser" name="UpdateUser" />
+		<property column="UpdateDate" name="UpdateDate" />
+		
+				<!-- Generator-Safe Area -->
+		
+
+		<!-- End Generator-Safe Area -->
+	</class>
+</hibernate-mapping>

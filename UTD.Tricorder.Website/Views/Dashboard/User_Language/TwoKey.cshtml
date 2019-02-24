@@ -1,0 +1,64 @@
+﻿@using UTD.Tricorder.Common.EntityObjects;
+
+@{
+    string entityName = vUser_Language.EntityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+    
+}
+
+@{ ViewBag.ViewTitle = "Languages"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormHeader.cshtml")
+
+        <h3>Please select languages that you are familiar with</h3>
+
+        <form role="form"
+              ng-controller="@(entityName)TwoKeyController"
+              id="@(entityName)TwoKeyFrm"
+              onsubmit="return false;">
+
+            <div ng-hide="CurrentUserID != UserID">
+                @FWHtml.Editor(entity.EntityColumns[vUser_Language.ColumnNames.LanguageID])
+
+                <div>
+                    <button class="btn btn-success"
+                            ng-click="Insert($event)">
+                        Add to list
+                    </button>
+                </div>
+
+            </div>
+
+
+            <div role="alert"
+                    data-ng-hide="itemsList.length > 0"
+                    class="alert alert-warning">
+                {{msgs.selectedItemsListIsEmpty}}
+            </div>
+
+            <div data-ng-hide="itemsList.length == 0">
+                <h3>Selected Items</h3>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th width="200">Title</th>
+                            <th width="50"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="item in itemsList">
+                            <td>{{item.@(vUser_Language.ColumnNames.LanguageName)}}</td>
+                            <td>
+                                <button ng-hide="CurrentUserID != UserID"
+                                        type="button"
+                                        class="btn btn-danger"
+                                        ng-click="DeleteItem(item.@(vUser_Language.ColumnNames.User_LanguageID), $event)">
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+</form>
+
+@Html.Partial("~/Views/Dashboard/_Layout/_SmallFormFooter.cshtml")

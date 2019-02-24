@@ -1,0 +1,52 @@
+﻿@{
+    var entityName = "Doctor";
+    ViewBag.EntityName = entityName;
+    var entity = Framework.Common.EntityFactory.GetEntityInfoByName(entityName, "");
+}
+
+@{ ViewBag.ViewTitle = "Doctor and Clinic information"; }
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewHeader.cshtml")
+
+    <form role="form"
+          ng-controller="@(entityName)FormController"
+          id="@(entityName)FormFrm"
+          onsubmit="return false;">
+        <div class="row">
+
+            <div class="col-md-4">
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.Degrees])
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.ResidencyPlace])
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.MedicalSchool])
+            </div>
+
+            <div class="col-md-4">
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.RegistrationNumber])
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.LicenseNumbers])
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.BoardCertificationYear])
+            </div>
+            <div class="col-md-4">
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.HasRevokedLicense])
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.HasMilitaryExperience])
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.HospitalPrivileges])
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.ClinicPhoneNumber])
+            </div>
+            <div class="col-md-4">
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.ClinicAddress])
+            </div>
+            <div class="col-md-4">
+                @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.FederalDEAInformation])
+            </div>
+        </div>
+        @FWHtml.Editor(entity.EntityColumns[vDoctor.ColumnNames.ProfessionalStatement])
+
+
+        @UI.StickySavePanel()
+
+    </form>
+
+
+@Html.Partial("~/Views/Dashboard/_Layout/_MasterViewFooter.cshtml")
