@@ -13,6 +13,9 @@
 
 ---
 
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmohghaderi%2Futd.tricorder.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmohghaderi%2Futd.tricorder?ref=badge_large)
+
 ### Notes
 
 This project started in 2013 and the development stopped in 2015.
@@ -123,8 +126,9 @@ Open `WebApiClient` table in the database and put your secret there
 
 ## License
 [![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmohghaderi%2Futd.tricorder.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmohghaderi%2Futd.tricorder?ref=badge_shield)
 
 This source code is released under Public Domain.
 The code for the libraries and the scripts inside of the release is NOT under public domain, but they should all be under MIT or Apache 2.0 license and allow commercial usage.
 I am NOT responsible for any licensing infringements, and the responsibilities of using this code anywhere goes back to the person who uses it.
-There are few classes that are copied from the Internet samples. I tried to put the related URLs, but there might be some code not written by me.  
+There are few classes that are copied from the Internet samples. I tried to put the related URLs, but there might be some code not written by me.
